@@ -37,6 +37,7 @@ pub struct MediaDownloader {
     ffmpeg: Arc<Ffmpeg>,
     explicit: HashMap<String, String>,
     hls_concurrency: usize,
+    low_speed_limit: Option<crate::transfer::watchdog::LowSpeedPolicy>,
 }
 
 impl MediaDownloader {
@@ -70,6 +71,7 @@ impl MediaDownloader {
             ffmpeg,
             explicit: config.headers.clone(),
             hls_concurrency: hls_concurrency(config),
+            low_speed_limit: config.low_speed_limit,
         })
     }
 
@@ -107,17 +109,25 @@ impl MediaDownloader {
                 .unwrap_or_else(|| dest.to_string_lossy().into_owned()),
             context.asset_id.clone().unwrap_or_else(|| "file".into()),
         );
-        let mut report = self
-            .range(page_url)
-            .download_tracked(
-                &track,
-                url,
-                dest,
-                &sources.static_headers(),
-                page_url,
-                progress,
-            )
-            .await?;
+        let range = self.range(page_url);
+        let headers = sources.static_headers();
+        let observer = crate::transfer::watchdog::ObservedProgress::new(progress);
+        let transfer = range.download_tracked(
+            &track,
+            url,
+            dest,
+            &headers,
+            page_url,
+            if self.low_speed_limit.is_some() {
+                Some(&observer as &dyn ProgressSink)
+            } else {
+                progress
+            },
+        );
+        let mut report = match self.low_speed_limit {
+            Some(policy) => crate::transfer::watchdog::watch(transfer, &observer, policy).await?,
+            None => transfer.await?,
+        };
 
         // 内容识别 HLS：传输层只负责字节，播放列表要交给 HLS 落地器分片封装。
         let mut prefix = [0u8; 16];

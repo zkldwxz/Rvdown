@@ -4,3 +4,5 @@
 pub mod backoff;
 pub mod budget;
 pub mod progress;
+
+pub mod watchdog;

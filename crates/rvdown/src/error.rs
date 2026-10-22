@@ -92,6 +92,8 @@ pub enum ErrorCode {
     OutputInvalid,
     /// 进程被中断（SIGINT/SIGTERM），已完成部分照常落盘。
     Cancelled,
+    /// 持续低于显式配置的最低速率；允许调用方尝试其它候选。
+    NetworkTooSlow,
 }
 
 impl ErrorCode {
@@ -108,6 +110,7 @@ impl ErrorCode {
             ErrorCode::HttpClientError => "request rejected (4xx)",
             ErrorCode::NetworkError => "network error",
             ErrorCode::NetworkTimeout => "network timeout",
+            ErrorCode::NetworkTooSlow => "download speed below configured minimum",
             ErrorCode::ProtocolError => "protocol error (range/content-range)",
             ErrorCode::ResourceChanged => "resource changed during transfer",
             ErrorCode::TargetBusy => "target file is locked by another task",
@@ -133,6 +136,7 @@ impl ErrorCode {
                 | ErrorCode::HttpServerError
                 | ErrorCode::NetworkError
                 | ErrorCode::NetworkTimeout
+                | ErrorCode::NetworkTooSlow
                 | ErrorCode::ProtocolError
                 | ErrorCode::ResourceChanged
                 | ErrorCode::TargetBusy
@@ -181,6 +185,11 @@ pub enum DownloadError {
     /// 请求超时。
     #[error("请求超时")]
     Timeout,
+    #[error("连接持续低速: {bytes_per_second} B/s，低于 {minimum_bytes_per_second} B/s")]
+    TooSlow {
+        bytes_per_second: u64,
+        minimum_bytes_per_second: u64,
+    },
     /// 协议异常（区间不符/缺 Content-Range/不支持分段等）。
     #[error("协议错误: {0}")]
     Protocol(String),
@@ -222,6 +231,7 @@ impl DownloadError {
             DownloadError::Io(_) => DownloadFailureKind::Io,
             DownloadError::Network(_) => DownloadFailureKind::Network,
             DownloadError::Timeout => DownloadFailureKind::Network,
+            DownloadError::TooSlow { .. } => DownloadFailureKind::Network,
             DownloadError::Protocol(_) => DownloadFailureKind::Protocol,
             DownloadError::ResourceChanged(_) => DownloadFailureKind::ResourceChanged,
             DownloadError::Busy(_) => DownloadFailureKind::Busy,
@@ -240,6 +250,7 @@ impl DownloadError {
         match self {
             DownloadError::Http { status, .. } => ErrorCode::from_http_status(*status),
             DownloadError::Timeout => ErrorCode::NetworkTimeout,
+            DownloadError::TooSlow { .. } => ErrorCode::NetworkTooSlow,
             DownloadError::FfmpegMissing(_) => ErrorCode::FfmpegMissing,
             DownloadError::MergeFailed(_) => ErrorCode::MergeFailed,
             DownloadError::OutputInvalid(_) => ErrorCode::OutputInvalid,

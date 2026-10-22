@@ -1,4 +1,4 @@
-//! 运行配置：一次调用里的全部可调参数。默认值即「视频下载最优解」。
+//! 运行配置：一次调用里的全部可调参数。默认值为常用配置，链路表现仍需实测。
 //!
 //! 不读任何环境变量——环境变量是各项目自己的约定，调用方按需翻译成本结构。
 //! 命令行里同名参数一一对应，SDK 与可执行文件行为一致。
@@ -51,6 +51,8 @@ pub struct Config {
     pub connect_timeout: Duration,
     /// 空闲读超时。
     pub read_timeout: Duration,
+    /// 持续低速保护，默认关闭；有可信备用链接时可按链路能力显式开启。
+    pub low_speed_limit: Option<crate::transfer::watchdog::LowSpeedPolicy>,
     /// 全局连接预算（`None` = 32，钳 1..=128）。
     pub global_connections: Option<usize>,
     /// 单 host 连接预算（`None` = 16，钳 1..=64）。
@@ -84,6 +86,7 @@ impl Default for Config {
             retry_wait: DEFAULT_RETRY_WAIT,
             connect_timeout: DEFAULT_CONNECT_TIMEOUT,
             read_timeout: DEFAULT_READ_TIMEOUT,
+            low_speed_limit: None,
             global_connections: None,
             host_connections: None,
             ffmpeg: None,
@@ -106,6 +109,12 @@ impl Config {
         config.connections = clamp_at_least_one(self.connections, MAX_CONNECTIONS);
         config.job_concurrency = clamp_at_least_one(self.job_concurrency, MAX_JOB_CONCURRENCY);
         config.retry_attempts = self.retry_attempts.max(1);
+        if config
+            .low_speed_limit
+            .is_some_and(|policy| policy.bytes_per_second == 0 || policy.window.is_zero())
+        {
+            return Err("慢速保护阈值和采样窗口必须大于零".into());
+        }
         config.interface = self
             .interface
             .as_deref()

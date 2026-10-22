@@ -76,6 +76,7 @@ pub use transfer::progress::{
     format_bytes, format_rate, RateMeter, TransferEvent, TransferPhase, TransferReport,
     TransferTrack,
 };
+pub use transfer::watchdog::LowSpeedPolicy;
 pub use transport::segment::{RangeDownloader, RangeDownloaderConfig, TransferPolicy};
 pub use transport::wreq_client::{TransportConfig, WreqSegmentDownloader, WREQ_EMULATION};
 pub use types::VideoProbeResult;

@@ -19,6 +19,7 @@ upstream wording. The retryable column matches the `retryable` result field.
 | `HTTP_CLIENT_ERROR` | 其它 4xx | request rejected (4xx) | 否 |
 | `NETWORK_ERROR` | 连接失败/重置/TLS 握手失败 | network error | 是 |
 | `NETWORK_TIMEOUT` | 连接或读取超时 | network timeout | 是 |
+| `NETWORK_TOO_SLOW` | 持续低于显式设置的最低速率 | download speed below configured minimum | 是（建议换候选） |
 | `PROTOCOL_ERROR` | 协议异常：区间不符、缺 `Content-Range`、服务器不支持分段且单流失败 | protocol error (range/content-range) | 是 |
 | `RESOURCE_CHANGED` | 传输中资源变化，按有限重启重下后仍失败 | resource changed during transfer | 是 |
 | `TARGET_BUSY` | 目标文件正被其它任务写入 | target file is locked by another task | 是 |
@@ -49,3 +50,5 @@ upstream wording. The retryable column matches the `retryable` result field.
 | `NO_AUDIO_TRACK` | 成片没有音频轨（单流源常见），下载仍算成功 |
 | `PROBE_SKIPPED` | 没有 ffmpeg 或探测失败，只做了大小检查 |
 | `CHECKSUM_SKIPPED` | MD5 计算失败 |
+
+`--low-speed-limit` 默认关闭；显式开启后持续慢速可切换任务提供的备用 URL，成功时附带 `SLOW_CANDIDATE_SKIPPED` 告警。不把恢复字节算成网速，也不在 ffmpeg/校验阶段判断速度。

@@ -135,3 +135,36 @@ Use `--mode local` or `--mode wan` to run these separately. All trials remain se
 never run another network benchmark concurrently. Millisecond loopback timing includes
 process startup and polling overhead and is not a precise microbenchmark. Failures and
 incomplete scheduled runs must remain explicit when combining reports.
+
+## Phase diagnosis and sustained slow-link failover
+
+```sh
+cargo build --locked --release --example link_probe
+# Requests only the first 256 KiB; not a full-file acceptance result.
+target/release/examples/link_probe PUBLIC_HTTPS_URL YOUR_PHYSICAL_INTERFACE browser
+target/release/examples/link_probe PUBLIC_HTTPS_URL YOUR_PHYSICAL_INTERFACE benchmark
+```
+
+The example uses native Chrome131 TLS, explicit physical binding and public DoH, without
+a relay. It reports response-header/first-body/total time, HTTP status, byte count and
+prefix MD5; it does not emit the input URL or request headers. `benchmark` reproduces the
+previous benchmark UA, while `browser` uses the default matched browser UA. Partial data,
+errors and diagnostic deadlines are not successful full downloads.
+
+The optional low-speed policy is separate from connect/idle-read timeouts. For example,
+`--low-speed-limit 32768 --low-speed-window 15` requires a sustained 32 KiB/s after warmup.
+It defaults to disabled, so valid slow networks continue to work. Use it with authorized
+alternate URLs (`--fallback` or `Job.urls`); a slow candidate yields to the next candidate
+without retrying the same slow stream three times first. It monitors the aggregate real
+network bytes of a file, excludes resumed bytes and does not include ffmpeg verification.
+This guard currently wraps ordinary file/DASH asset transfer, not HLS media-segment scheduling.
+A configured guard on a lone URL reports `NETWORK_TOO_SLOW`; it cannot create a faster source.
+
+```sh
+python3 benchmarks/failover.py --rvdown target/release/rvdown \
+  --work /tmp/rvdown-failover-new --report /tmp/rvdown-failover.json
+```
+
+This three-round loopback test deliberately uses distinct source bytes/ETags to verify
+that switching never splices old bytes into a different object. It measures completion
+with and without the opt-in guard, not WAN throughput or a universal speed advantage.

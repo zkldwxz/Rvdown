@@ -286,6 +286,7 @@ impl Engine {
 
         // 1. 逐候选下载；永久错（磁盘/权限/路径）立即停，不再试下一个。
         let mut last_error: Option<DownloadError> = None;
+        let mut slow_candidates = 0usize;
         let mut source_url = None;
         let mut report = TransferReport::default();
         for url in job.candidates() {
@@ -296,6 +297,9 @@ impl Engine {
                     break;
                 }
                 Err(error) => {
+                    if matches!(error, DownloadError::TooSlow { .. }) {
+                        slow_candidates += 1;
+                    }
                     let permanent = error.kind().is_permanent();
                     last_error = Some(error);
                     if permanent {
@@ -311,6 +315,12 @@ impl Engine {
 
         // 2. 校验与摘要。
         let mut warnings = Vec::new();
+        if slow_candidates > 0 {
+            warnings.push(Warning {
+                code: "SLOW_CANDIDATE_SKIPPED".into(),
+                message: format!("skipped {slow_candidates} slow candidate(s)"),
+            });
+        }
         let mut outcome = match self.verify(job, &out, &mut warnings, progress).await {
             Ok(verification) => verification,
             Err(failure) => return Err(failure),

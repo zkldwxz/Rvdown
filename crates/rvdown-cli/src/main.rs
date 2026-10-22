@@ -53,6 +53,12 @@ struct CommonArgs {
     /// Attempts per request including the first (default 3).
     #[arg(long)]
     retry_attempts: Option<usize>,
+    /// Minimum sustained transfer rate in bytes/s (0 disables; default disabled).
+    #[arg(long)]
+    low_speed_limit: Option<u64>,
+    /// Sampling window in seconds for low-speed protection (warmup excluded).
+    #[arg(long, default_value_t = 15, value_parser = clap::value_parser!(u64).range(1..=3600))]
+    low_speed_window: u64,
     /// ffmpeg executable (default: resources/ffmpeg next to the binary, then PATH).
     #[arg(long)]
     ffmpeg: Option<String>,
@@ -95,6 +101,13 @@ impl CommonArgs {
             config.retry_attempts = attempts;
         }
         config.ffmpeg = self.ffmpeg.clone();
+        config.low_speed_limit =
+            self.low_speed_limit
+                .filter(|rate| *rate > 0)
+                .map(|rate| rvdown::LowSpeedPolicy {
+                    bytes_per_second: rate,
+                    window: Duration::from_secs(self.low_speed_window),
+                });
         config.proxy = self.proxy.clone();
         config.no_proxy = self.no_proxy;
         config.interface = self.interface.clone();
