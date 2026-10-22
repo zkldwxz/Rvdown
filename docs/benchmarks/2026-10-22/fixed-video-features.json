@@ -1,0 +1,70 @@
+{
+  "schema": 1,
+  "kind": "generated_media_loopback_integration",
+  "cases": [
+    {
+      "interface": "sdk",
+      "case": "hls",
+      "ok": true,
+      "exit_code": 0,
+      "duration_s": 4.058844,
+      "video": true,
+      "audio": true,
+      "progress_event_count": 30,
+      "progress_byte_bounds": true,
+      "progress_percent_bounds": true,
+      "bytes": 357616,
+      "sha256": "8696aef1bdd049bcceb0e465958d20f3fd82d95b6a984aeb271fbc054d37420e"
+    },
+    {
+      "interface": "sdk",
+      "case": "dash",
+      "ok": true,
+      "exit_code": 0,
+      "duration_s": 4.0,
+      "video": true,
+      "audio": true,
+      "progress_event_count": 16,
+      "progress_byte_bounds": true,
+      "progress_percent_bounds": true,
+      "bytes": 356455,
+      "sha256": "ea480dd9e726e69fe1852456c190a5ecca0a8abb6cb8ebf25fc7c102d71cd64a"
+    },
+    {
+      "interface": "cli",
+      "case": "hls",
+      "ok": true,
+      "exit_code": 0,
+      "duration_s": 4.058844,
+      "video": true,
+      "audio": true,
+      "progress_event_count": 2,
+      "progress_byte_bounds": true,
+      "progress_percent_bounds": true,
+      "bytes": 357616,
+      "sha256": "8696aef1bdd049bcceb0e465958d20f3fd82d95b6a984aeb271fbc054d37420e"
+    },
+    {
+      "interface": "cli",
+      "case": "dash",
+      "ok": true,
+      "exit_code": 0,
+      "duration_s": 4.0,
+      "video": true,
+      "audio": true,
+      "progress_event_count": 3,
+      "progress_byte_bounds": true,
+      "progress_percent_bounds": true,
+      "bytes": 356455,
+      "sha256": "ea480dd9e726e69fe1852456c190a5ecca0a8abb6cb8ebf25fc7c102d71cd64a"
+    }
+  ],
+  "ffmpeg": "ffmpeg version 9.0.2 Copyright (c) 2000-2026 the FFmpeg developers",
+  "sdk_executable": {
+    "sha256": "5b7922ba99d7e4963119d672fccf5e82d9388bd5308cc1874b455643b1c27383",
+    "bytes": 6010608
+  },
+  "server_peak_concurrent_requests": 2,
+  "passed": 4,
+  "attempted": 4
+}

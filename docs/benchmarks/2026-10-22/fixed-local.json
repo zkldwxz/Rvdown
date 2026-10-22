@@ -1,0 +1,689 @@
+{
+  "schema": 1,
+  "date": "2026-10-22",
+  "rvdown_commit": "123a05fd9a3a7193ee9e65e7872979d30a5097b3",
+  "host": {
+    "os": "Darwin",
+    "os_release": "27.0.0",
+    "arch": "arm64"
+  },
+  "method": {
+    "repetitions": 3,
+    "order": "rotating Latin square",
+    "timing": "process startup through atomic file delivery; post-run SHA256 excluded",
+    "rvdown_checks_in_transfer_comparison": "ffmpeg and MD5 disabled; all tools SHA256 verified afterward",
+    "network": "all tools use one benchmark-owned loopback CONNECT byte relay; outbound sockets bind the physical interface; end-to-end TLS; no external proxy or system changes",
+    "dns": "one public DoH snapshot; same fixed IPv4 target for all tools; no system DNS fallback",
+    "local_fixture": "16 MiB deterministic bytes; 4 MiB/s per connection; not an internet speed result"
+  },
+  "artifacts": {
+    "rvdown": {
+      "executable_bytes": 6480736,
+      "sha256": "82e453609ac2a03e93c60e5d4dbac811ef002eceeaf8efee568d617b1517503e"
+    },
+    "aria2": {
+      "executable_bytes": 3318848,
+      "sha256": "503c7b58b64e76af21ac9f0f96cca8749617c25f997739b8346cdf7c47fd99e3"
+    },
+    "python": {
+      "executable_bytes": 18084128,
+      "sha256": "fe5e57e7f0dc374654e314d4e8f20cf2a345bda8a4e03032046f407027628a32"
+    }
+  },
+  "runs": [
+    {
+      "sample": "local-capped",
+      "round": 1,
+      "tool": "rvdown-8",
+      "exit_code": 0,
+      "timed_out": false,
+      "elapsed_s": 0.709358,
+      "peak_rss_bytes": 9437184,
+      "cpu_user_s": 0.0,
+      "cpu_system_s": 0.02,
+      "http_status": null,
+      "bytes": 16777216,
+      "sha256": "341aacac661ccb210720bedaa9ead5d668fe5ea41a73532fc147c71e34040df1",
+      "ok": true,
+      "server": {
+        "application_bytes_served": 16777216,
+        "requests": 8,
+        "range_requests": 8,
+        "peak_concurrent_requests": 8
+      }
+    },
+    {
+      "sample": "local-capped",
+      "round": 1,
+      "tool": "httpx-fetch",
+      "exit_code": 0,
+      "timed_out": false,
+      "elapsed_s": 4.867146,
+      "peak_rss_bytes": 37896192,
+      "cpu_user_s": 0.11,
+      "cpu_system_s": 0.04,
+      "http_status": null,
+      "bytes": 16777216,
+      "sha256": "341aacac661ccb210720bedaa9ead5d668fe5ea41a73532fc147c71e34040df1",
+      "ok": true,
+      "server": {
+        "application_bytes_served": 16777216,
+        "requests": 1,
+        "range_requests": 0,
+        "peak_concurrent_requests": 1
+      }
+    },
+    {
+      "sample": "local-capped",
+      "round": 1,
+      "tool": "aria2-8",
+      "exit_code": 0,
+      "timed_out": false,
+      "elapsed_s": 0.668731,
+      "peak_rss_bytes": 24100864,
+      "cpu_user_s": 0.01,
+      "cpu_system_s": 0.04,
+      "http_status": null,
+      "bytes": 16777216,
+      "sha256": "341aacac661ccb210720bedaa9ead5d668fe5ea41a73532fc147c71e34040df1",
+      "ok": true,
+      "server": {
+        "application_bytes_served": 16842752,
+        "requests": 8,
+        "range_requests": 7,
+        "peak_concurrent_requests": 8
+      }
+    },
+    {
+      "sample": "local-capped",
+      "round": 2,
+      "tool": "httpx-fetch",
+      "exit_code": 0,
+      "timed_out": false,
+      "elapsed_s": 4.793288,
+      "peak_rss_bytes": 38158336,
+      "cpu_user_s": 0.11,
+      "cpu_system_s": 0.03,
+      "http_status": null,
+      "bytes": 16777216,
+      "sha256": "341aacac661ccb210720bedaa9ead5d668fe5ea41a73532fc147c71e34040df1",
+      "ok": true,
+      "server": {
+        "application_bytes_served": 16777216,
+        "requests": 1,
+        "range_requests": 0,
+        "peak_concurrent_requests": 1
+      }
+    },
+    {
+      "sample": "local-capped",
+      "round": 2,
+      "tool": "aria2-8",
+      "exit_code": 0,
+      "timed_out": false,
+      "elapsed_s": 0.655081,
+      "peak_rss_bytes": 24051712,
+      "cpu_user_s": 0.01,
+      "cpu_system_s": 0.02,
+      "http_status": null,
+      "bytes": 16777216,
+      "sha256": "341aacac661ccb210720bedaa9ead5d668fe5ea41a73532fc147c71e34040df1",
+      "ok": true,
+      "server": {
+        "application_bytes_served": 16842752,
+        "requests": 8,
+        "range_requests": 7,
+        "peak_concurrent_requests": 8
+      }
+    },
+    {
+      "sample": "local-capped",
+      "round": 2,
+      "tool": "rvdown-8",
+      "exit_code": 0,
+      "timed_out": false,
+      "elapsed_s": 0.667136,
+      "peak_rss_bytes": 9748480,
+      "cpu_user_s": 0.0,
+      "cpu_system_s": 0.01,
+      "http_status": null,
+      "bytes": 16777216,
+      "sha256": "341aacac661ccb210720bedaa9ead5d668fe5ea41a73532fc147c71e34040df1",
+      "ok": true,
+      "server": {
+        "application_bytes_served": 16777216,
+        "requests": 8,
+        "range_requests": 8,
+        "peak_concurrent_requests": 8
+      }
+    },
+    {
+      "sample": "local-capped",
+      "round": 3,
+      "tool": "aria2-8",
+      "exit_code": 0,
+      "timed_out": false,
+      "elapsed_s": 0.660032,
+      "peak_rss_bytes": 24117248,
+      "cpu_user_s": 0.01,
+      "cpu_system_s": 0.03,
+      "http_status": null,
+      "bytes": 16777216,
+      "sha256": "341aacac661ccb210720bedaa9ead5d668fe5ea41a73532fc147c71e34040df1",
+      "ok": true,
+      "server": {
+        "application_bytes_served": 16842752,
+        "requests": 8,
+        "range_requests": 7,
+        "peak_concurrent_requests": 8
+      }
+    },
+    {
+      "sample": "local-capped",
+      "round": 3,
+      "tool": "rvdown-8",
+      "exit_code": 0,
+      "timed_out": false,
+      "elapsed_s": 0.616468,
+      "peak_rss_bytes": 9814016,
+      "cpu_user_s": 0.0,
+      "cpu_system_s": 0.02,
+      "http_status": null,
+      "bytes": 16777216,
+      "sha256": "341aacac661ccb210720bedaa9ead5d668fe5ea41a73532fc147c71e34040df1",
+      "ok": true,
+      "server": {
+        "application_bytes_served": 16777216,
+        "requests": 8,
+        "range_requests": 8,
+        "peak_concurrent_requests": 8
+      }
+    },
+    {
+      "sample": "local-capped",
+      "round": 3,
+      "tool": "httpx-fetch",
+      "exit_code": 0,
+      "timed_out": false,
+      "elapsed_s": 5.032873,
+      "peak_rss_bytes": 40566784,
+      "cpu_user_s": 0.12,
+      "cpu_system_s": 0.03,
+      "http_status": null,
+      "bytes": 16777216,
+      "sha256": "341aacac661ccb210720bedaa9ead5d668fe5ea41a73532fc147c71e34040df1",
+      "ok": true,
+      "server": {
+        "application_bytes_served": 16777216,
+        "requests": 1,
+        "range_requests": 0,
+        "peak_concurrent_requests": 1
+      }
+    },
+    {
+      "sample": "local-capped",
+      "round": 1,
+      "tool": "rvdown-1",
+      "exit_code": 0,
+      "timed_out": false,
+      "elapsed_s": 4.778013,
+      "peak_rss_bytes": 7536640,
+      "cpu_user_s": 0.01,
+      "cpu_system_s": 0.02,
+      "http_status": null,
+      "bytes": 16777216,
+      "sha256": "341aacac661ccb210720bedaa9ead5d668fe5ea41a73532fc147c71e34040df1",
+      "ok": true,
+      "server": {
+        "application_bytes_served": 16777216,
+        "requests": 1,
+        "range_requests": 0,
+        "peak_concurrent_requests": 1
+      }
+    },
+    {
+      "sample": "local-capped",
+      "round": 2,
+      "tool": "rvdown-1",
+      "exit_code": 0,
+      "timed_out": false,
+      "elapsed_s": 4.731989,
+      "peak_rss_bytes": 7340032,
+      "cpu_user_s": 0.01,
+      "cpu_system_s": 0.03,
+      "http_status": null,
+      "bytes": 16777216,
+      "sha256": "341aacac661ccb210720bedaa9ead5d668fe5ea41a73532fc147c71e34040df1",
+      "ok": true,
+      "server": {
+        "application_bytes_served": 16777216,
+        "requests": 1,
+        "range_requests": 0,
+        "peak_concurrent_requests": 1
+      }
+    },
+    {
+      "sample": "local-capped",
+      "round": 3,
+      "tool": "rvdown-1",
+      "exit_code": 0,
+      "timed_out": false,
+      "elapsed_s": 4.77515,
+      "peak_rss_bytes": 7651328,
+      "cpu_user_s": 0.01,
+      "cpu_system_s": 0.03,
+      "http_status": null,
+      "bytes": 16777216,
+      "sha256": "341aacac661ccb210720bedaa9ead5d668fe5ea41a73532fc147c71e34040df1",
+      "ok": true,
+      "server": {
+        "application_bytes_served": 16777216,
+        "requests": 1,
+        "range_requests": 0,
+        "peak_concurrent_requests": 1
+      }
+    },
+    {
+      "sample": "local-uncapped",
+      "round": 1,
+      "tool": "rvdown-8",
+      "exit_code": 0,
+      "timed_out": false,
+      "elapsed_s": 0.077944,
+      "peak_rss_bytes": 14696448,
+      "cpu_user_s": 0.0,
+      "cpu_system_s": 0.01,
+      "http_status": null,
+      "bytes": 16777216,
+      "sha256": "341aacac661ccb210720bedaa9ead5d668fe5ea41a73532fc147c71e34040df1",
+      "ok": true,
+      "server": {
+        "application_bytes_served": 16777216,
+        "requests": 8,
+        "range_requests": 8,
+        "peak_concurrent_requests": 7
+      }
+    },
+    {
+      "sample": "local-uncapped",
+      "round": 1,
+      "tool": "httpx-fetch",
+      "exit_code": 0,
+      "timed_out": false,
+      "elapsed_s": 0.132709,
+      "peak_rss_bytes": 36601856,
+      "cpu_user_s": 0.05,
+      "cpu_system_s": 0.01,
+      "http_status": null,
+      "bytes": 16777216,
+      "sha256": "341aacac661ccb210720bedaa9ead5d668fe5ea41a73532fc147c71e34040df1",
+      "ok": true,
+      "server": {
+        "application_bytes_served": 16777216,
+        "requests": 1,
+        "range_requests": 0,
+        "peak_concurrent_requests": 1
+      }
+    },
+    {
+      "sample": "local-uncapped",
+      "round": 1,
+      "tool": "aria2-8",
+      "exit_code": 0,
+      "timed_out": false,
+      "elapsed_s": 0.076508,
+      "peak_rss_bytes": 23527424,
+      "cpu_user_s": 0.01,
+      "cpu_system_s": 0.01,
+      "http_status": null,
+      "bytes": 16777216,
+      "sha256": "341aacac661ccb210720bedaa9ead5d668fe5ea41a73532fc147c71e34040df1",
+      "ok": true,
+      "server": {
+        "application_bytes_served": 18808832,
+        "requests": 8,
+        "range_requests": 7,
+        "peak_concurrent_requests": 8
+      }
+    },
+    {
+      "sample": "local-uncapped",
+      "round": 2,
+      "tool": "httpx-fetch",
+      "exit_code": 0,
+      "timed_out": false,
+      "elapsed_s": 0.076387,
+      "peak_rss_bytes": 36372480,
+      "cpu_user_s": 0.04,
+      "cpu_system_s": 0.01,
+      "http_status": null,
+      "bytes": 16777216,
+      "sha256": "341aacac661ccb210720bedaa9ead5d668fe5ea41a73532fc147c71e34040df1",
+      "ok": true,
+      "server": {
+        "application_bytes_served": 16777216,
+        "requests": 1,
+        "range_requests": 0,
+        "peak_concurrent_requests": 1
+      }
+    },
+    {
+      "sample": "local-uncapped",
+      "round": 2,
+      "tool": "aria2-8",
+      "exit_code": 0,
+      "timed_out": false,
+      "elapsed_s": 0.040588,
+      "peak_rss_bytes": 23511040,
+      "cpu_user_s": 0.01,
+      "cpu_system_s": 0.01,
+      "http_status": null,
+      "bytes": 16777216,
+      "sha256": "341aacac661ccb210720bedaa9ead5d668fe5ea41a73532fc147c71e34040df1",
+      "ok": true,
+      "server": {
+        "application_bytes_served": 17498112,
+        "requests": 8,
+        "range_requests": 7,
+        "peak_concurrent_requests": 8
+      }
+    },
+    {
+      "sample": "local-uncapped",
+      "round": 2,
+      "tool": "rvdown-8",
+      "exit_code": 0,
+      "timed_out": false,
+      "elapsed_s": 0.076489,
+      "peak_rss_bytes": 12468224,
+      "cpu_user_s": 0.0,
+      "cpu_system_s": 0.01,
+      "http_status": null,
+      "bytes": 16777216,
+      "sha256": "341aacac661ccb210720bedaa9ead5d668fe5ea41a73532fc147c71e34040df1",
+      "ok": true,
+      "server": {
+        "application_bytes_served": 16777216,
+        "requests": 8,
+        "range_requests": 8,
+        "peak_concurrent_requests": 8
+      }
+    },
+    {
+      "sample": "local-uncapped",
+      "round": 3,
+      "tool": "aria2-8",
+      "exit_code": 0,
+      "timed_out": false,
+      "elapsed_s": 0.073713,
+      "peak_rss_bytes": 23216128,
+      "cpu_user_s": 0.01,
+      "cpu_system_s": 0.01,
+      "http_status": null,
+      "bytes": 16777216,
+      "sha256": "341aacac661ccb210720bedaa9ead5d668fe5ea41a73532fc147c71e34040df1",
+      "ok": true,
+      "server": {
+        "application_bytes_served": 18808832,
+        "requests": 8,
+        "range_requests": 7,
+        "peak_concurrent_requests": 8
+      }
+    },
+    {
+      "sample": "local-uncapped",
+      "round": 3,
+      "tool": "rvdown-8",
+      "exit_code": 0,
+      "timed_out": false,
+      "elapsed_s": 0.07433,
+      "peak_rss_bytes": 13860864,
+      "cpu_user_s": 0.0,
+      "cpu_system_s": 0.01,
+      "http_status": null,
+      "bytes": 16777216,
+      "sha256": "341aacac661ccb210720bedaa9ead5d668fe5ea41a73532fc147c71e34040df1",
+      "ok": true,
+      "server": {
+        "application_bytes_served": 16777216,
+        "requests": 8,
+        "range_requests": 8,
+        "peak_concurrent_requests": 8
+      }
+    },
+    {
+      "sample": "local-uncapped",
+      "round": 3,
+      "tool": "httpx-fetch",
+      "exit_code": 0,
+      "timed_out": false,
+      "elapsed_s": 0.077444,
+      "peak_rss_bytes": 36487168,
+      "cpu_user_s": 0.05,
+      "cpu_system_s": 0.01,
+      "http_status": null,
+      "bytes": 16777216,
+      "sha256": "341aacac661ccb210720bedaa9ead5d668fe5ea41a73532fc147c71e34040df1",
+      "ok": true,
+      "server": {
+        "application_bytes_served": 16777216,
+        "requests": 1,
+        "range_requests": 0,
+        "peak_concurrent_requests": 1
+      }
+    },
+    {
+      "sample": "local-uncapped",
+      "round": 1,
+      "tool": "rvdown-1",
+      "exit_code": 0,
+      "timed_out": false,
+      "elapsed_s": 0.020571,
+      "peak_rss_bytes": 8372224,
+      "cpu_user_s": 0.0,
+      "cpu_system_s": 0.0,
+      "http_status": null,
+      "bytes": 16777216,
+      "sha256": "341aacac661ccb210720bedaa9ead5d668fe5ea41a73532fc147c71e34040df1",
+      "ok": true,
+      "server": {
+        "application_bytes_served": 16777216,
+        "requests": 1,
+        "range_requests": 0,
+        "peak_concurrent_requests": 1
+      }
+    },
+    {
+      "sample": "local-uncapped",
+      "round": 2,
+      "tool": "rvdown-1",
+      "exit_code": 0,
+      "timed_out": false,
+      "elapsed_s": 0.020798,
+      "peak_rss_bytes": 8863744,
+      "cpu_user_s": 0.0,
+      "cpu_system_s": 0.0,
+      "http_status": null,
+      "bytes": 16777216,
+      "sha256": "341aacac661ccb210720bedaa9ead5d668fe5ea41a73532fc147c71e34040df1",
+      "ok": true,
+      "server": {
+        "application_bytes_served": 16777216,
+        "requests": 1,
+        "range_requests": 0,
+        "peak_concurrent_requests": 1
+      }
+    },
+    {
+      "sample": "local-uncapped",
+      "round": 3,
+      "tool": "rvdown-1",
+      "exit_code": 0,
+      "timed_out": false,
+      "elapsed_s": 0.020885,
+      "peak_rss_bytes": 8667136,
+      "cpu_user_s": 0.0,
+      "cpu_system_s": 0.0,
+      "http_status": null,
+      "bytes": 16777216,
+      "sha256": "341aacac661ccb210720bedaa9ead5d668fe5ea41a73532fc147c71e34040df1",
+      "ok": true,
+      "server": {
+        "application_bytes_served": 16777216,
+        "requests": 1,
+        "range_requests": 0,
+        "peak_concurrent_requests": 1
+      }
+    }
+  ],
+  "resume": [
+    {
+      "tool": "rvdown-8",
+      "interrupt_exit_code": -2,
+      "restart": {
+        "exit_code": 0,
+        "timed_out": false,
+        "elapsed_s": 7.907535,
+        "peak_rss_bytes": 7503872,
+        "cpu_user_s": 0.0,
+        "cpu_system_s": 0.0,
+        "http_status": null
+      },
+      "sha256_verified": true,
+      "second_request_bytes_less_than_full": true,
+      "application_bytes_served": 2097152,
+      "requests": 1,
+      "range_requests": 1,
+      "peak_concurrent_requests": 1,
+      "rvdown_resumed_bytes": 14680064
+    },
+    {
+      "tool": "httpx-fetch",
+      "interrupt_exit_code": -2,
+      "restart": {
+        "exit_code": 0,
+        "timed_out": false,
+        "elapsed_s": 4.882257,
+        "peak_rss_bytes": 39550976,
+        "cpu_user_s": 0.09,
+        "cpu_system_s": 0.02,
+        "http_status": null
+      },
+      "sha256_verified": true,
+      "second_request_bytes_less_than_full": false,
+      "application_bytes_served": 16777216,
+      "requests": 1,
+      "range_requests": 0,
+      "peak_concurrent_requests": 1
+    },
+    {
+      "tool": "aria2-8",
+      "interrupt_exit_code": 7,
+      "restart": {
+        "exit_code": 0,
+        "timed_out": false,
+        "elapsed_s": 3.136905,
+        "peak_rss_bytes": 16384000,
+        "cpu_user_s": 0.01,
+        "cpu_system_s": 0.01,
+        "http_status": null
+      },
+      "sha256_verified": true,
+      "second_request_bytes_less_than_full": true,
+      "application_bytes_served": 1622016,
+      "requests": 3,
+      "range_requests": 2,
+      "peak_concurrent_requests": 3
+    }
+  ],
+  "summaries": {
+    "local-capped": {
+      "rvdown-8": {
+        "attempted": 3,
+        "passed": 3,
+        "failed": 0,
+        "median_mib_s_successes_only": 23.983,
+        "min_mib_s_successes_only": 22.556,
+        "max_mib_s_successes_only": 25.954,
+        "median_peak_rss_bytes": 9748480
+      },
+      "httpx-fetch": {
+        "attempted": 3,
+        "passed": 3,
+        "failed": 0,
+        "median_mib_s_successes_only": 3.287,
+        "min_mib_s_successes_only": 3.179,
+        "max_mib_s_successes_only": 3.338,
+        "median_peak_rss_bytes": 38158336
+      },
+      "aria2-8": {
+        "attempted": 3,
+        "passed": 3,
+        "failed": 0,
+        "median_mib_s_successes_only": 24.241,
+        "min_mib_s_successes_only": 23.926,
+        "max_mib_s_successes_only": 24.424,
+        "median_peak_rss_bytes": 24100864
+      },
+      "rvdown-1": {
+        "attempted": 3,
+        "passed": 3,
+        "failed": 0,
+        "median_mib_s_successes_only": 3.351,
+        "min_mib_s_successes_only": 3.349,
+        "max_mib_s_successes_only": 3.381,
+        "median_peak_rss_bytes": 7536640
+      }
+    },
+    "local-uncapped": {
+      "rvdown-8": {
+        "attempted": 3,
+        "passed": 3,
+        "failed": 0,
+        "median_mib_s_successes_only": 209.18,
+        "min_mib_s_successes_only": 205.276,
+        "max_mib_s_successes_only": 215.256,
+        "median_peak_rss_bytes": 13860864
+      },
+      "httpx-fetch": {
+        "attempted": 3,
+        "passed": 3,
+        "failed": 0,
+        "median_mib_s_successes_only": 206.601,
+        "min_mib_s_successes_only": 120.565,
+        "max_mib_s_successes_only": 209.46,
+        "median_peak_rss_bytes": 36487168
+      },
+      "aria2-8": {
+        "attempted": 3,
+        "passed": 3,
+        "failed": 0,
+        "median_mib_s_successes_only": 217.058,
+        "min_mib_s_successes_only": 209.128,
+        "max_mib_s_successes_only": 394.205,
+        "median_peak_rss_bytes": 23511040
+      },
+      "rvdown-1": {
+        "attempted": 3,
+        "passed": 3,
+        "failed": 0,
+        "median_mib_s_successes_only": 769.305,
+        "min_mib_s_successes_only": 766.1,
+        "max_mib_s_successes_only": 777.794,
+        "median_peak_rss_bytes": 8667136
+      }
+    }
+  },
+  "versions": {
+    "rvdown": "rvdown 0.1.0",
+    "aria2": "aria2 版本 1.37.0",
+    "httpx": "0.28.1",
+    "python": "Python 3.12.15"
+  },
+  "harness_sha256": {
+    "compare.py": "278e3d15235fe4f6d2552801f081c5d4c9314934a58fbd018e18031b3d5c2dba",
+    "httpx_fetch.py": "b11062580940a323bd435578c335747839470e66b7f37a924d9f26270308b6b4"
+  },
+  "media_in_public_report": false,
+  "physical_relay_connections": 0
+}

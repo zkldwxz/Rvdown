@@ -1,5 +1,7 @@
 # Rvdown
 
+[实测对比报告 / measured comparison](docs/benchmarks/2026-10-22/report.zh-CN.md) · [Reproduce](benchmarks/README.md)
+
 Fast, multi-threaded video downloader for scripted pipelines — a drop-in replacement for `aria2`
 in crawler / review / archiving jobs where CDNs fight back.
 

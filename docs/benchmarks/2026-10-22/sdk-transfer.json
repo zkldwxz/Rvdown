@@ -1,0 +1,36 @@
+{
+  "schema": 1,
+  "kind": "rust_sdk_two_job_capped_loopback",
+  "ok": true,
+  "jobs": 2,
+  "bytes_per_job": 16777216,
+  "connections_per_job": 8,
+  "per_connection_cap_mib_s": 4,
+  "measurement": {
+    "exit_code": 0,
+    "timed_out": false,
+    "elapsed_s": 0.730463,
+    "peak_rss_bytes": 16711680,
+    "cpu_user_s": 0.06,
+    "cpu_system_s": 0.06,
+    "http_status": null
+  },
+  "aggregate_mib_s": 43.808,
+  "sha256_verified": true,
+  "expected_sha256": "341aacac661ccb210720bedaa9ead5d668fe5ea41a73532fc147c71e34040df1",
+  "progress_events": 587,
+  "progress_monotonic": true,
+  "progress_bounded": true,
+  "task_ids_observed": [
+    "job-0",
+    "job-1"
+  ],
+  "server": {
+    "application_bytes_served": 33554432,
+    "requests": 16,
+    "range_requests": 16,
+    "peak_concurrent_requests": 16
+  },
+  "sdk_executable_sha256": "2edff91b4b9cdc300b4ba187b787922a145fb17c72f34a58c4aff39c867e8581",
+  "note": "non-video fixture; MD5 enabled, ffmpeg disabled per job; aggregate is not WAN speed"
+}

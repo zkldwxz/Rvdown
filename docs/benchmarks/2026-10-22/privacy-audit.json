@@ -1,0 +1,9 @@
+{
+  "scope": "standalone SDK source and proposed public benchmark files; all existing Git history blobs",
+  "prospective_files_scanned": 52,
+  "history_blobs_scanned": 45,
+  "history_commits_scanned": 1,
+  "findings_count": 0,
+  "manual_review": "public fixtures and generic HTTP headers only; no application sources/configuration/raw logs selected",
+  "limitations": "targeted local application markers plus obvious secret signatures; not a proof against every possible secret format"
+}
