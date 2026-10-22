@@ -204,3 +204,13 @@ Chrome131 UA, `Accept-Encoding: identity`, `--connect-timeout 15 --max-time 60` 
 `--http1.1`/`--http2`. Record connect/TLS/TTFB/total times, byte count, HTTP version and
 full SHA256; on macOS numeric TCP fields can be observed with `nettop -n -m tcp -p PID
 -L 2 -s 1 -x -J interface,state,bytes_in,bytes_out,rx_dupe,rx_ooo,re-tx,rtt_avg,rcvsize`.
+
+### Public sample and transparent-routing boundaries
+
+Public MDN/FFmpeg/Samplelib files are sample hosts, not a representative acceptance set
+for every production video CDN. GitHub raw mirror diagnostics are separate. Generated
+loopback fixtures measure functionality/local overhead and must never be labeled WAN speed.
+`no_proxy` excludes configured application proxies, not all transparent routing. When TUN
+is present, check scoped routing, the test PID's actual interface and tunnel connections;
+an internal DIRECT policy still passes through the tunnel stack. Do not export the local
+proxy configuration, controller secrets, node definitions or private network addresses.
