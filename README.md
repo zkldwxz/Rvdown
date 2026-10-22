@@ -82,7 +82,7 @@ use rvdown::{Client, Job};
 #[tokio::main]
 async fn main() -> Result<(), rvdown::JobError> {
     let client = Client::builder()
-        .connections(16)        // parallel segments per file
+        .connections(16)        // maximum segments per file; adaptive policy may use fewer
         .job_concurrency(4)     // files at once
         .build()?;
 

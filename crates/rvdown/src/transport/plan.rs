@@ -1,7 +1,5 @@
-//! Range 分段规划：移植 aria2 的 `--split` / `--min-split-size=1M` 切分语义。
-//!
-//! aria2 不显式设置 min-split-size 时默认 20M，小文件永远只走 1 条连接，
-//! 实测同一文件 5.6s vs 2.0s；因此这里默认 1M，让小文件也切片。
+//! Range 分段规划：最小分段大小沿用 aria2 的 `--min-split-size` 语义，
+//! 视频下载再按文件大小与来源自适应收窄调用者给定的连接上限。
 //!
 //! 纯函数、无 IO：编排层（segment.rs）拿它规划 N 路 Range 请求。
 
@@ -13,6 +11,9 @@ pub const MIN_SPLIT_SIZE_BYTES: u64 = 1024 * 1024;
 
 /// 连接数夹取范围的上限（与 DOWNLOAD_CONCURRENCY 的口径一致，防误配打爆 CDN）。
 pub const MAX_SEGMENT_CONNECTIONS: usize = 32;
+
+/// 抖音资源超过该大小才启用多路；来自五平台文件测速的候选分界。
+const ADAPTIVE_MULTI_CONNECTION_SIZE_BYTES: u64 = 32 * 1024 * 1024;
 
 /// 单段区间：字节偏移 `[start, end]`（两端都含）。
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
@@ -46,6 +47,18 @@ pub fn normalize_connections(raw: Option<usize>) -> usize {
         return DEFAULT_SEGMENT_CONNECTIONS;
     }
     value.min(MAX_SEGMENT_CONNECTIONS)
+}
+
+/// 按文件大小/来源收窄连接上限。`requested` 是调用者配置的最大值，不会被提高。
+///
+/// 只对抖音实施 ≤32MiB 单路：五平台同轮测试显示抖音稳定受益，头条小文件则有回退。
+pub(crate) fn adaptive_connection_limit(total: u64, requested: usize, is_douyin: bool) -> usize {
+    let requested = normalize_connections(Some(requested));
+    if is_douyin && total <= ADAPTIVE_MULTI_CONNECTION_SIZE_BYTES {
+        1
+    } else {
+        requested
+    }
 }
 
 /// aria2 口径的段数：连接数受「每段至少 min_split_size」约束打折——
@@ -136,6 +149,20 @@ mod tests {
         assert!(segments.iter().all(|s| s.len() == 12 * M + M / 2));
         assert_eq!(segments[0].start, 0);
         assert_eq!(segments[7].end, 100 * M - 1);
+    }
+
+    #[test]
+    fn adaptive_connections_limit_only_douyin_small_files() {
+        const THIRTY_TWO_MIB: u64 = 32 * M;
+
+        assert_eq!(adaptive_connection_limit(3 * M, 8, true), 1);
+        assert_eq!(adaptive_connection_limit(THIRTY_TWO_MIB, 8, true), 1);
+        assert_eq!(adaptive_connection_limit(THIRTY_TWO_MIB + 1, 8, true), 8);
+        assert_eq!(adaptive_connection_limit(5 * M, 8, false), 8);
+        assert_eq!(adaptive_connection_limit(20 * M, 8, false), 8);
+        assert_eq!(adaptive_connection_limit(100 * M, 2, true), 2);
+        assert_eq!(adaptive_connection_limit(100 * M, 64, true), 32);
+        assert_eq!(adaptive_connection_limit(100 * M, 0, true), 8);
     }
 
     #[test]
