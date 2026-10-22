@@ -214,3 +214,35 @@ loopback fixtures measure functionality/local overhead and must never be labeled
 is present, check scoped routing, the test PID's actual interface and tunnel connections;
 an internal DIRECT policy still passes through the tunnel stack. Do not export the local
 proxy configuration, controller secrets, node definitions or private network addresses.
+
+## HEAD and caller-header cost control
+
+```sh
+cargo test --locked -p rvdown --example request_probe
+cargo build --locked --release -p rvdown-cli
+cargo build --locked --release -p rvdown --example request_probe
+python3 benchmarks/speed_causes.py --rvdown target/release/rvdown \
+  --probe target/release/examples/request_probe --aria2 aria2c \
+  --interface YOUR_PHYSICAL_INTERFACE --rounds 5 \
+  --work /tmp/rvdown-causes-new --report /tmp/rvdown-causes.json
+```
+
+Five rotating arms use one file and one connection: production CLI, native same-stack
+HTTP2 HEAD/GET, native HTTP2 GET, matched-header aria2 and default-header aria2. All WAN
+groups use the same fixed-IP physical-interface CONNECT byte relay. No Referer is added.
+Aria2 default removes caller UA/encoding overrides, not mandatory/default HTTP headers;
+configuration/netrc are disabled. The two native controls buffer this small file before
+writing, so they are not full production CLI acceptance. Main wall time includes startup
+and final write; the nested transport timer excludes final write. HEAD header time
+includes the initial TLS handshake and must not all be called avoidable HEAD overhead.
+The generated local Referer gate demonstrates 200/403 mechanics only, not a CDN result.
+Every WAN success requires the full known size and SHA256; every failure stays counted.
+
+[Results and primary-source engine research](../docs/benchmarks/2026-10-22/aria2-investigation.zh-CN.md)
+
+## Scope of these scripts
+
+These public-input scripts are auxiliary diagnostics, not the primary Douyin CDN benchmark.
+Do not put private signed URLs or headers in their public allowlists or committed reports.
+Follow the [video-first benchmark plan](../docs/video-benchmark-plan.zh-CN.md) for authorized
+real-video inputs, equivalent media delivery, resource accounting and fair comparisons.

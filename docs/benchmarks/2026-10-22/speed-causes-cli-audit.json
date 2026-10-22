@@ -1,0 +1,55 @@
+{
+  "scope": "whitelisted numeric fields from the same public CLI trials; raw output/path omitted",
+  "runs": [
+    {
+      "round": 1,
+      "elapsed_s": 10.513193,
+      "ok": true,
+      "code": "OK",
+      "attempts": 2,
+      "network_bytes": 1128375,
+      "resumed_bytes": 0,
+      "bytes": 1128375
+    },
+    {
+      "round": 2,
+      "elapsed_s": 5.283162,
+      "ok": true,
+      "code": "OK",
+      "attempts": 2,
+      "network_bytes": 1128375,
+      "resumed_bytes": 0,
+      "bytes": 1128375
+    },
+    {
+      "round": 3,
+      "elapsed_s": 14.195206,
+      "ok": true,
+      "code": "OK",
+      "attempts": 2,
+      "network_bytes": 1128375,
+      "resumed_bytes": 0,
+      "bytes": 1128375
+    },
+    {
+      "round": 4,
+      "elapsed_s": 42.639208,
+      "ok": true,
+      "code": "OK",
+      "attempts": 2,
+      "network_bytes": 1128375,
+      "resumed_bytes": 0,
+      "bytes": 1128375
+    },
+    {
+      "round": 5,
+      "elapsed_s": 13.896595,
+      "ok": true,
+      "code": "OK",
+      "attempts": 2,
+      "network_bytes": 1128375,
+      "resumed_bytes": 0,
+      "bytes": 1128375
+    }
+  ]
+}

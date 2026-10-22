@@ -29,6 +29,7 @@ jobs:
         run: |
           cargo test --locked
           cargo test --locked -p rvdown --example reconnect_probe
+          cargo test --locked -p rvdown --example request_probe
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"

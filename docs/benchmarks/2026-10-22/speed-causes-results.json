@@ -1,0 +1,696 @@
+{
+  "schema": 1,
+  "source_commit": "551ed0cf2dbc7796b595c90739f3a51d7b7a4d29",
+  "host": {
+    "os": "Darwin",
+    "arch": "arm64"
+  },
+  "sample": {
+    "url": "https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4",
+    "bytes": 1128375,
+    "sha256": "0cd83d944a6ca7822b4a8306cecc60a36e859b041f6702c6a1ad9ead78924451"
+  },
+  "binary_sha256": {
+    "rvdown": "c170da066dd4ff1a148de0c81609f4983a9939156ef8e8da6c2a03b1d96bccdb",
+    "request_probe": "e61fe7cfbeee796107c0159b4fb0910dc9ba5c2f037370dc195cf06c9417a5de"
+  },
+  "harness_sha256": "d6cb7506ceb5e10ba9be596a74197e4112101025fdad3a3d8852a595977d77c0",
+  "aria2_version": "aria2 版本 1.37.0",
+  "method": {
+    "planned": 25,
+    "rounds": 5,
+    "order": "five-way rotating Latin square",
+    "connections": 1,
+    "network": "shared benchmark-owned loopback CONNECT relay, physical-interface-bound upstream, same public DoH snapshot/IP; end-to-end TLS, no external proxy",
+    "headers": "Rvdown/native/matched aria2 use same benchmark UA and identity encoding, no Referer; default aria2 gets no caller UA/headers/Referer; all aria2 disable config/netrc",
+    "timing": "main elapsed_s includes process startup and final file write; hash afterward; native transport_elapsed_s excludes final buffer write",
+    "interpretation": "wreq native controls isolate requests on the same HTTP2 stack; they are not a replacement production downloader"
+  },
+  "header_fixture": [
+    {
+      "name": "open-default",
+      "fixture_only": true,
+      "expected_download_success": true,
+      "actual_download_success": true,
+      "expected_behavior_observed": true,
+      "exit_code": 0,
+      "bytes": 32768,
+      "requests": [
+        {
+          "method": "GET",
+          "referer_present": false,
+          "user_agent": "aria2/1.37.0",
+          "header_names": [
+            "Accept",
+            "Host",
+            "User-Agent",
+            "Want-Digest"
+          ],
+          "status": 200
+        }
+      ]
+    },
+    {
+      "name": "gated-default",
+      "fixture_only": true,
+      "expected_download_success": false,
+      "actual_download_success": false,
+      "expected_behavior_observed": true,
+      "exit_code": 22,
+      "bytes": 0,
+      "requests": [
+        {
+          "method": "GET",
+          "referer_present": false,
+          "user_agent": "aria2/1.37.0",
+          "header_names": [
+            "Accept",
+            "Host",
+            "User-Agent",
+            "Want-Digest"
+          ],
+          "status": 403
+        }
+      ]
+    },
+    {
+      "name": "gated-referer",
+      "fixture_only": true,
+      "expected_download_success": true,
+      "actual_download_success": true,
+      "expected_behavior_observed": true,
+      "exit_code": 0,
+      "bytes": 32768,
+      "requests": [
+        {
+          "method": "GET",
+          "referer_present": true,
+          "user_agent": "aria2/1.37.0",
+          "header_names": [
+            "Accept",
+            "Host",
+            "Referer",
+            "User-Agent",
+            "Want-Digest"
+          ],
+          "status": 200
+        }
+      ]
+    }
+  ],
+  "runs": [
+    {
+      "round": 1,
+      "arm": "rvdown-cli",
+      "exit_code": 0,
+      "timed_out": false,
+      "elapsed_s": 10.513193,
+      "peak_rss_bytes": 7176192,
+      "cpu_user_s": 0.0,
+      "cpu_system_s": 0.01,
+      "http_status": null,
+      "bytes": 1128375,
+      "sha256": "0cd83d944a6ca7822b4a8306cecc60a36e859b041f6702c6a1ad9ead78924451",
+      "upstream_tcp_connections": 1,
+      "ok": true
+    },
+    {
+      "round": 1,
+      "arm": "wreq-head-get",
+      "exit_code": 0,
+      "timed_out": false,
+      "elapsed_s": 13.887913,
+      "peak_rss_bytes": 6602752,
+      "cpu_user_s": 0.0,
+      "cpu_system_s": 0.01,
+      "http_status": null,
+      "bytes": 1128375,
+      "sha256": "0cd83d944a6ca7822b4a8306cecc60a36e859b041f6702c6a1ad9ead78924451",
+      "upstream_tcp_connections": 1,
+      "ok": true,
+      "measurement": {
+        "outcome": "complete",
+        "transport_elapsed_s": 13.3499475,
+        "bytes": 1128375,
+        "responses": [
+          {
+            "headers_at_s": 1.152013542,
+            "http_version": "HTTP/2.0",
+            "method": "HEAD",
+            "status": 200
+          },
+          {
+            "first_body_at_s": 2.124904167,
+            "headers_at_s": 1.72620475,
+            "http_version": "HTTP/2.0",
+            "method": "GET",
+            "status": 200
+          }
+        ]
+      }
+    },
+    {
+      "round": 1,
+      "arm": "wreq-get",
+      "exit_code": 0,
+      "timed_out": false,
+      "elapsed_s": 18.83909,
+      "peak_rss_bytes": 7028736,
+      "cpu_user_s": 0.0,
+      "cpu_system_s": 0.0,
+      "http_status": null,
+      "bytes": 1128375,
+      "sha256": "0cd83d944a6ca7822b4a8306cecc60a36e859b041f6702c6a1ad9ead78924451",
+      "upstream_tcp_connections": 1,
+      "ok": true,
+      "measurement": {
+        "outcome": "complete",
+        "transport_elapsed_s": 18.773283125,
+        "bytes": 1128375,
+        "responses": [
+          {
+            "first_body_at_s": 2.648706,
+            "headers_at_s": 2.362349666,
+            "http_version": "HTTP/2.0",
+            "method": "GET",
+            "status": 200
+          }
+        ]
+      }
+    },
+    {
+      "round": 1,
+      "arm": "aria2-matched",
+      "exit_code": 0,
+      "timed_out": false,
+      "elapsed_s": 6.000434,
+      "peak_rss_bytes": 16154624,
+      "cpu_user_s": 0.02,
+      "cpu_system_s": 0.02,
+      "http_status": null,
+      "bytes": 1128375,
+      "sha256": "0cd83d944a6ca7822b4a8306cecc60a36e859b041f6702c6a1ad9ead78924451",
+      "upstream_tcp_connections": 1,
+      "ok": true
+    },
+    {
+      "round": 1,
+      "arm": "aria2-default",
+      "exit_code": 0,
+      "timed_out": false,
+      "elapsed_s": 17.859329,
+      "peak_rss_bytes": 16056320,
+      "cpu_user_s": 0.03,
+      "cpu_system_s": 0.03,
+      "http_status": null,
+      "bytes": 1128375,
+      "sha256": "0cd83d944a6ca7822b4a8306cecc60a36e859b041f6702c6a1ad9ead78924451",
+      "upstream_tcp_connections": 1,
+      "ok": true
+    },
+    {
+      "round": 2,
+      "arm": "wreq-head-get",
+      "exit_code": 0,
+      "timed_out": false,
+      "elapsed_s": 6.301431,
+      "peak_rss_bytes": 7897088,
+      "cpu_user_s": 0.01,
+      "cpu_system_s": 0.01,
+      "http_status": null,
+      "bytes": 1128375,
+      "sha256": "0cd83d944a6ca7822b4a8306cecc60a36e859b041f6702c6a1ad9ead78924451",
+      "upstream_tcp_connections": 1,
+      "ok": true,
+      "measurement": {
+        "outcome": "complete",
+        "transport_elapsed_s": 6.252104208,
+        "bytes": 1128375,
+        "responses": [
+          {
+            "headers_at_s": 1.816254791,
+            "http_version": "HTTP/2.0",
+            "method": "HEAD",
+            "status": 200
+          },
+          {
+            "first_body_at_s": 2.765949333,
+            "headers_at_s": 2.278795791,
+            "http_version": "HTTP/2.0",
+            "method": "GET",
+            "status": 200
+          }
+        ]
+      }
+    },
+    {
+      "round": 2,
+      "arm": "wreq-get",
+      "exit_code": 0,
+      "timed_out": false,
+      "elapsed_s": 6.002639,
+      "peak_rss_bytes": 7847936,
+      "cpu_user_s": 0.0,
+      "cpu_system_s": 0.0,
+      "http_status": null,
+      "bytes": 1128375,
+      "sha256": "0cd83d944a6ca7822b4a8306cecc60a36e859b041f6702c6a1ad9ead78924451",
+      "upstream_tcp_connections": 1,
+      "ok": true,
+      "measurement": {
+        "outcome": "complete",
+        "transport_elapsed_s": 5.987381333,
+        "bytes": 1128375,
+        "responses": [
+          {
+            "first_body_at_s": 1.304871916,
+            "headers_at_s": 0.994237166,
+            "http_version": "HTTP/2.0",
+            "method": "GET",
+            "status": 200
+          }
+        ]
+      }
+    },
+    {
+      "round": 2,
+      "arm": "aria2-matched",
+      "exit_code": 0,
+      "timed_out": false,
+      "elapsed_s": 11.503383,
+      "peak_rss_bytes": 16531456,
+      "cpu_user_s": 0.02,
+      "cpu_system_s": 0.02,
+      "http_status": null,
+      "bytes": 1128375,
+      "sha256": "0cd83d944a6ca7822b4a8306cecc60a36e859b041f6702c6a1ad9ead78924451",
+      "upstream_tcp_connections": 1,
+      "ok": true
+    },
+    {
+      "round": 2,
+      "arm": "aria2-default",
+      "exit_code": 0,
+      "timed_out": false,
+      "elapsed_s": 8.875439,
+      "peak_rss_bytes": 16400384,
+      "cpu_user_s": 0.01,
+      "cpu_system_s": 0.01,
+      "http_status": null,
+      "bytes": 1128375,
+      "sha256": "0cd83d944a6ca7822b4a8306cecc60a36e859b041f6702c6a1ad9ead78924451",
+      "upstream_tcp_connections": 1,
+      "ok": true
+    },
+    {
+      "round": 2,
+      "arm": "rvdown-cli",
+      "exit_code": 0,
+      "timed_out": false,
+      "elapsed_s": 5.283162,
+      "peak_rss_bytes": 7503872,
+      "cpu_user_s": 0.0,
+      "cpu_system_s": 0.01,
+      "http_status": null,
+      "bytes": 1128375,
+      "sha256": "0cd83d944a6ca7822b4a8306cecc60a36e859b041f6702c6a1ad9ead78924451",
+      "upstream_tcp_connections": 1,
+      "ok": true
+    },
+    {
+      "round": 3,
+      "arm": "wreq-get",
+      "exit_code": 0,
+      "timed_out": false,
+      "elapsed_s": 14.953136,
+      "peak_rss_bytes": 7503872,
+      "cpu_user_s": 0.01,
+      "cpu_system_s": 0.01,
+      "http_status": null,
+      "bytes": 1128375,
+      "sha256": "0cd83d944a6ca7822b4a8306cecc60a36e859b041f6702c6a1ad9ead78924451",
+      "upstream_tcp_connections": 1,
+      "ok": true,
+      "measurement": {
+        "outcome": "complete",
+        "transport_elapsed_s": 14.881216958,
+        "bytes": 1128375,
+        "responses": [
+          {
+            "first_body_at_s": 4.99625975,
+            "headers_at_s": 4.630428417,
+            "http_version": "HTTP/2.0",
+            "method": "GET",
+            "status": 200
+          }
+        ]
+      }
+    },
+    {
+      "round": 3,
+      "arm": "aria2-matched",
+      "exit_code": 0,
+      "timed_out": false,
+      "elapsed_s": 13.133579,
+      "peak_rss_bytes": 16187392,
+      "cpu_user_s": 0.02,
+      "cpu_system_s": 0.03,
+      "http_status": null,
+      "bytes": 1128375,
+      "sha256": "0cd83d944a6ca7822b4a8306cecc60a36e859b041f6702c6a1ad9ead78924451",
+      "upstream_tcp_connections": 1,
+      "ok": true
+    },
+    {
+      "round": 3,
+      "arm": "aria2-default",
+      "exit_code": 0,
+      "timed_out": false,
+      "elapsed_s": 13.299348,
+      "peak_rss_bytes": 16515072,
+      "cpu_user_s": 0.02,
+      "cpu_system_s": 0.02,
+      "http_status": null,
+      "bytes": 1128375,
+      "sha256": "0cd83d944a6ca7822b4a8306cecc60a36e859b041f6702c6a1ad9ead78924451",
+      "upstream_tcp_connections": 1,
+      "ok": true
+    },
+    {
+      "round": 3,
+      "arm": "rvdown-cli",
+      "exit_code": 0,
+      "timed_out": false,
+      "elapsed_s": 14.195206,
+      "peak_rss_bytes": 7274496,
+      "cpu_user_s": 0.01,
+      "cpu_system_s": 0.02,
+      "http_status": null,
+      "bytes": 1128375,
+      "sha256": "0cd83d944a6ca7822b4a8306cecc60a36e859b041f6702c6a1ad9ead78924451",
+      "upstream_tcp_connections": 1,
+      "ok": true
+    },
+    {
+      "round": 3,
+      "arm": "wreq-head-get",
+      "exit_code": 0,
+      "timed_out": false,
+      "elapsed_s": 11.166683,
+      "peak_rss_bytes": 7192576,
+      "cpu_user_s": 0.0,
+      "cpu_system_s": 0.01,
+      "http_status": null,
+      "bytes": 1128375,
+      "sha256": "0cd83d944a6ca7822b4a8306cecc60a36e859b041f6702c6a1ad9ead78924451",
+      "upstream_tcp_connections": 1,
+      "ok": true,
+      "measurement": {
+        "outcome": "complete",
+        "transport_elapsed_s": 11.088463292,
+        "bytes": 1128375,
+        "responses": [
+          {
+            "headers_at_s": 1.282996209,
+            "http_version": "HTTP/2.0",
+            "method": "HEAD",
+            "status": 200
+          },
+          {
+            "first_body_at_s": 2.12475525,
+            "headers_at_s": 1.79510375,
+            "http_version": "HTTP/2.0",
+            "method": "GET",
+            "status": 200
+          }
+        ]
+      }
+    },
+    {
+      "round": 4,
+      "arm": "aria2-matched",
+      "exit_code": 0,
+      "timed_out": false,
+      "elapsed_s": 5.48669,
+      "peak_rss_bytes": 16826368,
+      "cpu_user_s": 0.02,
+      "cpu_system_s": 0.02,
+      "http_status": null,
+      "bytes": 1128375,
+      "sha256": "0cd83d944a6ca7822b4a8306cecc60a36e859b041f6702c6a1ad9ead78924451",
+      "upstream_tcp_connections": 1,
+      "ok": true
+    },
+    {
+      "round": 4,
+      "arm": "aria2-default",
+      "exit_code": 0,
+      "timed_out": false,
+      "elapsed_s": 6.451927,
+      "peak_rss_bytes": 16809984,
+      "cpu_user_s": 0.02,
+      "cpu_system_s": 0.01,
+      "http_status": null,
+      "bytes": 1128375,
+      "sha256": "0cd83d944a6ca7822b4a8306cecc60a36e859b041f6702c6a1ad9ead78924451",
+      "upstream_tcp_connections": 1,
+      "ok": true
+    },
+    {
+      "round": 4,
+      "arm": "rvdown-cli",
+      "exit_code": 0,
+      "timed_out": false,
+      "elapsed_s": 42.639208,
+      "peak_rss_bytes": 7225344,
+      "cpu_user_s": 0.01,
+      "cpu_system_s": 0.02,
+      "http_status": null,
+      "bytes": 1128375,
+      "sha256": "0cd83d944a6ca7822b4a8306cecc60a36e859b041f6702c6a1ad9ead78924451",
+      "upstream_tcp_connections": 1,
+      "ok": true
+    },
+    {
+      "round": 4,
+      "arm": "wreq-head-get",
+      "exit_code": 0,
+      "timed_out": false,
+      "elapsed_s": 8.241995,
+      "peak_rss_bytes": 7389184,
+      "cpu_user_s": 0.0,
+      "cpu_system_s": 0.01,
+      "http_status": null,
+      "bytes": 1128375,
+      "sha256": "0cd83d944a6ca7822b4a8306cecc60a36e859b041f6702c6a1ad9ead78924451",
+      "upstream_tcp_connections": 1,
+      "ok": true,
+      "measurement": {
+        "outcome": "complete",
+        "transport_elapsed_s": 8.169534084,
+        "bytes": 1128375,
+        "responses": [
+          {
+            "headers_at_s": 0.96889675,
+            "http_version": "HTTP/2.0",
+            "method": "HEAD",
+            "status": 200
+          },
+          {
+            "first_body_at_s": 2.198433334,
+            "headers_at_s": 2.198429959,
+            "http_version": "HTTP/2.0",
+            "method": "GET",
+            "status": 200
+          }
+        ]
+      }
+    },
+    {
+      "round": 4,
+      "arm": "wreq-get",
+      "exit_code": 0,
+      "timed_out": false,
+      "elapsed_s": 12.15834,
+      "peak_rss_bytes": 7176192,
+      "cpu_user_s": 0.0,
+      "cpu_system_s": 0.0,
+      "http_status": null,
+      "bytes": 1128375,
+      "sha256": "0cd83d944a6ca7822b4a8306cecc60a36e859b041f6702c6a1ad9ead78924451",
+      "upstream_tcp_connections": 1,
+      "ok": true,
+      "measurement": {
+        "outcome": "complete",
+        "transport_elapsed_s": 12.103913708,
+        "bytes": 1128375,
+        "responses": [
+          {
+            "first_body_at_s": 2.200421291,
+            "headers_at_s": 1.580934541,
+            "http_version": "HTTP/2.0",
+            "method": "GET",
+            "status": 200
+          }
+        ]
+      }
+    },
+    {
+      "round": 5,
+      "arm": "aria2-default",
+      "exit_code": 0,
+      "timed_out": false,
+      "elapsed_s": 10.338146,
+      "peak_rss_bytes": 16695296,
+      "cpu_user_s": 0.02,
+      "cpu_system_s": 0.02,
+      "http_status": null,
+      "bytes": 1128375,
+      "sha256": "0cd83d944a6ca7822b4a8306cecc60a36e859b041f6702c6a1ad9ead78924451",
+      "upstream_tcp_connections": 1,
+      "ok": true
+    },
+    {
+      "round": 5,
+      "arm": "rvdown-cli",
+      "exit_code": 0,
+      "timed_out": false,
+      "elapsed_s": 13.896595,
+      "peak_rss_bytes": 7208960,
+      "cpu_user_s": 0.01,
+      "cpu_system_s": 0.02,
+      "http_status": null,
+      "bytes": 1128375,
+      "sha256": "0cd83d944a6ca7822b4a8306cecc60a36e859b041f6702c6a1ad9ead78924451",
+      "upstream_tcp_connections": 1,
+      "ok": true
+    },
+    {
+      "round": 5,
+      "arm": "wreq-head-get",
+      "exit_code": 0,
+      "timed_out": false,
+      "elapsed_s": 5.787835,
+      "peak_rss_bytes": 8192000,
+      "cpu_user_s": 0.0,
+      "cpu_system_s": 0.01,
+      "http_status": null,
+      "bytes": 1128375,
+      "sha256": "0cd83d944a6ca7822b4a8306cecc60a36e859b041f6702c6a1ad9ead78924451",
+      "upstream_tcp_connections": 1,
+      "ok": true,
+      "measurement": {
+        "outcome": "complete",
+        "transport_elapsed_s": 5.744917709,
+        "bytes": 1128375,
+        "responses": [
+          {
+            "headers_at_s": 2.895505667,
+            "http_version": "HTTP/2.0",
+            "method": "HEAD",
+            "status": 200
+          },
+          {
+            "first_body_at_s": 3.765508875,
+            "headers_at_s": 3.390312292,
+            "http_version": "HTTP/2.0",
+            "method": "GET",
+            "status": 200
+          }
+        ]
+      }
+    },
+    {
+      "round": 5,
+      "arm": "wreq-get",
+      "exit_code": 0,
+      "timed_out": false,
+      "elapsed_s": 4.782366,
+      "peak_rss_bytes": 7880704,
+      "cpu_user_s": 0.0,
+      "cpu_system_s": 0.0,
+      "http_status": null,
+      "bytes": 1128375,
+      "sha256": "0cd83d944a6ca7822b4a8306cecc60a36e859b041f6702c6a1ad9ead78924451",
+      "upstream_tcp_connections": 1,
+      "ok": true,
+      "measurement": {
+        "outcome": "complete",
+        "transport_elapsed_s": 4.769294167,
+        "bytes": 1128375,
+        "responses": [
+          {
+            "first_body_at_s": 1.4242535,
+            "headers_at_s": 1.05916675,
+            "http_version": "HTTP/2.0",
+            "method": "GET",
+            "status": 200
+          }
+        ]
+      }
+    },
+    {
+      "round": 5,
+      "arm": "aria2-matched",
+      "exit_code": 0,
+      "timed_out": false,
+      "elapsed_s": 11.488243,
+      "peak_rss_bytes": 16678912,
+      "cpu_user_s": 0.02,
+      "cpu_system_s": 0.03,
+      "http_status": null,
+      "bytes": 1128375,
+      "sha256": "0cd83d944a6ca7822b4a8306cecc60a36e859b041f6702c6a1ad9ead78924451",
+      "upstream_tcp_connections": 1,
+      "ok": true
+    }
+  ],
+  "summaries": {
+    "rvdown-cli": {
+      "planned": 5,
+      "attempted": 5,
+      "passed": 5,
+      "failed": 0,
+      "median_elapsed_s": 13.896595,
+      "min_elapsed_s": 5.283162,
+      "max_elapsed_s": 42.639208
+    },
+    "wreq-head-get": {
+      "planned": 5,
+      "attempted": 5,
+      "passed": 5,
+      "failed": 0,
+      "median_elapsed_s": 8.241995,
+      "min_elapsed_s": 5.787835,
+      "max_elapsed_s": 13.887913
+    },
+    "wreq-get": {
+      "planned": 5,
+      "attempted": 5,
+      "passed": 5,
+      "failed": 0,
+      "median_elapsed_s": 12.15834,
+      "min_elapsed_s": 4.782366,
+      "max_elapsed_s": 18.83909
+    },
+    "aria2-matched": {
+      "planned": 5,
+      "attempted": 5,
+      "passed": 5,
+      "failed": 0,
+      "median_elapsed_s": 11.488243,
+      "min_elapsed_s": 5.48669,
+      "max_elapsed_s": 13.133579
+    },
+    "aria2-default": {
+      "planned": 5,
+      "attempted": 5,
+      "passed": 5,
+      "failed": 0,
+      "median_elapsed_s": 10.338146,
+      "min_elapsed_s": 6.451927,
+      "max_elapsed_s": 17.859329
+    }
+  },
+  "complete": true
+}

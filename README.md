@@ -2,10 +2,19 @@
 
 [实测对比报告 / measured comparison](docs/benchmarks/2026-10-22/report.zh-CN.md) · [Reproduce](benchmarks/README.md) · [超时定位与连接策略](docs/benchmarks/2026-10-22/link-investigation.zh-CN.md) · [重连/指纹/协议实验](docs/benchmarks/2026-10-22/reconnect-investigation.zh-CN.md)
 
-Fast, multi-threaded video downloader for scripted pipelines — a drop-in replacement for `aria2`
-in crawler / review / archiving jobs where CDNs fight back.
+A Rust video download SDK and CLI aiming for high performance, a small footprint, speed and safety.
+Optimize convenience, integration and usable-video delivery first, while retaining general HTTP
+download compatibility.
 
 [中文说明](README.zh-CN.md) · [Calling guide](docs/calling.md) · [Error codes](docs/error-codes.md)
+
+## Focus and evidence
+
+The primary comparison uses real Douyin video CDNs: complete success, time to a usable video,
+resource use and integration effort. General transfer speed remains an optimization goal.
+Existing MDN, GitHub and loopback measurements are auxiliary diagnostics, not proof of Douyin
+performance or universal speed leadership. See the [video benchmark plan](docs/video-benchmark-plan.zh-CN.md)
+and [contributor/agent instructions](AGENTS.md).
 
 ## Why another downloader
 
@@ -13,9 +22,9 @@ in crawler / review / archiving jobs where CDNs fight back.
   completion. Resumes across process restarts from a sidecar ledger (`.aria2` naming), and refuses
   to splice bytes from a resource that changed mid-flight (`ETag` / `Last-Modified` / length /
   redirect target).
-- **Browser TLS fingerprint** — Douyin/TikTok and several domestic CDNs reject non-browser TLS
-  stacks (aria2, Node `fetch`, Python `requests`) with `403`. Rvdown ships a Chrome 131 JA3 profile,
-  so those links just work.
+- **Browser TLS fingerprint** — a Chrome 131 emulation profile helps with video CDNs that
+  reject some TLS profiles. Success still depends on URL validity, headers and source policy;
+  this does not guarantee that every link avoids `403`.
 - **Automatic HLS** — a playlist URL is detected, segments are fetched in parallel, and the result is
   remuxed into a real media file. A playlist is never delivered as the output file.
 - **Automatic DASH** — give `audio_url` and Rvdown downloads both streams and merges them with

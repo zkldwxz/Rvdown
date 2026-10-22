@@ -2,18 +2,24 @@
 
 [实测对比报告 / measured comparison](docs/benchmarks/2026-10-22/report.zh-CN.md) · [Reproduce](benchmarks/README.md) · [超时定位与连接策略](docs/benchmarks/2026-10-22/link-investigation.zh-CN.md) · [重连/指纹/协议实验](docs/benchmarks/2026-10-22/reconnect-investigation.zh-CN.md)
 
-面向脚本化流水线的通用多线程视频下载器——在爬取、审核、归档这类 CDN 会主动反爬的场景里
-替代 `aria2`。
+基于 Rust 的视频下载 SDK 与 CLI，追求高性能、小占用、高速与安全。
+优先优化视频下载的方便、易用和完整交付速度，同时保留通用 HTTP 下载兼容。
 
 [English](README.md) · [调用文档](docs/calling.zh-CN.md) · [错误码](docs/error-codes.md)
+
+## 定位与验证
+
+主对照使用真实抖音视频 CDN，先比较完整成功率、可用视频耗时、资源占用与接入体验；
+通用速度继续优化。已有 MDN、GitHub 或本地夹具数据属于辅助诊断，不能代表抖音成绩或普遍领先。
+见[视频优先测试计划](docs/video-benchmark-plan.zh-CN.md)与[贡献/agent 约定](AGENTS.md)。
 
 ## 它解决什么
 
 - **分段 Range 下载**：N 路并行按字节区间写 `.part`，收齐后原子改名落目标文件。跨进程重启
   按侧车台账续传（`.aria2` 命名），**资源中途变了绝不拼片**（校验 ETag / Last-Modified /
   长度 / 重定向最终地址）。
-- **浏览器 TLS 指纹**：抖音系与部分国内 CDN 对非浏览器 TLS 栈（aria2、Node `fetch`、
-  Python `requests`）直接返回 403。Rvdown 内置 Chrome 131 的 JA3 档位，这类直链可以直接拉。
+- **浏览器 TLS 指纹**：内置 Chrome 131 浏览器仿真配置，适配部分会按 TLS 特征拒绝请求的
+  视频 CDN。成功仍取决于直链时效、请求头与来源策略，不能保证所有链接免于 403。
 - **自动识别 HLS**：播放列表 URL 会被识别、分片并发下载、再用 ffmpeg 封装成真正的媒体文件；
   **绝不把播放列表当成品交付**。
 - **自动 DASH**：给了 `audio_url` 就是双流任务——两条流都下完再 ffmpeg 合并（流拷贝）。
