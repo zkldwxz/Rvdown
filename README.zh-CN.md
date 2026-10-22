@@ -1,6 +1,6 @@
 # Rvdown
 
-[实测对比报告 / measured comparison](docs/benchmarks/2026-10-22/report.zh-CN.md) · [Reproduce](benchmarks/README.md)
+[实测对比报告 / measured comparison](docs/benchmarks/2026-10-22/report.zh-CN.md) · [Reproduce](benchmarks/README.md) · [超时定位与连接策略](docs/benchmarks/2026-10-22/link-investigation.zh-CN.md)
 
 面向脚本化流水线的通用多线程视频下载器——在爬取、审核、归档这类 CDN 会主动反爬的场景里
 替代 `aria2`。
@@ -30,7 +30,7 @@
 # https://github.com/zkldwxz/Rvdown/releases
 
 # Rust SDK：正式 tag 发布前钉提交，不跟分支
-cargo add rvdown --git https://github.com/zkldwxz/Rvdown --rev ade20b808d29f4ebc1c1a59da894552300535a58
+cargo add rvdown --git https://github.com/zkldwxz/Rvdown --rev d18f8b1ac6679cc431eccf09305806e315833e5f
 ```
 
 ffmpeg 外置且可选：程序同目录 `resources/` 下、或 `PATH` 里、或显式传入（`--ffmpeg` /

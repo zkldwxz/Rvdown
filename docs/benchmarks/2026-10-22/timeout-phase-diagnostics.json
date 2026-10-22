@@ -1,0 +1,68 @@
+{
+  "scope": "four sequential independent curl protocol/path diagnostics, not a balanced speed comparison",
+  "planned": 4,
+  "attempted": 4,
+  "runs": [
+    {
+      "profile": "curl-h1-direct",
+      "exit_code": 28,
+      "response_code": 200,
+      "http_version": "1.1",
+      "time_namelookup": 6e-06,
+      "time_connect": 0.294267,
+      "time_appconnect": 1.261395,
+      "time_starttransfer": 1.558345,
+      "time_total": 50.006214,
+      "speed_download": 19773,
+      "size_download": 988792,
+      "num_connects": 1,
+      "sha256": "2a69d27e0c51dcee658780fa56e595c98e08a39e228cd3373efdcb83335ec608"
+    },
+    {
+      "profile": "curl-h2-direct",
+      "exit_code": 28,
+      "response_code": 200,
+      "http_version": "2",
+      "time_namelookup": 9e-06,
+      "time_connect": 0.552759,
+      "time_appconnect": 3.380664,
+      "time_starttransfer": 3.898597,
+      "time_total": 50.003184,
+      "speed_download": 17583,
+      "size_download": 879254,
+      "num_connects": 1,
+      "sha256": "13f137c5f33dbd26dda9a31420b97b235f17c2f29668fa9bf06eb2ed0a90613f"
+    },
+    {
+      "profile": "curl-h1-relay",
+      "exit_code": 28,
+      "response_code": 200,
+      "http_version": "1.1",
+      "time_namelookup": 4.7e-05,
+      "time_connect": 0.00018,
+      "time_appconnect": 2.016154,
+      "time_starttransfer": 33.146465,
+      "time_total": 50.001381,
+      "speed_download": 16333,
+      "size_download": 816676,
+      "num_connects": 1,
+      "sha256": "e6075b08512784052be77bfb3b7235a3402663302cfe72865ba1e010940a8ff9"
+    },
+    {
+      "profile": "curl-h2-relay",
+      "exit_code": 0,
+      "response_code": 200,
+      "http_version": "2",
+      "time_namelookup": 7.1e-05,
+      "time_connect": 0.000171,
+      "time_appconnect": 0.963613,
+      "time_starttransfer": 1.547624,
+      "time_total": 12.847816,
+      "speed_download": 87826,
+      "size_download": 1128375,
+      "num_connects": 1,
+      "sha256": "0cd83d944a6ca7822b4a8306cecc60a36e859b041f6702c6a1ad9ead78924451"
+    }
+  ],
+  "full_file_passed": 1
+}

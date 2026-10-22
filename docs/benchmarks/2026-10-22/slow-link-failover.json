@@ -1,0 +1,118 @@
+{
+  "method": "actual CLI, 128 KiB deterministic bytes, original drips 1 KiB/50 ms, distinct fast backup; all SHA256 checked; loopback not WAN",
+  "binary_sha256": "c170da066dd4ff1a148de0c81609f4983a9939156ef8e8da6c2a03b1d96bccdb",
+  "core_source_commit": "d18f8b1ac6679cc431eccf09305806e315833e5f",
+  "harness_sha256": "4f12879983ec8c0785784b9c7c7fb673e88a9cd1ffa36fd9ce41a299cbc86827",
+  "planned_trials": 6,
+  "runs": [
+    {
+      "round": 1,
+      "profile": "disabled",
+      "exit_code": 0,
+      "timed_out": false,
+      "elapsed_s": 7.348406,
+      "peak_rss_bytes": 6651904,
+      "cpu_user_s": 0.0,
+      "cpu_system_s": 0.01,
+      "http_status": null,
+      "sha256_verified": true,
+      "source": "original",
+      "ok": true,
+      "requests": {
+        "slow": 1,
+        "fast": 0
+      }
+    },
+    {
+      "round": 1,
+      "profile": "enabled",
+      "exit_code": 0,
+      "timed_out": false,
+      "elapsed_s": 2.067719,
+      "peak_rss_bytes": 6569984,
+      "cpu_user_s": 0.0,
+      "cpu_system_s": 0.01,
+      "http_status": null,
+      "sha256_verified": true,
+      "source": "backup",
+      "ok": true,
+      "requests": {
+        "slow": 1,
+        "fast": 1
+      }
+    },
+    {
+      "round": 2,
+      "profile": "enabled",
+      "exit_code": 0,
+      "timed_out": false,
+      "elapsed_s": 2.059191,
+      "peak_rss_bytes": 7127040,
+      "cpu_user_s": 0.0,
+      "cpu_system_s": 0.0,
+      "http_status": null,
+      "sha256_verified": true,
+      "source": "backup",
+      "ok": true,
+      "requests": {
+        "slow": 1,
+        "fast": 1
+      }
+    },
+    {
+      "round": 2,
+      "profile": "disabled",
+      "exit_code": 0,
+      "timed_out": false,
+      "elapsed_s": 6.819393,
+      "peak_rss_bytes": 6782976,
+      "cpu_user_s": 0.01,
+      "cpu_system_s": 0.01,
+      "http_status": null,
+      "sha256_verified": true,
+      "source": "original",
+      "ok": true,
+      "requests": {
+        "slow": 1,
+        "fast": 0
+      }
+    },
+    {
+      "round": 3,
+      "profile": "disabled",
+      "exit_code": 0,
+      "timed_out": false,
+      "elapsed_s": 6.894102,
+      "peak_rss_bytes": 6766592,
+      "cpu_user_s": 0.01,
+      "cpu_system_s": 0.01,
+      "http_status": null,
+      "sha256_verified": true,
+      "source": "original",
+      "ok": true,
+      "requests": {
+        "slow": 1,
+        "fast": 0
+      }
+    },
+    {
+      "round": 3,
+      "profile": "enabled",
+      "exit_code": 0,
+      "timed_out": false,
+      "elapsed_s": 2.038543,
+      "peak_rss_bytes": 7094272,
+      "cpu_user_s": 0.0,
+      "cpu_system_s": 0.01,
+      "http_status": null,
+      "sha256_verified": true,
+      "source": "backup",
+      "ok": true,
+      "requests": {
+        "slow": 1,
+        "fast": 1
+      }
+    }
+  ],
+  "complete": true
+}

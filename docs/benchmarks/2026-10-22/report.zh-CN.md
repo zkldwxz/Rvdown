@@ -1,5 +1,7 @@
 # Rvdown / aria2 / httpx-fetch 实测报告
 
+新增：[超时定位、原生完整下载与持续低速策略](link-investigation.zh-CN.md)。旧基准失败保留，未归因于分段或指纹。
+
 2026-10-22，Apple M6 / 12 核 / 16 GiB，macOS 27.0.1 arm64。只使用公开视频、自己生成的音视频和合成字节。原始 JSON 中保留失败、超时、源码提交、程序 SHA256 和基准脚本 SHA256。
 
 ## 当前结论

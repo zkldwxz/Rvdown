@@ -1,0 +1,114 @@
+{
+  "scope": "native Chrome131 transport; first 256 KiB only; sequential UA and approved same-project source URL diagnostics, not a full-file speed claim",
+  "binary_sha256": "506d2b152a29e6c43ca5601dbc7eba3cbbc9b35ccf1ae74c6532925664b39c5f",
+  "samples": [
+    {
+      "id": "mdn-origin",
+      "url": "https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4"
+    },
+    {
+      "id": "mdn-source-mirror",
+      "url": "https://raw.githubusercontent.com/mdn/interactive-examples/main/live-examples/media/cc0-videos/flower.mp4"
+    }
+  ],
+  "runs": [
+    {
+      "sample": "mdn-origin",
+      "round": 1,
+      "profile": "browser",
+      "exit_code": 0,
+      "bytes": 262144,
+      "elapsed_s": 3.271393458,
+      "outcome": "complete",
+      "prefix_md5": "2de15ff693c975d24d9f90ff8b93b657",
+      "scope": "first 256 KiB only; native Chrome131 TLS transport; not a complete-file speed result",
+      "status": 206,
+      "time_to_first_body_byte_s": 2.194451917,
+      "time_to_headers_s": 2.133113875,
+      "ua_profile": "browser",
+      "ok_prefix_only": true
+    },
+    {
+      "sample": "mdn-origin",
+      "round": 1,
+      "profile": "benchmark",
+      "exit_code": 0,
+      "bytes": 262144,
+      "elapsed_s": 4.00952125,
+      "outcome": "complete",
+      "prefix_md5": "2de15ff693c975d24d9f90ff8b93b657",
+      "scope": "first 256 KiB only; native Chrome131 TLS transport; not a complete-file speed result",
+      "status": 206,
+      "time_to_first_body_byte_s": 2.933342917,
+      "time_to_headers_s": 2.5834766670000002,
+      "ua_profile": "benchmark",
+      "ok_prefix_only": true
+    },
+    {
+      "sample": "mdn-source-mirror",
+      "round": 1,
+      "profile": "browser",
+      "exit_code": 0,
+      "bytes": 262144,
+      "elapsed_s": 9.95196825,
+      "outcome": "complete",
+      "prefix_md5": "2de15ff693c975d24d9f90ff8b93b657",
+      "scope": "first 256 KiB only; native Chrome131 TLS transport; not a complete-file speed result",
+      "status": 206,
+      "time_to_first_body_byte_s": 0.970708875,
+      "time_to_headers_s": 0.873988583,
+      "ua_profile": "browser",
+      "ok_prefix_only": true
+    },
+    {
+      "sample": "mdn-source-mirror",
+      "round": 2,
+      "profile": "browser",
+      "exit_code": 0,
+      "bytes": 0,
+      "elapsed_s": 30.001846709,
+      "outcome": "transport_error",
+      "prefix_md5": "d41d8cd98f00b204e9800998ecf8427e",
+      "scope": "first 256 KiB only; native Chrome131 TLS transport; not a complete-file speed result",
+      "status": null,
+      "time_to_first_body_byte_s": null,
+      "time_to_headers_s": null,
+      "ua_profile": "browser",
+      "ok_prefix_only": false
+    },
+    {
+      "sample": "mdn-origin",
+      "round": 2,
+      "profile": "benchmark",
+      "exit_code": 0,
+      "bytes": 262144,
+      "elapsed_s": 2.796185833,
+      "outcome": "complete",
+      "prefix_md5": "2de15ff693c975d24d9f90ff8b93b657",
+      "scope": "first 256 KiB only; native Chrome131 TLS transport; not a complete-file speed result",
+      "status": 206,
+      "time_to_first_body_byte_s": 1.057721375,
+      "time_to_headers_s": 0.977706708,
+      "ua_profile": "benchmark",
+      "ok_prefix_only": true
+    },
+    {
+      "sample": "mdn-origin",
+      "round": 2,
+      "profile": "browser",
+      "exit_code": 0,
+      "bytes": 262144,
+      "elapsed_s": 2.338036708,
+      "outcome": "complete",
+      "prefix_md5": "2de15ff693c975d24d9f90ff8b93b657",
+      "scope": "first 256 KiB only; native Chrome131 TLS transport; not a complete-file speed result",
+      "status": 206,
+      "time_to_first_body_byte_s": 1.2950162920000001,
+      "time_to_headers_s": 0.910142333,
+      "ua_profile": "browser",
+      "ok_prefix_only": true
+    }
+  ],
+  "complete": true,
+  "provenance_note": "Diagnostic executable built from the feature worktree before its final commit; exact binary SHA256 is retained. Prefix results are not complete-file acceptance."
+}

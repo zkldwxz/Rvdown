@@ -1,0 +1,81 @@
+{
+  "core_source_commit": "d18f8b1ac6679cc431eccf09305806e315833e5f",
+  "binary_sha256": "c170da066dd4ff1a148de0c81609f4983a9939156ef8e8da6c2a03b1d96bccdb",
+  "planned_trials": 4,
+  "samples": [
+    "https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4",
+    "https://raw.githubusercontent.com/mdn/interactive-examples/main/live-examples/media/cc0-videos/flower.mp4"
+  ],
+  "method": "native physical interface, default matched browser UA, direct DoH, no relay or external proxy; full-file SHA256; two rounds with reversed order; 75 s external trial budget; one attempt per request",
+  "runs": [
+    {
+      "round": 1,
+      "profile": "disabled",
+      "exit_code": 0,
+      "timed_out": false,
+      "elapsed_s": 11.369308,
+      "peak_rss_bytes": 7487488,
+      "cpu_user_s": 0.01,
+      "cpu_system_s": 0.02,
+      "http_status": null,
+      "bytes": 1128375,
+      "sha256": "0cd83d944a6ca7822b4a8306cecc60a36e859b041f6702c6a1ad9ead78924451",
+      "ok": true,
+      "final_code": "OK",
+      "source": "original",
+      "warnings": []
+    },
+    {
+      "round": 1,
+      "profile": "enabled",
+      "exit_code": 0,
+      "timed_out": false,
+      "elapsed_s": 7.491217,
+      "peak_rss_bytes": 7716864,
+      "cpu_user_s": 0.01,
+      "cpu_system_s": 0.01,
+      "http_status": null,
+      "bytes": 1128375,
+      "sha256": "0cd83d944a6ca7822b4a8306cecc60a36e859b041f6702c6a1ad9ead78924451",
+      "ok": true,
+      "final_code": "OK",
+      "source": "original",
+      "warnings": []
+    },
+    {
+      "round": 2,
+      "profile": "enabled",
+      "exit_code": 0,
+      "timed_out": false,
+      "elapsed_s": 17.771893,
+      "peak_rss_bytes": 7569408,
+      "cpu_user_s": 0.01,
+      "cpu_system_s": 0.01,
+      "http_status": null,
+      "bytes": 1128375,
+      "sha256": "0cd83d944a6ca7822b4a8306cecc60a36e859b041f6702c6a1ad9ead78924451",
+      "ok": true,
+      "final_code": "OK",
+      "source": "original",
+      "warnings": []
+    },
+    {
+      "round": 2,
+      "profile": "disabled",
+      "exit_code": 0,
+      "timed_out": false,
+      "elapsed_s": 12.482067,
+      "peak_rss_bytes": 7684096,
+      "cpu_user_s": 0.02,
+      "cpu_system_s": 0.01,
+      "http_status": null,
+      "bytes": 1128375,
+      "sha256": "0cd83d944a6ca7822b4a8306cecc60a36e859b041f6702c6a1ad9ead78924451",
+      "ok": true,
+      "final_code": "OK",
+      "source": "original",
+      "warnings": []
+    }
+  ],
+  "complete": true
+}

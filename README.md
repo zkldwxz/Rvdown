@@ -1,6 +1,6 @@
 # Rvdown
 
-[实测对比报告 / measured comparison](docs/benchmarks/2026-10-22/report.zh-CN.md) · [Reproduce](benchmarks/README.md)
+[实测对比报告 / measured comparison](docs/benchmarks/2026-10-22/report.zh-CN.md) · [Reproduce](benchmarks/README.md) · [超时定位与连接策略](docs/benchmarks/2026-10-22/link-investigation.zh-CN.md)
 
 Fast, multi-threaded video downloader for scripted pipelines — a drop-in replacement for `aria2`
 in crawler / review / archiving jobs where CDNs fight back.
@@ -35,7 +35,7 @@ in crawler / review / archiving jobs where CDNs fight back.
 # Future verified releases: https://github.com/zkldwxz/Rvdown/releases
 
 # Rust SDK: pin a revision until a verified release tag exists
-cargo add rvdown --git https://github.com/zkldwxz/Rvdown --rev ade20b808d29f4ebc1c1a59da894552300535a58
+cargo add rvdown --git https://github.com/zkldwxz/Rvdown --rev d18f8b1ac6679cc431eccf09305806e315833e5f
 ```
 
 ffmpeg is optional and external: `ffmpeg` next to the binary under `resources/`, or on `PATH`, or
