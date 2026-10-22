@@ -1,0 +1,128 @@
+{
+  "schema": 1,
+  "sample": {
+    "id": "mdn-flower",
+    "url": "https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4",
+    "bytes": 1128375,
+    "sha256": "0cd83d944a6ca7822b4a8306cecc60a36e859b041f6702c6a1ad9ead78924451"
+  },
+  "tool": "curl 8.7.1 (x86_64-apple-darwin26.0) libcurl/8.7.1 (SecureTransport) LibreSSL/3.3.6 zlib/1.2.12 nghttp2/1.69.0",
+  "planned_trials": 4,
+  "attempted": 4,
+  "complete": true,
+  "method": "separate subsequent phase, sequential native curl; physical interface; no proxy; public DoH snapshot; matched Chrome131 UA; no forced interruption; 60s diagnostic limit; PID-only nettop summaries",
+  "runs": [
+    {
+      "round": 1,
+      "profile": "http1",
+      "exit_code": 0,
+      "ok": true,
+      "bytes": 1128375,
+      "sha256": "0cd83d944a6ca7822b4a8306cecc60a36e859b041f6702c6a1ad9ead78924451",
+      "measurement": {
+        "http_code": "200",
+        "http_version": "1.1",
+        "time_connect": "0.289224",
+        "time_appconnect": "1.828692",
+        "time_starttransfer": "2.122102",
+        "time_total": "23.124628",
+        "size_download": "1128375",
+        "speed_download": "48795"
+      },
+      "tcp": {
+        "sampled_connection_rows": 44,
+        "max_received_bytes": 1121855.0,
+        "max_duplicate_received_bytes": 0.0,
+        "max_out_of_order_received_bytes": 852583.0,
+        "max_client_retransmit_bytes": 0.0,
+        "max_rtt_ms": 289.25,
+        "max_receive_buffer_bytes": 131072.0,
+        "note": "per-socket lifetime maxima; do not sum repeated samples; client retransmits do not measure server-side retransmits"
+      }
+    },
+    {
+      "round": 1,
+      "profile": "http2",
+      "exit_code": 0,
+      "ok": true,
+      "bytes": 1128375,
+      "sha256": "0cd83d944a6ca7822b4a8306cecc60a36e859b041f6702c6a1ad9ead78924451",
+      "measurement": {
+        "http_code": "200",
+        "http_version": "2",
+        "time_connect": "0.300968",
+        "time_appconnect": "0.607576",
+        "time_starttransfer": "1.577207",
+        "time_total": "10.886488",
+        "size_download": "1128375",
+        "speed_download": "103649"
+      },
+      "tcp": {
+        "sampled_connection_rows": 21,
+        "max_received_bytes": 1152425.0,
+        "max_duplicate_received_bytes": 0.0,
+        "max_out_of_order_received_bytes": 1001555.0,
+        "max_client_retransmit_bytes": 0.0,
+        "max_rtt_ms": 301.31,
+        "max_receive_buffer_bytes": 448924.0,
+        "note": "per-socket lifetime maxima; do not sum repeated samples; client retransmits do not measure server-side retransmits"
+      }
+    },
+    {
+      "round": 2,
+      "profile": "http2",
+      "exit_code": 0,
+      "ok": true,
+      "bytes": 1128375,
+      "sha256": "0cd83d944a6ca7822b4a8306cecc60a36e859b041f6702c6a1ad9ead78924451",
+      "measurement": {
+        "http_code": "200",
+        "http_version": "2",
+        "time_connect": "0.590809",
+        "time_appconnect": "1.103341",
+        "time_starttransfer": "1.615237",
+        "time_total": "4.398898",
+        "size_download": "1128375",
+        "speed_download": "256513"
+      },
+      "tcp": {
+        "sampled_connection_rows": 8,
+        "max_received_bytes": 1145485.0,
+        "max_duplicate_received_bytes": 0.0,
+        "max_out_of_order_received_bytes": 1065962.0,
+        "max_client_retransmit_bytes": 0.0,
+        "max_rtt_ms": 549.0,
+        "max_receive_buffer_bytes": 529428.0,
+        "note": "per-socket lifetime maxima; do not sum repeated samples; client retransmits do not measure server-side retransmits"
+      }
+    },
+    {
+      "round": 2,
+      "profile": "http1",
+      "exit_code": 0,
+      "ok": true,
+      "bytes": 1128375,
+      "sha256": "0cd83d944a6ca7822b4a8306cecc60a36e859b041f6702c6a1ad9ead78924451",
+      "measurement": {
+        "http_code": "200",
+        "http_version": "1.1",
+        "time_connect": "0.248872",
+        "time_appconnect": "0.517792",
+        "time_starttransfer": "1.019205",
+        "time_total": "9.986967",
+        "size_download": "1128375",
+        "speed_download": "112984"
+      },
+      "tcp": {
+        "sampled_connection_rows": 19,
+        "max_received_bytes": 1151940.0,
+        "max_duplicate_received_bytes": 0.0,
+        "max_out_of_order_received_bytes": 1022505.0,
+        "max_client_retransmit_bytes": 0.0,
+        "max_rtt_ms": 249.22,
+        "max_receive_buffer_bytes": 254604.0,
+        "note": "per-socket lifetime maxima; do not sum repeated samples; client retransmits do not measure server-side retransmits"
+      }
+    }
+  ]
+}

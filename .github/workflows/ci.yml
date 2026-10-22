@@ -26,7 +26,9 @@ jobs:
       - name: clippy
         run: cargo clippy --all-targets -- -D warnings
       - name: test
-        run: cargo test --locked
+        run: |
+          cargo test --locked
+          cargo test --locked -p rvdown --example reconnect_probe
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"

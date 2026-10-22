@@ -168,3 +168,39 @@ python3 benchmarks/failover.py --rvdown target/release/rvdown \
 This three-round loopback test deliberately uses distinct source bytes/ETags to verify
 that switching never splices old bytes into a different object. It measures completion
 with and without the opt-in guard, not WAN throughput or a universal speed advantage.
+
+## Interrupted connection, browser fingerprint and protocol experiment
+
+```sh
+cargo test --locked -p rvdown --example reconnect_probe
+cargo build --locked --release --example reconnect_probe
+python3 benchmarks/reconnect.py --binary target/release/examples/reconnect_probe \
+  --interface YOUR_PHYSICAL_INTERFACE --rounds 5 \
+  --work /tmp/rvdown-reconnect-new --report /tmp/rvdown-reconnect.json
+```
+
+This macOS/Linux native experiment uses one public MDN video, one pinned public DoH IP,
+one connection per file, no proxy/relay and a five-way rotating order. The first request
+always uses Chrome131/HTTP2. Four arms retain 256 KiB, drop the original Client/body and
+create a new connection: same profile, Chrome149, Firefox144, or Chrome131/HTTP1.1.
+Browser UAs match the real emulation profiles. Same-profile reconnect is essential to
+separate reconnect effects from profile changes. Profiles also change HTTP2 settings;
+this does not isolate TLS alone. Actual response versions are recorded.
+
+Strong ETag, If-Range and exact Content-Range protect retained bytes; a full SHA256 must
+pass. Elapsed transport time includes both attempts but excludes final in-memory buffer
+write/rename and hash. There is a 60-second diagnostic total deadline, separate from SDK
+defaults. Forced interruption is not proof of natural slow-link recovery. On macOS,
+nettop samples only the test PID: raw IPs/ports remain in scratch, public reports contain
+numeric maxima only. Repeated cumulative samples must not be summed, out-of-order bytes
+are not a packet-loss percentage, and client retransmits do not describe server sends.
+Successful media is deleted; failures remain for investigation.
+
+[Measured results and independent curl control](../docs/benchmarks/2026-10-22/reconnect-investigation.zh-CN.md)
+include every scheduled trial and the limits of the diagnosis. To repeat the separate
+curl control, run the two protocols in order H1/H2 then H2/H1, sequentially, with `curl -q
+--noproxy '*' --interface YOUR_PHYSICAL_INTERFACE --resolve HOST:443:PUBLIC_IP`, matched
+Chrome131 UA, `Accept-Encoding: identity`, `--connect-timeout 15 --max-time 60` and
+`--http1.1`/`--http2`. Record connect/TLS/TTFB/total times, byte count, HTTP version and
+full SHA256; on macOS numeric TCP fields can be observed with `nettop -n -m tcp -p PID
+-L 2 -s 1 -x -J interface,state,bytes_in,bytes_out,rx_dupe,rx_ooo,re-tx,rtt_avg,rcvsize`.

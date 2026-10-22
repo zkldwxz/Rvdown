@@ -1,0 +1,3070 @@
+{
+  "schema": 1,
+  "sample": {
+    "id": "mdn-flower",
+    "url": "https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4",
+    "bytes": 1128375,
+    "sha256": "0cd83d944a6ca7822b4a8306cecc60a36e859b041f6702c6a1ad9ead78924451"
+  },
+  "source_commit": "0f680196e506e2b83e58102ba86a199ae38583c3",
+  "binary_sha256": "70d481fd2d36ee09d80ce9b79dd7ce06d9d7132e7bb3aa88ed1f908d66bceccc",
+  "harness_sha256": "b18336252eecd522ff7690db5e4578159de149c8cce4ce4abf1a76c38033f782",
+  "host": {
+    "os": "Darwin",
+    "arch": "arm64"
+  },
+  "method": {
+    "planned_trials": 25,
+    "rounds": 5,
+    "order": "five-way rotating Latin square",
+    "single_file_at_a_time": true,
+    "connection_cap": 1,
+    "network": "native physical interface binding; one public DoH IP snapshot shared by all requests; no proxy or relay",
+    "initial": "Chrome131, HTTP/2, matched Windows browser UA, GET without Range",
+    "forced_interruption": "after retaining first 256 KiB for reconnect arms; new Client and TCP/TLS connection",
+    "reattempts": "same URL and pinned IP; same Range/If-Range, strong ETag and exact Content-Range validation; 200 restarts safely",
+    "timing": "entire initial attempt plus cut/reconnect/remaining body; SHA256 afterward",
+    "interpretation": "forced interruption is a controlled experiment, not natural slow-link recovery success rate",
+    "telemetry": "nettop restricted to each test PID; raw IPs, ports and process names remain in scratch only"
+  },
+  "runs": [
+    {
+      "round": 1,
+      "arm": "continue",
+      "exit_code": 0,
+      "external_timeout": false,
+      "wall_elapsed_s": 12.241096,
+      "measurement": {
+        "arm": "continue",
+        "bytes": 1128375,
+        "counters": {
+          "application_network_bytes": 1128375,
+          "interrupted": false
+        },
+        "diagnostic_total_budget_s": 60,
+        "elapsed_s": 12.204681209,
+        "forced_cut_bytes": 262144,
+        "outcome": "complete",
+        "progress_trace": [
+          {
+            "application_bytes": 16384,
+            "at_s": 1.279393375,
+            "attempt": 1
+          },
+          {
+            "application_bytes": 98304,
+            "at_s": 1.875185209,
+            "attempt": 1
+          },
+          {
+            "application_bytes": 229376,
+            "at_s": 3.17552425,
+            "attempt": 1
+          },
+          {
+            "application_bytes": 393216,
+            "at_s": 3.766497042,
+            "attempt": 1
+          },
+          {
+            "application_bytes": 425984,
+            "at_s": 4.72987525,
+            "attempt": 1
+          },
+          {
+            "application_bytes": 573440,
+            "at_s": 5.281863875,
+            "attempt": 1
+          },
+          {
+            "application_bytes": 606208,
+            "at_s": 6.284450292,
+            "attempt": 1
+          },
+          {
+            "application_bytes": 720896,
+            "at_s": 7.053027417,
+            "attempt": 1
+          },
+          {
+            "application_bytes": 753664,
+            "at_s": 7.780469209,
+            "attempt": 1
+          },
+          {
+            "application_bytes": 851968,
+            "at_s": 8.472651167,
+            "attempt": 1
+          },
+          {
+            "application_bytes": 868352,
+            "at_s": 8.983545792,
+            "attempt": 1
+          },
+          {
+            "application_bytes": 933888,
+            "at_s": 9.815743667,
+            "attempt": 1
+          },
+          {
+            "application_bytes": 983040,
+            "at_s": 10.670532375,
+            "attempt": 1
+          },
+          {
+            "application_bytes": 1064960,
+            "at_s": 11.291516917,
+            "attempt": 1
+          },
+          {
+            "application_bytes": 1097728,
+            "at_s": 12.123016542,
+            "attempt": 1
+          }
+        ],
+        "responses": [
+          {
+            "age_s": 1014,
+            "attempt": 1,
+            "cache_class": "unknown",
+            "content_length": 1128375,
+            "first_body_at_s": 1.279373042,
+            "headers_at_s": 0.889045834,
+            "http_version": "HTTP/2.0",
+            "server_class": "other",
+            "status": 200,
+            "via_present": false
+          }
+        ]
+      },
+      "bytes": 1128375,
+      "sha256": "0cd83d944a6ca7822b4a8306cecc60a36e859b041f6702c6a1ad9ead78924451",
+      "ok": true,
+      "tcp": {
+        "sampled_connection_rows": 24,
+        "max_received_bytes": 1154074.0,
+        "max_duplicate_received_bytes": 0.0,
+        "max_out_of_order_received_bytes": 1050135.0,
+        "max_client_retransmit_bytes": 0.0,
+        "max_rtt_ms": 293.62,
+        "max_receive_buffer_bytes": 376748.0,
+        "note": "per-socket lifetime maxima; do not sum repeated samples; client retransmits do not measure server-side retransmits"
+      }
+    },
+    {
+      "round": 1,
+      "arm": "reconnect-same",
+      "exit_code": 0,
+      "external_timeout": false,
+      "wall_elapsed_s": 11.221103,
+      "measurement": {
+        "arm": "reconnect-same",
+        "bytes": 1128375,
+        "counters": {
+          "application_network_bytes": 1128375,
+          "cut_at_s": 2.9332038750000002,
+          "interrupted": true,
+          "resumed": true,
+          "retained_prefix_bytes": 262144
+        },
+        "diagnostic_total_budget_s": 60,
+        "elapsed_s": 10.214190292,
+        "forced_cut_bytes": 262144,
+        "outcome": "complete",
+        "progress_trace": [
+          {
+            "application_bytes": 16384,
+            "at_s": 1.24953875,
+            "attempt": 1
+          },
+          {
+            "application_bytes": 32768,
+            "at_s": 1.812696709,
+            "attempt": 1
+          },
+          {
+            "application_bytes": 180224,
+            "at_s": 2.492641792,
+            "attempt": 1
+          },
+          {
+            "application_bytes": 278528,
+            "at_s": 4.547732209,
+            "attempt": 2
+          },
+          {
+            "application_bytes": 311296,
+            "at_s": 5.469242042,
+            "attempt": 2
+          },
+          {
+            "application_bytes": 475136,
+            "at_s": 6.094320084,
+            "attempt": 2
+          },
+          {
+            "application_bytes": 540672,
+            "at_s": 6.672896,
+            "attempt": 2
+          },
+          {
+            "application_bytes": 655360,
+            "at_s": 7.3602185,
+            "attempt": 2
+          },
+          {
+            "application_bytes": 786432,
+            "at_s": 7.94727,
+            "attempt": 2
+          },
+          {
+            "application_bytes": 868352,
+            "at_s": 8.683506417,
+            "attempt": 2
+          },
+          {
+            "application_bytes": 983040,
+            "at_s": 9.185604584,
+            "attempt": 2
+          },
+          {
+            "application_bytes": 1081344,
+            "at_s": 9.959915125,
+            "attempt": 2
+          }
+        ],
+        "responses": [
+          {
+            "age_s": 1026,
+            "attempt": 1,
+            "cache_class": "unknown",
+            "content_length": 1128375,
+            "first_body_at_s": 1.249530917,
+            "headers_at_s": 0.903451292,
+            "http_version": "HTTP/2.0",
+            "server_class": "other",
+            "status": 200,
+            "via_present": false
+          },
+          {
+            "age_s": 1029,
+            "attempt": 2,
+            "cache_class": "unknown",
+            "content_length": 866231,
+            "first_body_at_s": 4.547720334,
+            "headers_at_s": 4.454756125,
+            "http_version": "HTTP/2.0",
+            "server_class": "other",
+            "status": 206,
+            "via_present": false
+          }
+        ]
+      },
+      "bytes": 1128375,
+      "sha256": "0cd83d944a6ca7822b4a8306cecc60a36e859b041f6702c6a1ad9ead78924451",
+      "ok": true,
+      "tcp": {
+        "sampled_connection_rows": 21,
+        "max_received_bytes": 885106.0,
+        "max_duplicate_received_bytes": 0.0,
+        "max_out_of_order_received_bytes": 802565.0,
+        "max_client_retransmit_bytes": 0.0,
+        "max_rtt_ms": 302.84,
+        "max_receive_buffer_bytes": 182428.0,
+        "note": "per-socket lifetime maxima; do not sum repeated samples; client retransmits do not measure server-side retransmits"
+      }
+    },
+    {
+      "round": 1,
+      "arm": "reconnect-chrome149",
+      "exit_code": 0,
+      "external_timeout": false,
+      "wall_elapsed_s": 9.173413,
+      "measurement": {
+        "arm": "reconnect-chrome149",
+        "bytes": 1128375,
+        "counters": {
+          "application_network_bytes": 1128375,
+          "cut_at_s": 2.282729333,
+          "interrupted": true,
+          "resumed": true,
+          "retained_prefix_bytes": 262144
+        },
+        "diagnostic_total_budget_s": 60,
+        "elapsed_s": 8.779390833,
+        "forced_cut_bytes": 262144,
+        "outcome": "complete",
+        "progress_trace": [
+          {
+            "application_bytes": 16384,
+            "at_s": 1.046921416,
+            "attempt": 1
+          },
+          {
+            "application_bytes": 114688,
+            "at_s": 1.605662625,
+            "attempt": 1
+          },
+          {
+            "application_bytes": 147456,
+            "at_s": 2.232567833,
+            "attempt": 1
+          },
+          {
+            "application_bytes": 278528,
+            "at_s": 3.503997708,
+            "attempt": 2
+          },
+          {
+            "application_bytes": 344064,
+            "at_s": 4.1231155,
+            "attempt": 2
+          },
+          {
+            "application_bytes": 458752,
+            "at_s": 4.782648791,
+            "attempt": 2
+          },
+          {
+            "application_bytes": 557056,
+            "at_s": 5.589832208,
+            "attempt": 2
+          },
+          {
+            "application_bytes": 655360,
+            "at_s": 6.209573,
+            "attempt": 2
+          },
+          {
+            "application_bytes": 802816,
+            "at_s": 6.828503416,
+            "attempt": 2
+          },
+          {
+            "application_bytes": 868352,
+            "at_s": 7.349728833,
+            "attempt": 2
+          },
+          {
+            "application_bytes": 1015808,
+            "at_s": 7.919937541,
+            "attempt": 2
+          },
+          {
+            "application_bytes": 1097728,
+            "at_s": 8.470167833,
+            "attempt": 2
+          }
+        ],
+        "responses": [
+          {
+            "age_s": 3212,
+            "attempt": 1,
+            "cache_class": "unknown",
+            "content_length": 1128375,
+            "first_body_at_s": 1.046906875,
+            "headers_at_s": 0.743925375,
+            "http_version": "HTTP/2.0",
+            "server_class": "other",
+            "status": 200,
+            "via_present": false
+          },
+          {
+            "age_s": 1039,
+            "attempt": 2,
+            "cache_class": "unknown",
+            "content_length": 866231,
+            "first_body_at_s": 3.503994,
+            "headers_at_s": 3.5039887910000003,
+            "http_version": "HTTP/2.0",
+            "server_class": "other",
+            "status": 206,
+            "via_present": false
+          }
+        ]
+      },
+      "bytes": 1128375,
+      "sha256": "0cd83d944a6ca7822b4a8306cecc60a36e859b041f6702c6a1ad9ead78924451",
+      "ok": true,
+      "tcp": {
+        "sampled_connection_rows": 17,
+        "max_received_bytes": 839899.0,
+        "max_duplicate_received_bytes": 0.0,
+        "max_out_of_order_received_bytes": 755656.0,
+        "max_client_retransmit_bytes": 0.0,
+        "max_rtt_ms": 301.41,
+        "max_receive_buffer_bytes": 199084.0,
+        "note": "per-socket lifetime maxima; do not sum repeated samples; client retransmits do not measure server-side retransmits"
+      }
+    },
+    {
+      "round": 1,
+      "arm": "reconnect-firefox144",
+      "exit_code": 0,
+      "external_timeout": false,
+      "wall_elapsed_s": 13.252528,
+      "measurement": {
+        "arm": "reconnect-firefox144",
+        "bytes": 1128375,
+        "counters": {
+          "application_network_bytes": 1128375,
+          "cut_at_s": 3.211713833,
+          "interrupted": true,
+          "resumed": true,
+          "retained_prefix_bytes": 262144
+        },
+        "diagnostic_total_budget_s": 60,
+        "elapsed_s": 13.096007083,
+        "forced_cut_bytes": 262144,
+        "outcome": "complete",
+        "progress_trace": [
+          {
+            "application_bytes": 16384,
+            "at_s": 1.208221791,
+            "attempt": 1
+          },
+          {
+            "application_bytes": 65536,
+            "at_s": 2.030990833,
+            "attempt": 1
+          },
+          {
+            "application_bytes": 114688,
+            "at_s": 3.211471666,
+            "attempt": 1
+          },
+          {
+            "application_bytes": 278528,
+            "at_s": 4.352822958,
+            "attempt": 2
+          },
+          {
+            "application_bytes": 311296,
+            "at_s": 5.840156166,
+            "attempt": 2
+          },
+          {
+            "application_bytes": 442368,
+            "at_s": 6.653780666,
+            "attempt": 2
+          },
+          {
+            "application_bytes": 540672,
+            "at_s": 7.424270291,
+            "attempt": 2
+          },
+          {
+            "application_bytes": 638976,
+            "at_s": 8.033638291,
+            "attempt": 2
+          },
+          {
+            "application_bytes": 720896,
+            "at_s": 8.623298541,
+            "attempt": 2
+          },
+          {
+            "application_bytes": 770048,
+            "at_s": 9.410243083,
+            "attempt": 2
+          },
+          {
+            "application_bytes": 868352,
+            "at_s": 10.164386875,
+            "attempt": 2
+          },
+          {
+            "application_bytes": 901120,
+            "at_s": 10.946252666,
+            "attempt": 2
+          },
+          {
+            "application_bytes": 1015808,
+            "at_s": 11.80735975,
+            "attempt": 2
+          },
+          {
+            "application_bytes": 1064960,
+            "at_s": 12.521365375,
+            "attempt": 2
+          },
+          {
+            "application_bytes": 1114112,
+            "at_s": 13.095970291,
+            "attempt": 2
+          }
+        ],
+        "responses": [
+          {
+            "age_s": 3221,
+            "attempt": 1,
+            "cache_class": "unknown",
+            "content_length": 1128375,
+            "first_body_at_s": 1.20821575,
+            "headers_at_s": 1.204906625,
+            "http_version": "HTTP/2.0",
+            "server_class": "other",
+            "status": 200,
+            "via_present": false
+          },
+          {
+            "age_s": 1050,
+            "attempt": 2,
+            "cache_class": "unknown",
+            "content_length": 866231,
+            "first_body_at_s": 4.352817875,
+            "headers_at_s": 4.265886541,
+            "http_version": "HTTP/2.0",
+            "server_class": "other",
+            "status": 206,
+            "via_present": false
+          }
+        ]
+      },
+      "bytes": 1128375,
+      "sha256": "0cd83d944a6ca7822b4a8306cecc60a36e859b041f6702c6a1ad9ead78924451",
+      "ok": true,
+      "tcp": {
+        "sampled_connection_rows": 26,
+        "max_received_bytes": 886714.0,
+        "max_duplicate_received_bytes": 0.0,
+        "max_out_of_order_received_bytes": 718507.0,
+        "max_client_retransmit_bytes": 0.0,
+        "max_rtt_ms": 360.75,
+        "max_receive_buffer_bytes": 376748.0,
+        "note": "per-socket lifetime maxima; do not sum repeated samples; client retransmits do not measure server-side retransmits"
+      }
+    },
+    {
+      "round": 1,
+      "arm": "reconnect-http1",
+      "exit_code": 0,
+      "external_timeout": false,
+      "wall_elapsed_s": 7.138143,
+      "measurement": {
+        "arm": "reconnect-http1",
+        "bytes": 1128375,
+        "counters": {
+          "application_network_bytes": 1128375,
+          "cut_at_s": 2.381471375,
+          "interrupted": true,
+          "resumed": true,
+          "retained_prefix_bytes": 262144
+        },
+        "diagnostic_total_budget_s": 60,
+        "elapsed_s": 6.824421625,
+        "forced_cut_bytes": 262144,
+        "outcome": "complete",
+        "progress_trace": [
+          {
+            "application_bytes": 16384,
+            "at_s": 1.081019792,
+            "attempt": 1
+          },
+          {
+            "application_bytes": 65536,
+            "at_s": 1.598771167,
+            "attempt": 1
+          },
+          {
+            "application_bytes": 229376,
+            "at_s": 2.135086292,
+            "attempt": 1
+          },
+          {
+            "application_bytes": 262612,
+            "at_s": 3.257864542,
+            "attempt": 2
+          },
+          {
+            "application_bytes": 307690,
+            "at_s": 3.83384675,
+            "attempt": 2
+          },
+          {
+            "application_bytes": 362330,
+            "at_s": 4.443354292,
+            "attempt": 2
+          },
+          {
+            "application_bytes": 469712,
+            "at_s": 5.1404535,
+            "attempt": 2
+          },
+          {
+            "application_bytes": 759208,
+            "at_s": 6.20991625,
+            "attempt": 2
+          },
+          {
+            "application_bytes": 954546,
+            "at_s": 6.822958667,
+            "attempt": 2
+          }
+        ],
+        "responses": [
+          {
+            "age_s": 3234,
+            "attempt": 1,
+            "cache_class": "unknown",
+            "content_length": 1128375,
+            "first_body_at_s": 1.081013,
+            "headers_at_s": 0.74013425,
+            "http_version": "HTTP/2.0",
+            "server_class": "other",
+            "status": 200,
+            "via_present": false
+          },
+          {
+            "age_s": 1062,
+            "attempt": 2,
+            "cache_class": "unknown",
+            "content_length": 866231,
+            "first_body_at_s": 3.257860375,
+            "headers_at_s": 3.257853125,
+            "http_version": "HTTP/1.1",
+            "server_class": "other",
+            "status": 206,
+            "via_present": false
+          }
+        ]
+      },
+      "bytes": 1128375,
+      "sha256": "0cd83d944a6ca7822b4a8306cecc60a36e859b041f6702c6a1ad9ead78924451",
+      "ok": true,
+      "tcp": {
+        "sampled_connection_rows": 13,
+        "max_received_bytes": 746929.0,
+        "max_duplicate_received_bytes": 0.0,
+        "max_out_of_order_received_bytes": 680772.0,
+        "max_client_retransmit_bytes": 0.0,
+        "max_rtt_ms": 289.72,
+        "max_receive_buffer_bytes": 648796.0,
+        "note": "per-socket lifetime maxima; do not sum repeated samples; client retransmits do not measure server-side retransmits"
+      }
+    },
+    {
+      "round": 2,
+      "arm": "reconnect-same",
+      "exit_code": 0,
+      "external_timeout": false,
+      "wall_elapsed_s": 10.187542,
+      "measurement": {
+        "arm": "reconnect-same",
+        "bytes": 1128375,
+        "counters": {
+          "application_network_bytes": 1128375,
+          "cut_at_s": 2.717920541,
+          "interrupted": true,
+          "resumed": true,
+          "retained_prefix_bytes": 262144
+        },
+        "diagnostic_total_budget_s": 60,
+        "elapsed_s": 9.1424225,
+        "forced_cut_bytes": 262144,
+        "outcome": "complete",
+        "progress_trace": [
+          {
+            "application_bytes": 16384,
+            "at_s": 1.351577208,
+            "attempt": 1
+          },
+          {
+            "application_bytes": 131072,
+            "at_s": 2.064280375,
+            "attempt": 1
+          },
+          {
+            "application_bytes": 262144,
+            "at_s": 2.717911625,
+            "attempt": 1
+          },
+          {
+            "application_bytes": 278528,
+            "at_s": 3.7826387500000003,
+            "attempt": 2
+          },
+          {
+            "application_bytes": 311296,
+            "at_s": 4.329239291,
+            "attempt": 2
+          },
+          {
+            "application_bytes": 507904,
+            "at_s": 5.104340375,
+            "attempt": 2
+          },
+          {
+            "application_bytes": 655360,
+            "at_s": 5.673580666,
+            "attempt": 2
+          },
+          {
+            "application_bytes": 720896,
+            "at_s": 6.545442083,
+            "attempt": 2
+          },
+          {
+            "application_bytes": 851968,
+            "at_s": 7.33635125,
+            "attempt": 2
+          },
+          {
+            "application_bytes": 983040,
+            "at_s": 7.945953708,
+            "attempt": 2
+          },
+          {
+            "application_bytes": 1048576,
+            "at_s": 8.479401583,
+            "attempt": 2
+          },
+          {
+            "application_bytes": 1114112,
+            "at_s": 9.073019708,
+            "attempt": 2
+          }
+        ],
+        "responses": [
+          {
+            "age_s": 1067,
+            "attempt": 1,
+            "cache_class": "unknown",
+            "content_length": 1128375,
+            "first_body_at_s": 1.351568958,
+            "headers_at_s": 0.910367416,
+            "http_version": "HTTP/2.0",
+            "server_class": "other",
+            "status": 200,
+            "via_present": false
+          },
+          {
+            "age_s": 3244,
+            "attempt": 2,
+            "cache_class": "unknown",
+            "content_length": 866231,
+            "first_body_at_s": 3.782633333,
+            "headers_at_s": 3.461480041,
+            "http_version": "HTTP/2.0",
+            "server_class": "other",
+            "status": 206,
+            "via_present": false
+          }
+        ]
+      },
+      "bytes": 1128375,
+      "sha256": "0cd83d944a6ca7822b4a8306cecc60a36e859b041f6702c6a1ad9ead78924451",
+      "ok": true,
+      "tcp": {
+        "sampled_connection_rows": 19,
+        "max_received_bytes": 887579.0,
+        "max_duplicate_received_bytes": 0.0,
+        "max_out_of_order_received_bytes": 787787.0,
+        "max_client_retransmit_bytes": 0.0,
+        "max_rtt_ms": 303.16,
+        "max_receive_buffer_bytes": 199084.0,
+        "note": "per-socket lifetime maxima; do not sum repeated samples; client retransmits do not measure server-side retransmits"
+      }
+    },
+    {
+      "round": 2,
+      "arm": "reconnect-chrome149",
+      "exit_code": 0,
+      "external_timeout": false,
+      "wall_elapsed_s": 7.135902,
+      "measurement": {
+        "arm": "reconnect-chrome149",
+        "bytes": 1128375,
+        "counters": {
+          "application_network_bytes": 1128375,
+          "cut_at_s": 2.28859975,
+          "interrupted": true,
+          "resumed": true,
+          "retained_prefix_bytes": 262144
+        },
+        "diagnostic_total_budget_s": 60,
+        "elapsed_s": 6.7587195,
+        "forced_cut_bytes": 262144,
+        "outcome": "complete",
+        "progress_trace": [
+          {
+            "application_bytes": 16384,
+            "at_s": 0.974025917,
+            "attempt": 1
+          },
+          {
+            "application_bytes": 49152,
+            "at_s": 1.5945355829999999,
+            "attempt": 1
+          },
+          {
+            "application_bytes": 98304,
+            "at_s": 2.2858838329999998,
+            "attempt": 1
+          },
+          {
+            "application_bytes": 278528,
+            "at_s": 3.325837375,
+            "attempt": 2
+          },
+          {
+            "application_bytes": 360448,
+            "at_s": 3.893740333,
+            "attempt": 2
+          },
+          {
+            "application_bytes": 507904,
+            "at_s": 4.497931708,
+            "attempt": 2
+          },
+          {
+            "application_bytes": 704512,
+            "at_s": 5.199737167,
+            "attempt": 2
+          },
+          {
+            "application_bytes": 917504,
+            "at_s": 5.796342167,
+            "attempt": 2
+          },
+          {
+            "application_bytes": 1032192,
+            "at_s": 6.301214375,
+            "attempt": 2
+          }
+        ],
+        "responses": [
+          {
+            "age_s": 3252,
+            "attempt": 1,
+            "cache_class": "unknown",
+            "content_length": 1128375,
+            "first_body_at_s": 0.974019625,
+            "headers_at_s": 0.960015417,
+            "http_version": "HTTP/2.0",
+            "server_class": "other",
+            "status": 200,
+            "via_present": false
+          },
+          {
+            "age_s": 3254,
+            "attempt": 2,
+            "cache_class": "unknown",
+            "content_length": 866231,
+            "first_body_at_s": 3.325833708,
+            "headers_at_s": 3.325824875,
+            "http_version": "HTTP/2.0",
+            "server_class": "other",
+            "status": 206,
+            "via_present": false
+          }
+        ]
+      },
+      "bytes": 1128375,
+      "sha256": "0cd83d944a6ca7822b4a8306cecc60a36e859b041f6702c6a1ad9ead78924451",
+      "ok": true,
+      "tcp": {
+        "sampled_connection_rows": 13,
+        "max_received_bytes": 792702.0,
+        "max_duplicate_received_bytes": 0.0,
+        "max_out_of_order_received_bytes": 734252.0,
+        "max_client_retransmit_bytes": 0.0,
+        "max_rtt_ms": 249.84,
+        "max_receive_buffer_bytes": 518324.0,
+        "note": "per-socket lifetime maxima; do not sum repeated samples; client retransmits do not measure server-side retransmits"
+      }
+    },
+    {
+      "round": 2,
+      "arm": "reconnect-firefox144",
+      "exit_code": 0,
+      "external_timeout": false,
+      "wall_elapsed_s": 16.309634,
+      "measurement": {
+        "arm": "reconnect-firefox144",
+        "bytes": 1128375,
+        "counters": {
+          "application_network_bytes": 1128375,
+          "cut_at_s": 6.334804166,
+          "interrupted": true,
+          "resumed": true,
+          "retained_prefix_bytes": 262144
+        },
+        "diagnostic_total_budget_s": 60,
+        "elapsed_s": 15.825606,
+        "forced_cut_bytes": 262144,
+        "outcome": "complete",
+        "progress_trace": [
+          {
+            "application_bytes": 16384,
+            "at_s": 3.100567375,
+            "attempt": 1
+          },
+          {
+            "application_bytes": 114688,
+            "at_s": 3.8171324159999998,
+            "attempt": 1
+          },
+          {
+            "application_bytes": 163840,
+            "at_s": 4.811252458,
+            "attempt": 1
+          },
+          {
+            "application_bytes": 212992,
+            "at_s": 5.8061729159999995,
+            "attempt": 1
+          },
+          {
+            "application_bytes": 262144,
+            "at_s": 6.334795833,
+            "attempt": 1
+          },
+          {
+            "application_bytes": 278528,
+            "at_s": 7.27474275,
+            "attempt": 2
+          },
+          {
+            "application_bytes": 294912,
+            "at_s": 7.814198166,
+            "attempt": 2
+          },
+          {
+            "application_bytes": 409600,
+            "at_s": 8.451262458,
+            "attempt": 2
+          },
+          {
+            "application_bytes": 491520,
+            "at_s": 10.621200208,
+            "attempt": 2
+          },
+          {
+            "application_bytes": 606208,
+            "at_s": 11.23718175,
+            "attempt": 2
+          },
+          {
+            "application_bytes": 622592,
+            "at_s": 11.881572791,
+            "attempt": 2
+          },
+          {
+            "application_bytes": 753664,
+            "at_s": 12.542607666,
+            "attempt": 2
+          },
+          {
+            "application_bytes": 835584,
+            "at_s": 13.087692,
+            "attempt": 2
+          },
+          {
+            "application_bytes": 851968,
+            "at_s": 14.129663083,
+            "attempt": 2
+          },
+          {
+            "application_bytes": 966656,
+            "at_s": 14.697102333,
+            "attempt": 2
+          },
+          {
+            "application_bytes": 1048576,
+            "at_s": 15.353141375,
+            "attempt": 2
+          }
+        ],
+        "responses": [
+          {
+            "age_s": 1085,
+            "attempt": 1,
+            "cache_class": "unknown",
+            "content_length": 1128375,
+            "first_body_at_s": 3.10055675,
+            "headers_at_s": 2.830226,
+            "http_version": "HTTP/2.0",
+            "server_class": "other",
+            "status": 200,
+            "via_present": false
+          },
+          {
+            "age_s": 1090,
+            "attempt": 2,
+            "cache_class": "unknown",
+            "content_length": 866231,
+            "first_body_at_s": 7.274733708,
+            "headers_at_s": 7.196941333,
+            "http_version": "HTTP/2.0",
+            "server_class": "other",
+            "status": 206,
+            "via_present": false
+          }
+        ]
+      },
+      "bytes": 1128375,
+      "sha256": "0cd83d944a6ca7822b4a8306cecc60a36e859b041f6702c6a1ad9ead78924451",
+      "ok": true,
+      "tcp": {
+        "sampled_connection_rows": 31,
+        "max_received_bytes": 826006.0,
+        "max_duplicate_received_bytes": 0.0,
+        "max_out_of_order_received_bytes": 708114.0,
+        "max_client_retransmit_bytes": 0.0,
+        "max_rtt_ms": 300.53,
+        "max_receive_buffer_bytes": 187980.0,
+        "note": "per-socket lifetime maxima; do not sum repeated samples; client retransmits do not measure server-side retransmits"
+      }
+    },
+    {
+      "round": 2,
+      "arm": "reconnect-http1",
+      "exit_code": 0,
+      "external_timeout": false,
+      "wall_elapsed_s": 11.212017,
+      "measurement": {
+        "arm": "reconnect-http1",
+        "bytes": 1128375,
+        "counters": {
+          "application_network_bytes": 1128375,
+          "cut_at_s": 2.226102042,
+          "interrupted": true,
+          "resumed": true,
+          "retained_prefix_bytes": 262144
+        },
+        "diagnostic_total_budget_s": 60,
+        "elapsed_s": 11.118841917,
+        "forced_cut_bytes": 262144,
+        "outcome": "complete",
+        "progress_trace": [
+          {
+            "application_bytes": 16384,
+            "at_s": 0.83445175,
+            "attempt": 1
+          },
+          {
+            "application_bytes": 49152,
+            "at_s": 1.34266325,
+            "attempt": 1
+          },
+          {
+            "application_bytes": 131072,
+            "at_s": 1.957994084,
+            "attempt": 1
+          },
+          {
+            "application_bytes": 262619,
+            "at_s": 3.513611667,
+            "attempt": 2
+          },
+          {
+            "application_bytes": 304965,
+            "at_s": 4.018790542,
+            "attempt": 2
+          },
+          {
+            "application_bytes": 382827,
+            "at_s": 4.650202709,
+            "attempt": 2
+          },
+          {
+            "application_bytes": 484738,
+            "at_s": 5.181199125,
+            "attempt": 2
+          },
+          {
+            "application_bytes": 584456,
+            "at_s": 5.691184375,
+            "attempt": 2
+          },
+          {
+            "application_bytes": 673150,
+            "at_s": 6.407557292,
+            "attempt": 2
+          },
+          {
+            "application_bytes": 720960,
+            "at_s": 7.074376417,
+            "attempt": 2
+          },
+          {
+            "application_bytes": 845266,
+            "at_s": 7.763140125,
+            "attempt": 2
+          },
+          {
+            "application_bytes": 910834,
+            "at_s": 8.316276042,
+            "attempt": 2
+          },
+          {
+            "application_bytes": 939520,
+            "at_s": 8.88763275,
+            "attempt": 2
+          },
+          {
+            "application_bytes": 1018748,
+            "at_s": 9.691745542,
+            "attempt": 2
+          },
+          {
+            "application_bytes": 1072022,
+            "at_s": 10.704415417,
+            "attempt": 2
+          }
+        ],
+        "responses": [
+          {
+            "age_s": 3275,
+            "attempt": 1,
+            "cache_class": "unknown",
+            "content_length": 1128375,
+            "first_body_at_s": 0.83444625,
+            "headers_at_s": 0.766452959,
+            "http_version": "HTTP/2.0",
+            "server_class": "other",
+            "status": 200,
+            "via_present": false
+          },
+          {
+            "age_s": 3278,
+            "attempt": 2,
+            "cache_class": "unknown",
+            "content_length": 866231,
+            "first_body_at_s": 3.513607792,
+            "headers_at_s": 3.513602959,
+            "http_version": "HTTP/1.1",
+            "server_class": "other",
+            "status": 206,
+            "via_present": false
+          }
+        ]
+      },
+      "bytes": 1128375,
+      "sha256": "0cd83d944a6ca7822b4a8306cecc60a36e859b041f6702c6a1ad9ead78924451",
+      "ok": true,
+      "tcp": {
+        "sampled_connection_rows": 22,
+        "max_received_bytes": 886199.0,
+        "max_duplicate_received_bytes": 0.0,
+        "max_out_of_order_received_bytes": 773201.0,
+        "max_client_retransmit_bytes": 0.0,
+        "max_rtt_ms": 250.53,
+        "max_receive_buffer_bytes": 471132.0,
+        "note": "per-socket lifetime maxima; do not sum repeated samples; client retransmits do not measure server-side retransmits"
+      }
+    },
+    {
+      "round": 2,
+      "arm": "continue",
+      "exit_code": 0,
+      "external_timeout": false,
+      "wall_elapsed_s": 5.095228,
+      "measurement": {
+        "arm": "continue",
+        "bytes": 1128375,
+        "counters": {
+          "application_network_bytes": 1128375,
+          "interrupted": false
+        },
+        "diagnostic_total_budget_s": 60,
+        "elapsed_s": 4.6857992920000004,
+        "forced_cut_bytes": 262144,
+        "outcome": "complete",
+        "progress_trace": [
+          {
+            "application_bytes": 16384,
+            "at_s": 1.859327958,
+            "attempt": 1
+          },
+          {
+            "application_bytes": 65536,
+            "at_s": 2.47849425,
+            "attempt": 1
+          },
+          {
+            "application_bytes": 212992,
+            "at_s": 2.981856542,
+            "attempt": 1
+          },
+          {
+            "application_bytes": 573440,
+            "at_s": 3.5181996250000003,
+            "attempt": 1
+          },
+          {
+            "application_bytes": 851968,
+            "at_s": 4.145023542,
+            "attempt": 1
+          },
+          {
+            "application_bytes": 1114112,
+            "at_s": 4.6556405,
+            "attempt": 1
+          }
+        ],
+        "responses": [
+          {
+            "age_s": 3287,
+            "attempt": 1,
+            "cache_class": "unknown",
+            "content_length": 1128375,
+            "first_body_at_s": 1.859320417,
+            "headers_at_s": 1.776152333,
+            "http_version": "HTTP/2.0",
+            "server_class": "other",
+            "status": 200,
+            "via_present": false
+          }
+        ]
+      },
+      "bytes": 1128375,
+      "sha256": "0cd83d944a6ca7822b4a8306cecc60a36e859b041f6702c6a1ad9ead78924451",
+      "ok": true,
+      "tcp": {
+        "sampled_connection_rows": 9,
+        "max_received_bytes": 983484.0,
+        "max_duplicate_received_bytes": 2776.0,
+        "max_out_of_order_received_bytes": 892595.0,
+        "max_client_retransmit_bytes": 0.0,
+        "max_rtt_ms": 252.0,
+        "max_receive_buffer_bytes": 748732.0,
+        "note": "per-socket lifetime maxima; do not sum repeated samples; client retransmits do not measure server-side retransmits"
+      }
+    },
+    {
+      "round": 3,
+      "arm": "reconnect-chrome149",
+      "exit_code": 0,
+      "external_timeout": false,
+      "wall_elapsed_s": 12.232538,
+      "measurement": {
+        "arm": "reconnect-chrome149",
+        "bytes": 1128375,
+        "counters": {
+          "application_network_bytes": 1128375,
+          "cut_at_s": 3.9928598749999997,
+          "interrupted": true,
+          "resumed": true,
+          "retained_prefix_bytes": 262144
+        },
+        "diagnostic_total_budget_s": 60,
+        "elapsed_s": 11.863384584,
+        "forced_cut_bytes": 262144,
+        "outcome": "complete",
+        "progress_trace": [
+          {
+            "application_bytes": 16384,
+            "at_s": 1.32922875,
+            "attempt": 1
+          },
+          {
+            "application_bytes": 81920,
+            "at_s": 2.0567135,
+            "attempt": 1
+          },
+          {
+            "application_bytes": 229376,
+            "at_s": 2.633746709,
+            "attempt": 1
+          },
+          {
+            "application_bytes": 262144,
+            "at_s": 3.992844625,
+            "attempt": 1
+          },
+          {
+            "application_bytes": 278528,
+            "at_s": 5.27702625,
+            "attempt": 2
+          },
+          {
+            "application_bytes": 360448,
+            "at_s": 5.792003584,
+            "attempt": 2
+          },
+          {
+            "application_bytes": 507904,
+            "at_s": 6.489377625,
+            "attempt": 2
+          },
+          {
+            "application_bytes": 573440,
+            "at_s": 7.132935875,
+            "attempt": 2
+          },
+          {
+            "application_bytes": 671744,
+            "at_s": 7.85249875,
+            "attempt": 2
+          },
+          {
+            "application_bytes": 770048,
+            "at_s": 8.385093667,
+            "attempt": 2
+          },
+          {
+            "application_bytes": 819200,
+            "at_s": 9.121413959,
+            "attempt": 2
+          },
+          {
+            "application_bytes": 917504,
+            "at_s": 9.637994709,
+            "attempt": 2
+          },
+          {
+            "application_bytes": 983040,
+            "at_s": 10.305290917,
+            "attempt": 2
+          },
+          {
+            "application_bytes": 1032192,
+            "at_s": 10.864364,
+            "attempt": 2
+          },
+          {
+            "application_bytes": 1064960,
+            "at_s": 11.459828459,
+            "attempt": 2
+          }
+        ],
+        "responses": [
+          {
+            "age_s": 3292,
+            "attempt": 1,
+            "cache_class": "unknown",
+            "content_length": 1128375,
+            "first_body_at_s": 1.329213459,
+            "headers_at_s": 1.021243334,
+            "http_version": "HTTP/2.0",
+            "server_class": "other",
+            "status": 200,
+            "via_present": false
+          },
+          {
+            "age_s": 3296,
+            "attempt": 2,
+            "cache_class": "unknown",
+            "content_length": 866231,
+            "first_body_at_s": 5.277021834,
+            "headers_at_s": 4.968132334,
+            "http_version": "HTTP/2.0",
+            "server_class": "other",
+            "status": 206,
+            "via_present": false
+          }
+        ]
+      },
+      "bytes": 1128375,
+      "sha256": "0cd83d944a6ca7822b4a8306cecc60a36e859b041f6702c6a1ad9ead78924451",
+      "ok": true,
+      "tcp": {
+        "sampled_connection_rows": 23,
+        "max_received_bytes": 840984.0,
+        "max_duplicate_received_bytes": 0.0,
+        "max_out_of_order_received_bytes": 742625.0,
+        "max_client_retransmit_bytes": 0.0,
+        "max_rtt_ms": 250.59,
+        "max_receive_buffer_bytes": 171324.0,
+        "note": "per-socket lifetime maxima; do not sum repeated samples; client retransmits do not measure server-side retransmits"
+      }
+    },
+    {
+      "round": 3,
+      "arm": "reconnect-firefox144",
+      "exit_code": 0,
+      "external_timeout": false,
+      "wall_elapsed_s": 16.315474,
+      "measurement": {
+        "arm": "reconnect-firefox144",
+        "bytes": 1128375,
+        "counters": {
+          "application_network_bytes": 1128375,
+          "cut_at_s": 4.171289208,
+          "interrupted": true,
+          "resumed": true,
+          "retained_prefix_bytes": 262144
+        },
+        "diagnostic_total_budget_s": 60,
+        "elapsed_s": 15.658312833,
+        "forced_cut_bytes": 262144,
+        "outcome": "complete",
+        "progress_trace": [
+          {
+            "application_bytes": 16384,
+            "at_s": 2.757876,
+            "attempt": 1
+          },
+          {
+            "application_bytes": 81920,
+            "at_s": 3.286758,
+            "attempt": 1
+          },
+          {
+            "application_bytes": 196608,
+            "at_s": 4.034450416,
+            "attempt": 1
+          },
+          {
+            "application_bytes": 278528,
+            "at_s": 6.037928708,
+            "attempt": 2
+          },
+          {
+            "application_bytes": 294912,
+            "at_s": 6.578728666,
+            "attempt": 2
+          },
+          {
+            "application_bytes": 409600,
+            "at_s": 7.233686333,
+            "attempt": 2
+          },
+          {
+            "application_bytes": 458752,
+            "at_s": 7.867632166,
+            "attempt": 2
+          },
+          {
+            "application_bytes": 540672,
+            "at_s": 8.387738041,
+            "attempt": 2
+          },
+          {
+            "application_bytes": 589824,
+            "at_s": 8.899011250000001,
+            "attempt": 2
+          },
+          {
+            "application_bytes": 655360,
+            "at_s": 9.757406625,
+            "attempt": 2
+          },
+          {
+            "application_bytes": 737280,
+            "at_s": 10.684062958,
+            "attempt": 2
+          },
+          {
+            "application_bytes": 819200,
+            "at_s": 11.349203083,
+            "attempt": 2
+          },
+          {
+            "application_bytes": 868352,
+            "at_s": 12.166585041,
+            "attempt": 2
+          },
+          {
+            "application_bytes": 950272,
+            "at_s": 13.023023625,
+            "attempt": 2
+          },
+          {
+            "application_bytes": 999424,
+            "at_s": 13.84104075,
+            "attempt": 2
+          },
+          {
+            "application_bytes": 1064960,
+            "at_s": 14.773666625,
+            "attempt": 2
+          },
+          {
+            "application_bytes": 1081344,
+            "at_s": 15.347173625,
+            "attempt": 2
+          }
+        ],
+        "responses": [
+          {
+            "age_s": 1130,
+            "attempt": 1,
+            "cache_class": "unknown",
+            "content_length": 1128375,
+            "first_body_at_s": 2.7578660409999998,
+            "headers_at_s": 2.355139333,
+            "http_version": "HTTP/2.0",
+            "server_class": "other",
+            "status": 200,
+            "via_present": false
+          },
+          {
+            "age_s": 1134,
+            "attempt": 2,
+            "cache_class": "unknown",
+            "content_length": 866231,
+            "first_body_at_s": 6.037923583,
+            "headers_at_s": 5.971030875,
+            "http_version": "HTTP/2.0",
+            "server_class": "other",
+            "status": 206,
+            "via_present": false
+          }
+        ]
+      },
+      "bytes": 1128375,
+      "sha256": "0cd83d944a6ca7822b4a8306cecc60a36e859b041f6702c6a1ad9ead78924451",
+      "ok": true,
+      "tcp": {
+        "sampled_connection_rows": 32,
+        "max_received_bytes": 887848.0,
+        "max_duplicate_received_bytes": 0.0,
+        "max_out_of_order_received_bytes": 787216.0,
+        "max_client_retransmit_bytes": 0.0,
+        "max_rtt_ms": 529.16,
+        "max_receive_buffer_bytes": 271260.0,
+        "note": "per-socket lifetime maxima; do not sum repeated samples; client retransmits do not measure server-side retransmits"
+      }
+    },
+    {
+      "round": 3,
+      "arm": "reconnect-http1",
+      "exit_code": 0,
+      "external_timeout": false,
+      "wall_elapsed_s": 8.153317,
+      "measurement": {
+        "arm": "reconnect-http1",
+        "bytes": 1128375,
+        "counters": {
+          "application_network_bytes": 1128375,
+          "cut_at_s": 3.630736166,
+          "interrupted": true,
+          "resumed": true,
+          "retained_prefix_bytes": 262144
+        },
+        "diagnostic_total_budget_s": 60,
+        "elapsed_s": 7.998480166,
+        "forced_cut_bytes": 262144,
+        "outcome": "complete",
+        "progress_trace": [
+          {
+            "application_bytes": 16384,
+            "at_s": 1.542518708,
+            "attempt": 1
+          },
+          {
+            "application_bytes": 81920,
+            "at_s": 2.091732708,
+            "attempt": 1
+          },
+          {
+            "application_bytes": 196608,
+            "at_s": 2.690780625,
+            "attempt": 1
+          },
+          {
+            "application_bytes": 262144,
+            "at_s": 3.630718375,
+            "attempt": 1
+          },
+          {
+            "application_bytes": 262619,
+            "at_s": 4.6841905,
+            "attempt": 2
+          },
+          {
+            "application_bytes": 274913,
+            "at_s": 5.323382875,
+            "attempt": 2
+          },
+          {
+            "application_bytes": 392389,
+            "at_s": 5.832236041,
+            "attempt": 2
+          },
+          {
+            "application_bytes": 506594,
+            "at_s": 6.404393708,
+            "attempt": 2
+          },
+          {
+            "application_bytes": 707300,
+            "at_s": 6.93226475,
+            "attempt": 2
+          },
+          {
+            "application_bytes": 979134,
+            "at_s": 7.4787345,
+            "attempt": 2
+          },
+          {
+            "application_bytes": 1122564,
+            "at_s": 7.998401333,
+            "attempt": 2
+          }
+        ],
+        "responses": [
+          {
+            "age_s": 1145,
+            "attempt": 1,
+            "cache_class": "unknown",
+            "content_length": 1128375,
+            "first_body_at_s": 1.542507125,
+            "headers_at_s": 1.188112708,
+            "http_version": "HTTP/2.0",
+            "server_class": "other",
+            "status": 200,
+            "via_present": false
+          },
+          {
+            "age_s": 3324,
+            "attempt": 2,
+            "cache_class": "unknown",
+            "content_length": 866231,
+            "first_body_at_s": 4.684185416,
+            "headers_at_s": 4.684177958,
+            "http_version": "HTTP/1.1",
+            "server_class": "other",
+            "status": 206,
+            "via_present": false
+          }
+        ]
+      },
+      "bytes": 1128375,
+      "sha256": "0cd83d944a6ca7822b4a8306cecc60a36e859b041f6702c6a1ad9ead78924451",
+      "ok": true,
+      "tcp": {
+        "sampled_connection_rows": 16,
+        "max_received_bytes": 886199.0,
+        "max_duplicate_received_bytes": 0.0,
+        "max_out_of_order_received_bytes": 822565.0,
+        "max_client_retransmit_bytes": 0.0,
+        "max_rtt_ms": 294.16,
+        "max_receive_buffer_bytes": 684884.0,
+        "note": "per-socket lifetime maxima; do not sum repeated samples; client retransmits do not measure server-side retransmits"
+      }
+    },
+    {
+      "round": 3,
+      "arm": "continue",
+      "exit_code": 0,
+      "external_timeout": false,
+      "wall_elapsed_s": 11.223095,
+      "measurement": {
+        "arm": "continue",
+        "bytes": 1128375,
+        "counters": {
+          "application_network_bytes": 1128375,
+          "interrupted": false
+        },
+        "diagnostic_total_budget_s": 60,
+        "elapsed_s": 10.395408375,
+        "forced_cut_bytes": 262144,
+        "outcome": "complete",
+        "progress_trace": [
+          {
+            "application_bytes": 16384,
+            "at_s": 1.043015583,
+            "attempt": 1
+          },
+          {
+            "application_bytes": 114688,
+            "at_s": 1.835282292,
+            "attempt": 1
+          },
+          {
+            "application_bytes": 262144,
+            "at_s": 2.336353375,
+            "attempt": 1
+          },
+          {
+            "application_bytes": 376832,
+            "at_s": 3.150082167,
+            "attempt": 1
+          },
+          {
+            "application_bytes": 458752,
+            "at_s": 3.731767583,
+            "attempt": 1
+          },
+          {
+            "application_bytes": 524288,
+            "at_s": 4.233659625,
+            "attempt": 1
+          },
+          {
+            "application_bytes": 573440,
+            "at_s": 4.8104742080000005,
+            "attempt": 1
+          },
+          {
+            "application_bytes": 688128,
+            "at_s": 5.702004875,
+            "attempt": 1
+          },
+          {
+            "application_bytes": 786432,
+            "at_s": 6.423613625,
+            "attempt": 1
+          },
+          {
+            "application_bytes": 835584,
+            "at_s": 6.995889625,
+            "attempt": 1
+          },
+          {
+            "application_bytes": 851968,
+            "at_s": 7.777064208,
+            "attempt": 1
+          },
+          {
+            "application_bytes": 966656,
+            "at_s": 8.297602208,
+            "attempt": 1
+          },
+          {
+            "application_bytes": 1015808,
+            "at_s": 8.866902417,
+            "attempt": 1
+          },
+          {
+            "application_bytes": 1081344,
+            "at_s": 9.4371175,
+            "attempt": 1
+          },
+          {
+            "application_bytes": 1114112,
+            "at_s": 10.395383583,
+            "attempt": 1
+          }
+        ],
+        "responses": [
+          {
+            "age_s": 3328,
+            "attempt": 1,
+            "cache_class": "unknown",
+            "content_length": 1128375,
+            "first_body_at_s": 1.043008375,
+            "headers_at_s": 1.02842825,
+            "http_version": "HTTP/2.0",
+            "server_class": "other",
+            "status": 200,
+            "via_present": false
+          }
+        ]
+      },
+      "bytes": 1128375,
+      "sha256": "0cd83d944a6ca7822b4a8306cecc60a36e859b041f6702c6a1ad9ead78924451",
+      "ok": true,
+      "tcp": {
+        "sampled_connection_rows": 21,
+        "max_received_bytes": 1152681.0,
+        "max_duplicate_received_bytes": 0.0,
+        "max_out_of_order_received_bytes": 980735.0,
+        "max_client_retransmit_bytes": 0.0,
+        "max_rtt_ms": 243.03,
+        "max_receive_buffer_bytes": 168548.0,
+        "note": "per-socket lifetime maxima; do not sum repeated samples; client retransmits do not measure server-side retransmits"
+      }
+    },
+    {
+      "round": 3,
+      "arm": "reconnect-same",
+      "exit_code": 0,
+      "external_timeout": false,
+      "wall_elapsed_s": 10.197412,
+      "measurement": {
+        "arm": "reconnect-same",
+        "bytes": 1128375,
+        "counters": {
+          "application_network_bytes": 1128375,
+          "cut_at_s": 2.389918542,
+          "interrupted": true,
+          "resumed": true,
+          "retained_prefix_bytes": 262144
+        },
+        "diagnostic_total_budget_s": 60,
+        "elapsed_s": 9.635693625,
+        "forced_cut_bytes": 262144,
+        "outcome": "complete",
+        "progress_trace": [
+          {
+            "application_bytes": 16384,
+            "at_s": 1.008375625,
+            "attempt": 1
+          },
+          {
+            "application_bytes": 32768,
+            "at_s": 1.5353326250000001,
+            "attempt": 1
+          },
+          {
+            "application_bytes": 147456,
+            "at_s": 2.110557917,
+            "attempt": 1
+          },
+          {
+            "application_bytes": 278528,
+            "at_s": 3.422537,
+            "attempt": 2
+          },
+          {
+            "application_bytes": 327680,
+            "at_s": 4.108737875,
+            "attempt": 2
+          },
+          {
+            "application_bytes": 507904,
+            "at_s": 4.8599375,
+            "attempt": 2
+          },
+          {
+            "application_bytes": 638976,
+            "at_s": 5.761484917,
+            "attempt": 2
+          },
+          {
+            "application_bytes": 753664,
+            "at_s": 6.3449855,
+            "attempt": 2
+          },
+          {
+            "application_bytes": 802816,
+            "at_s": 7.046994834,
+            "attempt": 2
+          },
+          {
+            "application_bytes": 933888,
+            "at_s": 8.160996292,
+            "attempt": 2
+          },
+          {
+            "application_bytes": 1032192,
+            "at_s": 8.85001075,
+            "attempt": 2
+          },
+          {
+            "application_bytes": 1114112,
+            "at_s": 9.39065625,
+            "attempt": 2
+          }
+        ],
+        "responses": [
+          {
+            "age_s": 3340,
+            "attempt": 1,
+            "cache_class": "unknown",
+            "content_length": 1128375,
+            "first_body_at_s": 1.008368292,
+            "headers_at_s": 0.931928875,
+            "http_version": "HTTP/2.0",
+            "server_class": "other",
+            "status": 200,
+            "via_present": false
+          },
+          {
+            "age_s": 1167,
+            "attempt": 2,
+            "cache_class": "unknown",
+            "content_length": 866231,
+            "first_body_at_s": 3.4225299590000002,
+            "headers_at_s": 3.136876792,
+            "http_version": "HTTP/2.0",
+            "server_class": "other",
+            "status": 206,
+            "via_present": false
+          }
+        ]
+      },
+      "bytes": 1128375,
+      "sha256": "0cd83d944a6ca7822b4a8306cecc60a36e859b041f6702c6a1ad9ead78924451",
+      "ok": true,
+      "tcp": {
+        "sampled_connection_rows": 20,
+        "max_received_bytes": 887584.0,
+        "max_duplicate_received_bytes": 0.0,
+        "max_out_of_order_received_bytes": 785608.0,
+        "max_client_retransmit_bytes": 0.0,
+        "max_rtt_ms": 307.22,
+        "max_receive_buffer_bytes": 187980.0,
+        "note": "per-socket lifetime maxima; do not sum repeated samples; client retransmits do not measure server-side retransmits"
+      }
+    },
+    {
+      "round": 4,
+      "arm": "reconnect-firefox144",
+      "exit_code": 0,
+      "external_timeout": false,
+      "wall_elapsed_s": 12.26,
+      "measurement": {
+        "arm": "reconnect-firefox144",
+        "bytes": 1128375,
+        "counters": {
+          "application_network_bytes": 1128375,
+          "cut_at_s": 4.729607792,
+          "interrupted": true,
+          "resumed": true,
+          "retained_prefix_bytes": 262144
+        },
+        "diagnostic_total_budget_s": 60,
+        "elapsed_s": 11.733965958,
+        "forced_cut_bytes": 262144,
+        "outcome": "complete",
+        "progress_trace": [
+          {
+            "application_bytes": 16384,
+            "at_s": 3.495877708,
+            "attempt": 1
+          },
+          {
+            "application_bytes": 131072,
+            "at_s": 4.227645708,
+            "attempt": 1
+          },
+          {
+            "application_bytes": 196608,
+            "at_s": 4.729492125,
+            "attempt": 1
+          },
+          {
+            "application_bytes": 278528,
+            "at_s": 6.585198875,
+            "attempt": 2
+          },
+          {
+            "application_bytes": 409600,
+            "at_s": 7.332088458,
+            "attempt": 2
+          },
+          {
+            "application_bytes": 540672,
+            "at_s": 7.897762708,
+            "attempt": 2
+          },
+          {
+            "application_bytes": 638976,
+            "at_s": 8.4191345,
+            "attempt": 2
+          },
+          {
+            "application_bytes": 671744,
+            "at_s": 8.927433208,
+            "attempt": 2
+          },
+          {
+            "application_bytes": 770048,
+            "at_s": 9.7177225,
+            "attempt": 2
+          },
+          {
+            "application_bytes": 884736,
+            "at_s": 10.305065708,
+            "attempt": 2
+          },
+          {
+            "application_bytes": 966656,
+            "at_s": 10.886002,
+            "attempt": 2
+          },
+          {
+            "application_bytes": 1081344,
+            "at_s": 11.433484625,
+            "attempt": 2
+          }
+        ],
+        "responses": [
+          {
+            "age_s": 1177,
+            "attempt": 1,
+            "cache_class": "unknown",
+            "content_length": 1128375,
+            "first_body_at_s": 3.495869,
+            "headers_at_s": 3.09869875,
+            "http_version": "HTTP/2.0",
+            "server_class": "other",
+            "status": 200,
+            "via_present": false
+          },
+          {
+            "age_s": 3355,
+            "attempt": 2,
+            "cache_class": "unknown",
+            "content_length": 866231,
+            "first_body_at_s": 6.585192042,
+            "headers_at_s": 6.258956875,
+            "http_version": "HTTP/2.0",
+            "server_class": "other",
+            "status": 206,
+            "via_present": false
+          }
+        ]
+      },
+      "bytes": 1128375,
+      "sha256": "0cd83d944a6ca7822b4a8306cecc60a36e859b041f6702c6a1ad9ead78924451",
+      "ok": true,
+      "tcp": {
+        "sampled_connection_rows": 23,
+        "max_received_bytes": 845781.0,
+        "max_duplicate_received_bytes": 0.0,
+        "max_out_of_order_received_bytes": 712927.0,
+        "max_client_retransmit_bytes": 0.0,
+        "max_rtt_ms": 560.88,
+        "max_receive_buffer_bytes": 271260.0,
+        "note": "per-socket lifetime maxima; do not sum repeated samples; client retransmits do not measure server-side retransmits"
+      }
+    },
+    {
+      "round": 4,
+      "arm": "reconnect-http1",
+      "exit_code": 0,
+      "external_timeout": false,
+      "wall_elapsed_s": 9.188647,
+      "measurement": {
+        "arm": "reconnect-http1",
+        "bytes": 1128375,
+        "counters": {
+          "application_network_bytes": 1128375,
+          "cut_at_s": 4.074611125,
+          "interrupted": true,
+          "resumed": true,
+          "retained_prefix_bytes": 262144
+        },
+        "diagnostic_total_budget_s": 60,
+        "elapsed_s": 9.148365959,
+        "forced_cut_bytes": 262144,
+        "outcome": "complete",
+        "progress_trace": [
+          {
+            "application_bytes": 16384,
+            "at_s": 2.6941541669999998,
+            "attempt": 1
+          },
+          {
+            "application_bytes": 32768,
+            "at_s": 3.272121084,
+            "attempt": 1
+          },
+          {
+            "application_bytes": 212992,
+            "at_s": 3.889095625,
+            "attempt": 1
+          },
+          {
+            "application_bytes": 262619,
+            "at_s": 4.782166667,
+            "attempt": 2
+          },
+          {
+            "application_bytes": 288573,
+            "at_s": 5.307232667,
+            "attempt": 2
+          },
+          {
+            "application_bytes": 406876,
+            "at_s": 5.807367625,
+            "attempt": 2
+          },
+          {
+            "application_bytes": 522986,
+            "at_s": 6.478073375,
+            "attempt": 2
+          },
+          {
+            "application_bytes": 679980,
+            "at_s": 7.004405292,
+            "attempt": 2
+          },
+          {
+            "application_bytes": 797456,
+            "at_s": 7.647881667,
+            "attempt": 2
+          },
+          {
+            "application_bytes": 916298,
+            "at_s": 8.218519209,
+            "attempt": 2
+          },
+          {
+            "application_bytes": 1035140,
+            "at_s": 8.740151667,
+            "attempt": 2
+          }
+        ],
+        "responses": [
+          {
+            "age_s": 3363,
+            "attempt": 1,
+            "cache_class": "unknown",
+            "content_length": 1128375,
+            "first_body_at_s": 2.694149667,
+            "headers_at_s": 2.694145,
+            "http_version": "HTTP/2.0",
+            "server_class": "other",
+            "status": 200,
+            "via_present": false
+          },
+          {
+            "age_s": 3366,
+            "attempt": 2,
+            "cache_class": "unknown",
+            "content_length": 866231,
+            "first_body_at_s": 4.782162334,
+            "headers_at_s": 4.782157125,
+            "http_version": "HTTP/1.1",
+            "server_class": "other",
+            "status": 206,
+            "via_present": false
+          }
+        ]
+      },
+      "bytes": 1128375,
+      "sha256": "0cd83d944a6ca7822b4a8306cecc60a36e859b041f6702c6a1ad9ead78924451",
+      "ok": true,
+      "tcp": {
+        "sampled_connection_rows": 18,
+        "max_received_bytes": 887289.0,
+        "max_duplicate_received_bytes": 0.0,
+        "max_out_of_order_received_bytes": 779790.0,
+        "max_client_retransmit_bytes": 0.0,
+        "max_rtt_ms": 294.16,
+        "max_receive_buffer_bytes": 204636.0,
+        "note": "per-socket lifetime maxima; do not sum repeated samples; client retransmits do not measure server-side retransmits"
+      }
+    },
+    {
+      "round": 4,
+      "arm": "continue",
+      "exit_code": 0,
+      "external_timeout": false,
+      "wall_elapsed_s": 6.12675,
+      "measurement": {
+        "arm": "continue",
+        "bytes": 1128375,
+        "counters": {
+          "application_network_bytes": 1128375,
+          "interrupted": false
+        },
+        "diagnostic_total_budget_s": 60,
+        "elapsed_s": 5.433695666,
+        "forced_cut_bytes": 262144,
+        "outcome": "complete",
+        "progress_trace": [
+          {
+            "application_bytes": 16384,
+            "at_s": 2.008675708,
+            "attempt": 1
+          },
+          {
+            "application_bytes": 98304,
+            "at_s": 2.530778125,
+            "attempt": 1
+          },
+          {
+            "application_bytes": 262144,
+            "at_s": 3.288516333,
+            "attempt": 1
+          },
+          {
+            "application_bytes": 638976,
+            "at_s": 3.889557625,
+            "attempt": 1
+          },
+          {
+            "application_bytes": 720896,
+            "at_s": 4.6352459580000005,
+            "attempt": 1
+          },
+          {
+            "application_bytes": 1097728,
+            "at_s": 5.137760791,
+            "attempt": 1
+          }
+        ],
+        "responses": [
+          {
+            "age_s": 3372,
+            "attempt": 1,
+            "cache_class": "unknown",
+            "content_length": 1128375,
+            "first_body_at_s": 2.008665125,
+            "headers_at_s": 1.6951052500000001,
+            "http_version": "HTTP/2.0",
+            "server_class": "other",
+            "status": 200,
+            "via_present": false
+          }
+        ]
+      },
+      "bytes": 1128375,
+      "sha256": "0cd83d944a6ca7822b4a8306cecc60a36e859b041f6702c6a1ad9ead78924451",
+      "ok": true,
+      "tcp": {
+        "sampled_connection_rows": 12,
+        "max_received_bytes": 1152979.0,
+        "max_duplicate_received_bytes": 0.0,
+        "max_out_of_order_received_bytes": 1058808.0,
+        "max_client_retransmit_bytes": 0.0,
+        "max_rtt_ms": 495.75,
+        "max_receive_buffer_bytes": 682108.0,
+        "note": "per-socket lifetime maxima; do not sum repeated samples; client retransmits do not measure server-side retransmits"
+      }
+    },
+    {
+      "round": 4,
+      "arm": "reconnect-same",
+      "exit_code": 0,
+      "external_timeout": false,
+      "wall_elapsed_s": 10.201867,
+      "measurement": {
+        "arm": "reconnect-same",
+        "bytes": 1128375,
+        "counters": {
+          "application_network_bytes": 1128375,
+          "cut_at_s": 2.606581125,
+          "interrupted": true,
+          "resumed": true,
+          "retained_prefix_bytes": 262144
+        },
+        "diagnostic_total_budget_s": 60,
+        "elapsed_s": 9.307458917,
+        "forced_cut_bytes": 262144,
+        "outcome": "complete",
+        "progress_trace": [
+          {
+            "application_bytes": 16384,
+            "at_s": 1.294686875,
+            "attempt": 1
+          },
+          {
+            "application_bytes": 65536,
+            "at_s": 2.005542167,
+            "attempt": 1
+          },
+          {
+            "application_bytes": 245760,
+            "at_s": 2.603940792,
+            "attempt": 1
+          },
+          {
+            "application_bytes": 278528,
+            "at_s": 3.635937167,
+            "attempt": 2
+          },
+          {
+            "application_bytes": 425984,
+            "at_s": 4.298352708,
+            "attempt": 2
+          },
+          {
+            "application_bytes": 507904,
+            "at_s": 4.849705167,
+            "attempt": 2
+          },
+          {
+            "application_bytes": 638976,
+            "at_s": 5.477673583,
+            "attempt": 2
+          },
+          {
+            "application_bytes": 737280,
+            "at_s": 6.324861167,
+            "attempt": 2
+          },
+          {
+            "application_bytes": 851968,
+            "at_s": 7.217258542,
+            "attempt": 2
+          },
+          {
+            "application_bytes": 933888,
+            "at_s": 8.46181225,
+            "attempt": 2
+          },
+          {
+            "application_bytes": 1114112,
+            "at_s": 9.307448958,
+            "attempt": 2
+          }
+        ],
+        "responses": [
+          {
+            "age_s": 3377,
+            "attempt": 1,
+            "cache_class": "unknown",
+            "content_length": 1128375,
+            "first_body_at_s": 1.294680292,
+            "headers_at_s": 1.192339375,
+            "http_version": "HTTP/2.0",
+            "server_class": "other",
+            "status": 200,
+            "via_present": false
+          },
+          {
+            "age_s": 3380,
+            "attempt": 2,
+            "cache_class": "unknown",
+            "content_length": 866231,
+            "first_body_at_s": 3.635932833,
+            "headers_at_s": 3.3189655829999998,
+            "http_version": "HTTP/2.0",
+            "server_class": "other",
+            "status": 206,
+            "via_present": false
+          }
+        ]
+      },
+      "bytes": 1128375,
+      "sha256": "0cd83d944a6ca7822b4a8306cecc60a36e859b041f6702c6a1ad9ead78924451",
+      "ok": true,
+      "tcp": {
+        "sampled_connection_rows": 19,
+        "max_received_bytes": 885101.0,
+        "max_duplicate_received_bytes": 0.0,
+        "max_out_of_order_received_bytes": 794727.0,
+        "max_client_retransmit_bytes": 0.0,
+        "max_rtt_ms": 293.5,
+        "max_receive_buffer_bytes": 187980.0,
+        "note": "per-socket lifetime maxima; do not sum repeated samples; client retransmits do not measure server-side retransmits"
+      }
+    },
+    {
+      "round": 4,
+      "arm": "reconnect-chrome149",
+      "exit_code": 0,
+      "external_timeout": false,
+      "wall_elapsed_s": 8.166599,
+      "measurement": {
+        "arm": "reconnect-chrome149",
+        "bytes": 1128375,
+        "counters": {
+          "application_network_bytes": 1128375,
+          "cut_at_s": 2.328021458,
+          "interrupted": true,
+          "resumed": true,
+          "retained_prefix_bytes": 262144
+        },
+        "diagnostic_total_budget_s": 60,
+        "elapsed_s": 7.203631125,
+        "forced_cut_bytes": 262144,
+        "outcome": "complete",
+        "progress_trace": [
+          {
+            "application_bytes": 16384,
+            "at_s": 1.334359333,
+            "attempt": 1
+          },
+          {
+            "application_bytes": 81920,
+            "at_s": 1.837151625,
+            "attempt": 1
+          },
+          {
+            "application_bytes": 278528,
+            "at_s": 4.488842916,
+            "attempt": 2
+          },
+          {
+            "application_bytes": 425984,
+            "at_s": 4.995109708,
+            "attempt": 2
+          },
+          {
+            "application_bytes": 589824,
+            "at_s": 5.499283208,
+            "attempt": 2
+          },
+          {
+            "application_bytes": 753664,
+            "at_s": 6.138466666,
+            "attempt": 2
+          },
+          {
+            "application_bytes": 1015808,
+            "at_s": 6.642703833,
+            "attempt": 2
+          },
+          {
+            "application_bytes": 1114112,
+            "at_s": 7.20361625,
+            "attempt": 2
+          }
+        ],
+        "responses": [
+          {
+            "age_s": 3388,
+            "attempt": 1,
+            "cache_class": "unknown",
+            "content_length": 1128375,
+            "first_body_at_s": 1.334353333,
+            "headers_at_s": 1.286146875,
+            "http_version": "HTTP/2.0",
+            "server_class": "other",
+            "status": 200,
+            "via_present": false
+          },
+          {
+            "age_s": 3391,
+            "attempt": 2,
+            "cache_class": "unknown",
+            "content_length": 866231,
+            "first_body_at_s": 4.4888395,
+            "headers_at_s": 4.488834875,
+            "http_version": "HTTP/2.0",
+            "server_class": "other",
+            "status": 206,
+            "via_present": false
+          }
+        ]
+      },
+      "bytes": 1128375,
+      "sha256": "0cd83d944a6ca7822b4a8306cecc60a36e859b041f6702c6a1ad9ead78924451",
+      "ok": true,
+      "tcp": {
+        "sampled_connection_rows": 15,
+        "max_received_bytes": 885101.0,
+        "max_duplicate_received_bytes": 0.0,
+        "max_out_of_order_received_bytes": 806176.0,
+        "max_client_retransmit_bytes": 0.0,
+        "max_rtt_ms": 549.0,
+        "max_receive_buffer_bytes": 471132.0,
+        "note": "per-socket lifetime maxima; do not sum repeated samples; client retransmits do not measure server-side retransmits"
+      }
+    },
+    {
+      "round": 5,
+      "arm": "reconnect-http1",
+      "exit_code": 0,
+      "external_timeout": false,
+      "wall_elapsed_s": 10.210012,
+      "measurement": {
+        "arm": "reconnect-http1",
+        "bytes": 1128375,
+        "counters": {
+          "application_network_bytes": 1128375,
+          "cut_at_s": 2.994963166,
+          "interrupted": true,
+          "resumed": true,
+          "retained_prefix_bytes": 262144
+        },
+        "diagnostic_total_budget_s": 60,
+        "elapsed_s": 9.681327791,
+        "forced_cut_bytes": 262144,
+        "outcome": "complete",
+        "progress_trace": [
+          {
+            "application_bytes": 16384,
+            "at_s": 1.560204416,
+            "attempt": 1
+          },
+          {
+            "application_bytes": 81920,
+            "at_s": 2.415247791,
+            "attempt": 1
+          },
+          {
+            "application_bytes": 131072,
+            "at_s": 2.9934819580000003,
+            "attempt": 1
+          },
+          {
+            "application_bytes": 262612,
+            "at_s": 3.761235083,
+            "attempt": 2
+          },
+          {
+            "application_bytes": 280370,
+            "at_s": 4.2651735,
+            "attempt": 2
+          },
+          {
+            "application_bytes": 344572,
+            "at_s": 5.028374791,
+            "attempt": 2
+          },
+          {
+            "application_bytes": 531182,
+            "at_s": 5.780402625,
+            "attempt": 2
+          },
+          {
+            "application_bytes": 658124,
+            "at_s": 6.321860041,
+            "attempt": 2
+          },
+          {
+            "application_bytes": 700470,
+            "at_s": 6.862218208,
+            "attempt": 2
+          },
+          {
+            "application_bytes": 831606,
+            "at_s": 7.535921125,
+            "attempt": 2
+          },
+          {
+            "application_bytes": 891710,
+            "at_s": 8.237942291,
+            "attempt": 2
+          },
+          {
+            "application_bytes": 1011918,
+            "at_s": 8.780732666,
+            "attempt": 2
+          },
+          {
+            "application_bytes": 1069290,
+            "at_s": 9.49132675,
+            "attempt": 2
+          }
+        ],
+        "responses": [
+          {
+            "age_s": 1221,
+            "attempt": 1,
+            "cache_class": "unknown",
+            "content_length": 1128375,
+            "first_body_at_s": 1.560198041,
+            "headers_at_s": 1.560193583,
+            "http_version": "HTTP/2.0",
+            "server_class": "other",
+            "status": 200,
+            "via_present": false
+          },
+          {
+            "age_s": 1224,
+            "attempt": 2,
+            "cache_class": "unknown",
+            "content_length": 866231,
+            "first_body_at_s": 3.761229958,
+            "headers_at_s": 3.761220291,
+            "http_version": "HTTP/1.1",
+            "server_class": "other",
+            "status": 206,
+            "via_present": false
+          }
+        ]
+      },
+      "bytes": 1128375,
+      "sha256": "0cd83d944a6ca7822b4a8306cecc60a36e859b041f6702c6a1ad9ead78924451",
+      "ok": true,
+      "tcp": {
+        "sampled_connection_rows": 19,
+        "max_received_bytes": 848691.0,
+        "max_duplicate_received_bytes": 0.0,
+        "max_out_of_order_received_bytes": 789772.0,
+        "max_client_retransmit_bytes": 0.0,
+        "max_rtt_ms": 292.5,
+        "max_receive_buffer_bytes": 243500.0,
+        "note": "per-socket lifetime maxima; do not sum repeated samples; client retransmits do not measure server-side retransmits"
+      }
+    },
+    {
+      "round": 5,
+      "arm": "continue",
+      "exit_code": 0,
+      "external_timeout": false,
+      "wall_elapsed_s": 5.105672,
+      "measurement": {
+        "arm": "continue",
+        "bytes": 1128375,
+        "counters": {
+          "application_network_bytes": 1128375,
+          "interrupted": false
+        },
+        "diagnostic_total_budget_s": 60,
+        "elapsed_s": 4.185550334,
+        "forced_cut_bytes": 262144,
+        "outcome": "complete",
+        "progress_trace": [
+          {
+            "application_bytes": 16384,
+            "at_s": 1.926877959,
+            "attempt": 1
+          },
+          {
+            "application_bytes": 114688,
+            "at_s": 2.475022834,
+            "attempt": 1
+          },
+          {
+            "application_bytes": 360448,
+            "at_s": 3.156874375,
+            "attempt": 1
+          },
+          {
+            "application_bytes": 802816,
+            "at_s": 3.811902375,
+            "attempt": 1
+          }
+        ],
+        "responses": [
+          {
+            "age_s": 3407,
+            "attempt": 1,
+            "cache_class": "unknown",
+            "content_length": 1128375,
+            "first_body_at_s": 1.926870084,
+            "headers_at_s": 1.644128042,
+            "http_version": "HTTP/2.0",
+            "server_class": "other",
+            "status": 200,
+            "via_present": false
+          }
+        ]
+      },
+      "bytes": 1128375,
+      "sha256": "0cd83d944a6ca7822b4a8306cecc60a36e859b041f6702c6a1ad9ead78924451",
+      "ok": true,
+      "tcp": {
+        "sampled_connection_rows": 9,
+        "max_received_bytes": 1145741.0,
+        "max_duplicate_received_bytes": 0.0,
+        "max_out_of_order_received_bytes": 1088999.0,
+        "max_client_retransmit_bytes": 0.0,
+        "max_rtt_ms": 231.28,
+        "max_receive_buffer_bytes": 715420.0,
+        "note": "per-socket lifetime maxima; do not sum repeated samples; client retransmits do not measure server-side retransmits"
+      }
+    },
+    {
+      "round": 5,
+      "arm": "reconnect-same",
+      "exit_code": 0,
+      "external_timeout": false,
+      "wall_elapsed_s": 11.227746,
+      "measurement": {
+        "arm": "reconnect-same",
+        "bytes": 1128375,
+        "counters": {
+          "application_network_bytes": 1128375,
+          "cut_at_s": 2.606164042,
+          "interrupted": true,
+          "resumed": true,
+          "retained_prefix_bytes": 262144
+        },
+        "diagnostic_total_budget_s": 60,
+        "elapsed_s": 10.499865334,
+        "forced_cut_bytes": 262144,
+        "outcome": "complete",
+        "progress_trace": [
+          {
+            "application_bytes": 16384,
+            "at_s": 1.081382417,
+            "attempt": 1
+          },
+          {
+            "application_bytes": 65536,
+            "at_s": 1.702601542,
+            "attempt": 1
+          },
+          {
+            "application_bytes": 81920,
+            "at_s": 2.356265459,
+            "attempt": 1
+          },
+          {
+            "application_bytes": 278528,
+            "at_s": 3.663026792,
+            "attempt": 2
+          },
+          {
+            "application_bytes": 360448,
+            "at_s": 4.170926042,
+            "attempt": 2
+          },
+          {
+            "application_bytes": 475136,
+            "at_s": 4.9147564169999995,
+            "attempt": 2
+          },
+          {
+            "application_bytes": 557056,
+            "at_s": 5.464944667,
+            "attempt": 2
+          },
+          {
+            "application_bytes": 655360,
+            "at_s": 5.976285375,
+            "attempt": 2
+          },
+          {
+            "application_bytes": 720896,
+            "at_s": 6.524353459,
+            "attempt": 2
+          },
+          {
+            "application_bytes": 802816,
+            "at_s": 7.027190042,
+            "attempt": 2
+          },
+          {
+            "application_bytes": 868352,
+            "at_s": 7.594382834,
+            "attempt": 2
+          },
+          {
+            "application_bytes": 917504,
+            "at_s": 8.176357125,
+            "attempt": 2
+          },
+          {
+            "application_bytes": 999424,
+            "at_s": 8.725298375,
+            "attempt": 2
+          },
+          {
+            "application_bytes": 1032192,
+            "at_s": 9.353252834,
+            "attempt": 2
+          },
+          {
+            "application_bytes": 1097728,
+            "at_s": 10.062128959,
+            "attempt": 2
+          }
+        ],
+        "responses": [
+          {
+            "age_s": 1236,
+            "attempt": 1,
+            "cache_class": "unknown",
+            "content_length": 1128375,
+            "first_body_at_s": 1.081376834,
+            "headers_at_s": 1.012651375,
+            "http_version": "HTTP/2.0",
+            "server_class": "other",
+            "status": 200,
+            "via_present": false
+          },
+          {
+            "age_s": 3414,
+            "attempt": 2,
+            "cache_class": "unknown",
+            "content_length": 866231,
+            "first_body_at_s": 3.663021417,
+            "headers_at_s": 3.342583417,
+            "http_version": "HTTP/2.0",
+            "server_class": "other",
+            "status": 206,
+            "via_present": false
+          }
+        ]
+      },
+      "bytes": 1128375,
+      "sha256": "0cd83d944a6ca7822b4a8306cecc60a36e859b041f6702c6a1ad9ead78924451",
+      "ok": true,
+      "tcp": {
+        "sampled_connection_rows": 21,
+        "max_received_bytes": 882027.0,
+        "max_duplicate_received_bytes": 0.0,
+        "max_out_of_order_received_bytes": 757251.0,
+        "max_client_retransmit_bytes": 0.0,
+        "max_rtt_ms": 253.12,
+        "max_receive_buffer_bytes": 243500.0,
+        "note": "per-socket lifetime maxima; do not sum repeated samples; client retransmits do not measure server-side retransmits"
+      }
+    },
+    {
+      "round": 5,
+      "arm": "reconnect-chrome149",
+      "exit_code": 0,
+      "external_timeout": false,
+      "wall_elapsed_s": 12.256701,
+      "measurement": {
+        "arm": "reconnect-chrome149",
+        "bytes": 1128375,
+        "counters": {
+          "application_network_bytes": 1128375,
+          "cut_at_s": 2.593888458,
+          "interrupted": true,
+          "resumed": true,
+          "retained_prefix_bytes": 262144
+        },
+        "diagnostic_total_budget_s": 60,
+        "elapsed_s": 11.763202208,
+        "forced_cut_bytes": 262144,
+        "outcome": "complete",
+        "progress_trace": [
+          {
+            "application_bytes": 16384,
+            "at_s": 1.518941208,
+            "attempt": 1
+          },
+          {
+            "application_bytes": 65536,
+            "at_s": 2.0566975,
+            "attempt": 1
+          },
+          {
+            "application_bytes": 229376,
+            "at_s": 2.593873541,
+            "attempt": 1
+          },
+          {
+            "application_bytes": 278528,
+            "at_s": 4.74759275,
+            "attempt": 2
+          },
+          {
+            "application_bytes": 393216,
+            "at_s": 5.274481833,
+            "attempt": 2
+          },
+          {
+            "application_bytes": 442368,
+            "at_s": 5.832964458,
+            "attempt": 2
+          },
+          {
+            "application_bytes": 557056,
+            "at_s": 6.364881375,
+            "attempt": 2
+          },
+          {
+            "application_bytes": 606208,
+            "at_s": 7.344784541,
+            "attempt": 2
+          },
+          {
+            "application_bytes": 770048,
+            "at_s": 8.07994375,
+            "attempt": 2
+          },
+          {
+            "application_bytes": 786432,
+            "at_s": 9.045736708,
+            "attempt": 2
+          },
+          {
+            "application_bytes": 950272,
+            "at_s": 9.979545,
+            "attempt": 2
+          },
+          {
+            "application_bytes": 983040,
+            "at_s": 10.573263833,
+            "attempt": 2
+          },
+          {
+            "application_bytes": 1081344,
+            "at_s": 11.185757,
+            "attempt": 2
+          },
+          {
+            "application_bytes": 1128375,
+            "at_s": 11.763188416,
+            "attempt": 2
+          }
+        ],
+        "responses": [
+          {
+            "age_s": 1248,
+            "attempt": 1,
+            "cache_class": "unknown",
+            "content_length": 1128375,
+            "first_body_at_s": 1.5189244579999999,
+            "headers_at_s": 1.518918666,
+            "http_version": "HTTP/2.0",
+            "server_class": "other",
+            "status": 200,
+            "via_present": false
+          },
+          {
+            "age_s": 1250,
+            "attempt": 2,
+            "cache_class": "unknown",
+            "content_length": 866231,
+            "first_body_at_s": 4.747584541,
+            "headers_at_s": 4.375947708,
+            "http_version": "HTTP/2.0",
+            "server_class": "other",
+            "status": 206,
+            "via_present": false
+          }
+        ]
+      },
+      "bytes": 1128375,
+      "sha256": "0cd83d944a6ca7822b4a8306cecc60a36e859b041f6702c6a1ad9ead78924451",
+      "ok": true,
+      "tcp": {
+        "sampled_connection_rows": 23,
+        "max_received_bytes": 869377.0,
+        "max_duplicate_received_bytes": 0.0,
+        "max_out_of_order_received_bytes": 785432.0,
+        "max_client_retransmit_bytes": 0.0,
+        "max_rtt_ms": 494.97,
+        "max_receive_buffer_bytes": 254604.0,
+        "note": "per-socket lifetime maxima; do not sum repeated samples; client retransmits do not measure server-side retransmits"
+      }
+    },
+    {
+      "round": 5,
+      "arm": "reconnect-firefox144",
+      "exit_code": 0,
+      "external_timeout": false,
+      "wall_elapsed_s": 10.202661,
+      "measurement": {
+        "arm": "reconnect-firefox144",
+        "bytes": 1128375,
+        "counters": {
+          "application_network_bytes": 1128375,
+          "cut_at_s": 3.102718,
+          "interrupted": true,
+          "resumed": true,
+          "retained_prefix_bytes": 262144
+        },
+        "diagnostic_total_budget_s": 60,
+        "elapsed_s": 9.475304833,
+        "forced_cut_bytes": 262144,
+        "outcome": "complete",
+        "progress_trace": [
+          {
+            "application_bytes": 16384,
+            "at_s": 0.955191375,
+            "attempt": 1
+          },
+          {
+            "application_bytes": 32768,
+            "at_s": 1.778141,
+            "attempt": 1
+          },
+          {
+            "application_bytes": 180224,
+            "at_s": 2.689609916,
+            "attempt": 1
+          },
+          {
+            "application_bytes": 278528,
+            "at_s": 4.082379458,
+            "attempt": 2
+          },
+          {
+            "application_bytes": 294912,
+            "at_s": 4.797413625,
+            "attempt": 2
+          },
+          {
+            "application_bytes": 425984,
+            "at_s": 5.300527916,
+            "attempt": 2
+          },
+          {
+            "application_bytes": 540672,
+            "at_s": 5.890260708,
+            "attempt": 2
+          },
+          {
+            "application_bytes": 638976,
+            "at_s": 6.43153625,
+            "attempt": 2
+          },
+          {
+            "application_bytes": 704512,
+            "at_s": 6.936680333,
+            "attempt": 2
+          },
+          {
+            "application_bytes": 753664,
+            "at_s": 7.457969708,
+            "attempt": 2
+          },
+          {
+            "application_bytes": 884736,
+            "at_s": 7.977691458,
+            "attempt": 2
+          },
+          {
+            "application_bytes": 999424,
+            "at_s": 8.837332666,
+            "attempt": 2
+          },
+          {
+            "application_bytes": 1097728,
+            "at_s": 9.369699083,
+            "attempt": 2
+          }
+        ],
+        "responses": [
+          {
+            "age_s": 1260,
+            "attempt": 1,
+            "cache_class": "unknown",
+            "content_length": 1128375,
+            "first_body_at_s": 0.955180833,
+            "headers_at_s": 0.882502541,
+            "http_version": "HTTP/2.0",
+            "server_class": "other",
+            "status": 200,
+            "via_present": false
+          },
+          {
+            "age_s": 3437,
+            "attempt": 2,
+            "cache_class": "unknown",
+            "content_length": 866231,
+            "first_body_at_s": 4.082372,
+            "headers_at_s": 4.068603708,
+            "http_version": "HTTP/2.0",
+            "server_class": "other",
+            "status": 206,
+            "via_present": false
+          }
+        ]
+      },
+      "bytes": 1128375,
+      "sha256": "0cd83d944a6ca7822b4a8306cecc60a36e859b041f6702c6a1ad9ead78924451",
+      "ok": true,
+      "tcp": {
+        "sampled_connection_rows": 19,
+        "max_received_bytes": 863826.0,
+        "max_duplicate_received_bytes": 0.0,
+        "max_out_of_order_received_bytes": 784556.0,
+        "max_client_retransmit_bytes": 0.0,
+        "max_rtt_ms": 291.94,
+        "max_receive_buffer_bytes": 348988.0,
+        "note": "per-socket lifetime maxima; do not sum repeated samples; client retransmits do not measure server-side retransmits"
+      }
+    }
+  ],
+  "summaries": {
+    "continue": {
+      "planned": 5,
+      "attempted": 5,
+      "passed": 5,
+      "failed": 0,
+      "median_total_elapsed_s": 5.433695666,
+      "min_total_elapsed_s": 4.185550334,
+      "max_total_elapsed_s": 12.204681209
+    },
+    "reconnect-same": {
+      "planned": 5,
+      "attempted": 5,
+      "passed": 5,
+      "failed": 0,
+      "median_total_elapsed_s": 9.635693625,
+      "min_total_elapsed_s": 9.1424225,
+      "max_total_elapsed_s": 10.499865334
+    },
+    "reconnect-chrome149": {
+      "planned": 5,
+      "attempted": 5,
+      "passed": 5,
+      "failed": 0,
+      "median_total_elapsed_s": 8.779390833,
+      "min_total_elapsed_s": 6.7587195,
+      "max_total_elapsed_s": 11.863384584
+    },
+    "reconnect-firefox144": {
+      "planned": 5,
+      "attempted": 5,
+      "passed": 5,
+      "failed": 0,
+      "median_total_elapsed_s": 13.096007083,
+      "min_total_elapsed_s": 9.475304833,
+      "max_total_elapsed_s": 15.825606
+    },
+    "reconnect-http1": {
+      "planned": 5,
+      "attempted": 5,
+      "passed": 5,
+      "failed": 0,
+      "median_total_elapsed_s": 9.148365959,
+      "min_total_elapsed_s": 6.824421625,
+      "max_total_elapsed_s": 11.118841917
+    }
+  },
+  "complete": true
+}
