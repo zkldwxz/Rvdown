@@ -220,10 +220,10 @@ impl WreqSegmentDownloader {
                     .map_err(|_| TransportError::Network("请求地址无效".into()))?,
             )
             .map_err(TransportError::Network)?;
-            let builder = if let Some(interface) = binding {
+            let builder = if let Some(_interface) = binding {
                 #[cfg(any(target_os = "macos", target_os = "linux"))]
                 {
-                    builder.interface(interface)
+                    builder.interface(_interface)
                 }
                 #[cfg(not(any(target_os = "macos", target_os = "linux")))]
                 {

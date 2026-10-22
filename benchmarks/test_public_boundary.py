@@ -11,7 +11,7 @@ ROOT = pathlib.Path(__file__).resolve().parent.parent
 class PublicBoundary(unittest.TestCase):
     def test_path_dependencies_stay_inside_this_workspace(self):
         for file in [ROOT / "Cargo.toml", *ROOT.glob("crates/*/Cargo.toml")]:
-            document = tomllib.loads(file.read_text())
+            document = tomllib.loads(file.read_text(encoding="utf-8"))
             groups = [document.get("workspace", {}).get("dependencies", {})]
             groups.extend(document.get(name, {}) for name in ["dependencies", "dev-dependencies", "build-dependencies"])
             for group in groups:
