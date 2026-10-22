@@ -1,5 +1,7 @@
 # Rvdown
 
+[五平台CDN测速与分路方案](docs/benchmarks/2026-10-22/cdn-matrix.zh-CN.md)
+
 [实测对比报告 / measured comparison](docs/benchmarks/2026-10-22/report.zh-CN.md) · [Reproduce](benchmarks/README.md) · [超时定位与连接策略](docs/benchmarks/2026-10-22/link-investigation.zh-CN.md) · [重连/指纹/协议实验](docs/benchmarks/2026-10-22/reconnect-investigation.zh-CN.md)
 
 基于 Rust 的视频下载 SDK 与 CLI，追求高性能、小占用、高速与安全。

@@ -21,6 +21,11 @@ resource use and SDK/CLI integration. Follow the [video benchmark plan](docs/vid
 - Historical MDN measurements are auxiliary diagnostics. They do not establish Douyin
   CDN performance or a universal aria2 ranking. A single successful video is not a full
   comparative benchmark. Never turn a goal, fixture or skipped case into a claimed pass.
+- The [five-platform file-transfer report](docs/benchmarks/2026-10-22/cdn-matrix.zh-CN.md)
+  contains measured header controls and a proposed size/source policy. Its proposal is
+  not implemented: production still uses 1MiB minimum pieces and an 8-connection ceiling.
+  Preserve the original 350/375 round and separate 25/25 recovery; do not call the first
+  round fully passed or turn pure-transfer results into full media/application acceptance.
 
 ## Repository boundary and safety
 
@@ -43,8 +48,9 @@ resource use and SDK/CLI integration. Follow the [video benchmark plan](docs/vid
 
 ## Benchmark priorities and fairness
 
-1. Use **actual Douyin video CDN URLs** as the primary comparison with aria2 and
-   httpx-fetch. Expand to other real video CDNs, HLS and DASH. MDN/public samples,
+1. Use **actual video CDN URLs** for Douyin, bilibili, Toutiao, Xigua and Kuaishou
+   in the current aria2/httpx-fetch matrix, with Douyin remaining a primary workload.
+   Expand real HLS/DASH coverage separately. MDN/public samples,
    GitHub mirrors and loopback fixtures are separately labelled diagnostics, never
    substitutes for this primary video evidence.
 2. Start with one video at a time, fresh equivalent URLs/required headers, the same

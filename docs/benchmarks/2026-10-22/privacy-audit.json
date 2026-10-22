@@ -1,10 +1,10 @@
 {
   "scope": "all prospective public files and all reachable Git history blobs",
-  "prospective_files_scanned": 96,
-  "history_blobs_scanned": 132,
-  "history_commits_scanned": 12,
-  "audited_head": "551ed0cf2dbc7796b595c90739f3a51d7b7a4d29",
-  "prospective_manifest_sha256_excluding_this_audit": "fd571008e6e450813b460c26262077e7fa09e91be49abf69197f2b3411482487",
+  "prospective_files_scanned": 98,
+  "history_blobs_scanned": 145,
+  "history_commits_scanned": 13,
+  "audited_head": "42aae87f2273477b3e02cd694ca692f89b51fae8",
+  "prospective_manifest_sha256_excluding_this_audit": "a6ff6801db80bdb73cba6e4f81706692242af012ace1c990952853f1bb323b32",
   "findings_count": 0,
   "manual_review": "generic SDK/CLI, public URLs and generated fixtures only; no application code/configuration, business IDs/APIs, raw logs, DNS maps, media or environment snapshots selected; path dependencies checked inside workspace",
   "limitations": "targeted local private-configuration markers and common credential signatures; not an exhaustive proof for every secret format"
