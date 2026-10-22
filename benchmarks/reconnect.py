@@ -10,6 +10,7 @@ import re
 import statistics
 import subprocess
 import sys
+import threading
 import time
 from types import SimpleNamespace
 
@@ -54,18 +55,31 @@ def tcp_summary(raw):
         "note":"per-socket lifetime maxima; do not sum repeated samples; client retransmits do not measure server-side retransmits"}
 
 
+def collect_tcp(pid,stop,path):
+    # CSV sample count 0 exits immediately on macOS. Finite normal exits flush every sample batch.
+    with path.open("a") as stream:
+        while not stop.is_set():
+            try:
+                result=subprocess.run(["nettop","-n","-m","tcp","-p",str(pid),
+                    "-L","2","-s","1","-x","-J",COLUMNS],capture_output=True,text=True,
+                    env=compare.clean_environment(),timeout=4)
+                stream.write(result.stdout);stream.flush()
+            except subprocess.TimeoutExpired:
+                pass
+
+
 def trial(args,number,arm,address):
     label=f"{number}-{arm}"; dest=args.work/(label+".mp4")
     stdout=args.work/(label+".stdout"); stderr=args.work/(label+".stderr")
-    tcp=args.work/(label+".tcp.csv"); monitor=None
+    tcp=args.work/(label+".tcp.csv"); monitor=None; stop=threading.Event()
     started=time.perf_counter(); timed_out=False
-    with stdout.open("w") as out,stderr.open("w") as err,tcp.open("w") as network:
+    tcp.touch()
+    with stdout.open("w") as out,stderr.open("w") as err:
         process=subprocess.Popen([str(args.binary),URL,address,args.interface,arm,str(dest)],
             stdout=out,stderr=err,env=compare.clean_environment(),start_new_session=True)
         if sys.platform=="darwin":
-            monitor=subprocess.Popen(["nettop","-n","-m","tcp","-p",str(process.pid),
-                "-L","0","-s","1","-x","-J",COLUMNS],stdout=network,stderr=subprocess.DEVNULL,
-                env=compare.clean_environment())
+            monitor=threading.Thread(target=collect_tcp,args=(process.pid,stop,tcp),daemon=True)
+            monitor.start()
         try: process.wait(timeout=70)
         except subprocess.TimeoutExpired:
             timed_out=True; process.terminate()
@@ -73,9 +87,7 @@ def trial(args,number,arm,address):
             except subprocess.TimeoutExpired:process.kill();process.wait()
         finally:
             if monitor:
-                monitor.terminate()
-                try:monitor.wait(timeout=3)
-                except subprocess.TimeoutExpired:monitor.kill();monitor.wait()
+                stop.set();monitor.join(timeout=5)
     try: result=json.loads(stdout.read_text())
     except ValueError: result={"outcome":"no_structured_result"}
     size=dest.stat().st_size if dest.exists() else 0
