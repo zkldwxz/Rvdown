@@ -58,7 +58,7 @@ Four event types: `start`, `progress` (only with `--progress`), `result`, `summa
 
 | Flag | Default | Meaning |
 |---|---|---|
-| `--connections <N>` | 8 | Parallel segments per file (out-of-range values are clamped to 1-32). |
+| `--connections <N>` | 8 | Per-file connection ceiling (clamped to 1-32). Douyin files up to 32 MiB use one connection; other sources keep this ceiling. |
 | `--retry-attempts <N>` | 3 | Attempts per request, including the first (minimum 1). |
 | `--ffmpeg <path>` | auto | ffmpeg path. Default: `resources/ffmpeg[.exe]` next to the binary → `PATH`. Environment variables are **not** read; pass the path explicitly. |
 | `--proxy <url>` | system | `http://` or `socks5://`; `--no-proxy` forces direct. |

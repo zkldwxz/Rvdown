@@ -39,7 +39,8 @@ use super::control::{
 };
 use super::identity::{resource_domain, ByteRange, ContentRange, ResourceIdentity};
 use super::plan::{
-    normalize_connections, plan_segments, SegmentRange, DEFAULT_SEGMENT_CONNECTIONS,
+    adaptive_connection_limit, normalize_connections, plan_segments, SegmentRange,
+    DEFAULT_SEGMENT_CONNECTIONS,
 };
 
 /// 资源变化最多重启一次（416 / 验证器失配后重新探测），绝不无限循环。
@@ -287,6 +288,7 @@ pub struct RangeDownloader {
     client: Arc<dyn SegmentDownloader>,
     config: RangeDownloaderConfig,
     policy: TransferPolicy,
+    adaptive_connections: bool,
 }
 
 /// 探测到的资源形态。
@@ -384,6 +386,19 @@ impl RangeDownloader {
             client,
             config,
             policy: TransferPolicy::default(),
+            adaptive_connections: false,
+        }
+    }
+
+    /// 按文件大小与已识别的抖音来源自适应连接上限。
+    ///
+    /// 调用者配置的连接数仍是最大值。用于视频主下载；HLS 分片继续独立按分片并发调度。
+    pub fn new_adaptive(client: Arc<dyn SegmentDownloader>, config: RangeDownloaderConfig) -> Self {
+        Self {
+            client,
+            config,
+            policy: TransferPolicy::default(),
+            adaptive_connections: true,
         }
     }
 
@@ -397,6 +412,21 @@ impl RangeDownloader {
             client,
             config,
             policy,
+            adaptive_connections: false,
+        }
+    }
+
+    /// 带传输策略的自适应构造，供默认媒体下载器使用。
+    pub fn with_policy_adaptive(
+        client: Arc<dyn SegmentDownloader>,
+        config: RangeDownloaderConfig,
+        policy: TransferPolicy,
+    ) -> Self {
+        Self {
+            client,
+            config,
+            policy,
+            adaptive_connections: true,
         }
     }
 
@@ -882,13 +912,23 @@ impl RangeDownloader {
         loop {
             counters.attempts.fetch_add(1, Ordering::Relaxed);
             let probed = self.probe_resource(url, headers).await;
-            let (total, identity, origin) = match probed {
+            let (total, identity, origin, is_douyin) = match probed {
                 // 资源域绑**探测到的最终响应地址**：同一个入口 URL 两次重定向到不同目标时，
                 // 只有最终地址能区分是不是同一份资源（RFC 9110 §7.6 有效请求 URI +
                 // §8.8.1 强 validator 不保证跨资源唯一，同 size+同 etag 也会撞）。
                 Some(resource) => {
                     let domain = resource.resource_domain(url);
-                    (resource.total, resource.identity, domain)
+                    let explicit_referer = headers
+                        .iter()
+                        .find(|(name, _)| name.eq_ignore_ascii_case("referer"))
+                        .map(|(_, value)| value.as_str());
+                    let inferred_referer = crate::headers::referer_for_urls(&[
+                        resource.effective_url.as_deref(),
+                        Some(url),
+                        explicit_referer,
+                    ]);
+                    let is_douyin = inferred_referer.as_deref() == Some("https://www.douyin.com/");
+                    (resource.total, resource.identity, domain, is_douyin)
                 }
                 // 探测不到长度：走单流（HEAD 被拒/无长度的有界回退，）。
                 None => {
@@ -937,8 +977,13 @@ impl RangeDownloader {
                 }
             };
 
-            let segments =
-                plan_segments(total, normalize_connections(Some(self.config.connections)));
+            let configured_limit = normalize_connections(Some(self.config.connections));
+            let connection_limit = if self.adaptive_connections {
+                adaptive_connection_limit(total, configured_limit, is_douyin)
+            } else {
+                configured_limit
+            };
+            let segments = plan_segments(total, connection_limit);
             // 单段（小文件）不值得开多连接：直接走单流路径。
             // 但有可信断点时仍走分段路径（按区间补缺失字节），否则续传无从谈起。
             let use_segmented = segments.len() > 1 || resuming;
@@ -1623,6 +1668,78 @@ mod tests {
         assert_eq!(server.head_calls(), 1, "先 HEAD 预检");
         assert!(!part_path_for(&dest).exists(), "交付后无 .part 残件");
         assert!(!control_path_for(&dest).exists(), "交付后无 .aria2 残件");
+    }
+
+    #[test]
+    fn 自适应下载器抖音小视频使用单路完整响应() {
+        let dir = tempfile::tempdir().unwrap();
+        let dest = dir.path().join("small.mp4");
+        let body = vec![11u8; (3 * M) as usize];
+        let server = Arc::new(FakeServer::with_body(body.clone()));
+
+        run(
+            RangeDownloader::new_adaptive(server.clone(), config(8, 3)).download(
+                "https://cdn.douyinvod.com/small.mp4",
+                &dest,
+                &no_headers(),
+            ),
+        )
+        .unwrap();
+
+        assert_eq!(std::fs::read(&dest).unwrap(), body);
+        assert_eq!(server.seen_ranges(), vec!["none".to_string()]);
+    }
+
+    #[test]
+    fn 自适应下载器头条小视频保留调用者连接上限() {
+        let dir = tempfile::tempdir().unwrap();
+        let dest = dir.path().join("toutiao.mp4");
+        let body = vec![12u8; (3 * M) as usize];
+        let server = Arc::new(FakeServer::with_body(body.clone()));
+
+        run(
+            RangeDownloader::new_adaptive(server.clone(), config(8, 3)).download(
+                "https://cdn.toutiaovod.com/small.mp4",
+                &dest,
+                &no_headers(),
+            ),
+        )
+        .unwrap();
+
+        assert_eq!(std::fs::read(&dest).unwrap(), body);
+        assert_eq!(
+            server.seen_ranges().len(),
+            3,
+            "头条的上限8由1MiB最小段长约束为3段"
+        );
+    }
+
+    #[test]
+    fn 自适应下载器站点资源不压低调用者的连接上限() {
+        let dir = tempfile::tempdir().unwrap();
+        let dest = dir.path().join("bilibili.mp4");
+        let body = vec![13u8; (5 * M) as usize];
+        let server = Arc::new(FakeServer::with_body(body.clone()));
+
+        run(
+            RangeDownloader::new_adaptive(server.clone(), config(8, 3)).download(
+                "https://upos-sz-mirror.bilivideo.com/video.mp4",
+                &dest,
+                &no_headers(),
+            ),
+        )
+        .unwrap();
+
+        assert_eq!(std::fs::read(&dest).unwrap(), body);
+        assert_eq!(
+            server.seen_ranges().len(),
+            5,
+            "5MiB B站资源仍使用调用者上限8，实际段数受1MiB最小段长约束"
+        );
+        assert!(server
+            .seen_ranges()
+            .iter()
+            .all(|range| range.starts_with("bytes=")));
     }
 
     #[test]
