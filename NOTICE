@@ -1,0 +1,17 @@
+Rvdown
+Copyright (c) 2026 zkldwxz
+
+Licensed under Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International
+(CC BY-NC-SA 4.0). Full text: LICENSE.
+
+This license restricts use to non-commercial purposes and requires any derivative work to
+be distributed under the same license. It is a source-available license, not an OSI-approved
+open source license. For commercial licensing, contact the maintainer.
+
+Third-party components keep their own licenses; the notable ones:
+
+- wreq / wreq-util (Apache-2.0) — browser TLS (JA3) fingerprint emulation.
+- BoringSSL (OpenSSL/ISC-style, via btls) — TLS implementation used by wreq.
+- ffmpeg is NOT bundled and NOT linked: Rvdown only executes an external ffmpeg binary
+  provided by the user. ffmpeg's own license (LGPL/GPL depending on the build) applies to
+  that binary, not to this project.

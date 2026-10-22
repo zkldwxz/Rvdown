@@ -1,0 +1,36 @@
+[workspace]
+resolver = "2"
+members = ["crates/rvdown", "crates/rvdown-cli"]
+
+[workspace.package]
+version = "0.1.0"
+edition = "2021"
+license = "CC-BY-NC-SA-4.0"
+repository = "https://github.com/zkldwxz/Rvdown"
+publish = false
+
+[workspace.dependencies]
+rvdown = { path = "crates/rvdown" }
+async-trait = "0.1"
+clap = { version = "4", features = ["derive"] }
+futures = "0.3"
+md-5 = "0.10"
+regex = "1"
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+tempfile = "3"
+thiserror = "2"
+tokio = { version = "1", features = ["macros", "rt-multi-thread", "sync", "time", "fs", "io-util", "net", "signal"] }
+url = "2"
+# TLS 指纹伪装（BoringSSL/JA3）：解决短视频 CDN 对非浏览器 TLS 栈的 403。
+# 钉精确版本；换实现只动 transport/wreq_client.rs，不动 trait 与编排层。
+wreq = { version = "=6.0.0-rc.31", features = ["stream"] }
+wreq-util = "=3.0.0-rc.14"
+
+[workspace.lints.rust]
+unsafe_code = "forbid"
+
+[profile.release]
+lto = "thin"
+codegen-units = 1
+strip = true
