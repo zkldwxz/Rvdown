@@ -928,8 +928,12 @@ impl RangeDownloader {
                 ResumeDecision::Restart { .. } => {
                     // 不可信现场一律从零：删残件新建（绝不把旧字节拼进新文件）。
                     discard_partial(dest);
-                    File::create(part_path_for(dest)).map_err(map_fs_error)?;
-                    ControlLedger::open(dest, total, identity.clone(), &origin)
+                    // 先确立逻辑长度，末段未完成时也能满足续传的尺寸不变量。
+                    // 不写零、不调用 fallocate；占位不算完成，交付仍须逐段落盘并记台账。
+                    File::create(part_path_for(dest))
+                        .and_then(|file| file.set_len(total))
+                        .map_err(map_fs_error)?;
+                    ControlLedger::open_in_domain(dest, total, identity.clone(), &origin)
                 }
             };
 
@@ -1822,6 +1826,55 @@ mod tests {
             "段 1 没下完不能标完成"
         );
         let _ = error;
+    }
+
+    #[test]
+    fn 末段未写到文件尾时重启仍只补缺失区间() {
+        // 故障注入：前段真实写入并落盘，末段在收到字节前断开；不预置满长假文件。
+        let dir = tempfile::tempdir().unwrap();
+        let dest = dir.path().join("v.mp4");
+        let body: Vec<u8> = (0..(2 * M + M / 2) as u32)
+            .map(|i| (i % 249) as u8)
+            .collect();
+        let server = Arc::new(FakeServer::with_body(body.clone()));
+        server.fail_range("bytes=1310720-2621439");
+        assert!(
+            run(RangeDownloader::new(server.clone(), config(8, 1)).download(
+                TEST_URL,
+                &dest,
+                &no_headers(),
+            ))
+            .is_err()
+        );
+        assert!(!dest.exists(), "未完整下载绝不交付占位字节");
+        server.fail_ranges.lock().unwrap().clear();
+        server.seen_ranges.lock().unwrap().clear();
+        let report = run(
+            RangeDownloader::new(server.clone(), config(8, 1)).download_tracked(
+                &track(),
+                TEST_URL,
+                &dest,
+                &no_headers(),
+                None,
+                None,
+            ),
+        )
+        .unwrap();
+        assert_eq!(
+            report.resumed_bytes,
+            M + M / 4,
+            "已落盘前段不能因末段未到文件尾而重下"
+        );
+        assert_eq!(report.network_bytes, M + M / 4, "只传输缺失后段");
+        assert_eq!(
+            server.seen_ranges(),
+            vec!["bytes=1310720-2621439".to_string()]
+        );
+        assert_eq!(
+            std::fs::read(&dest).unwrap(),
+            body,
+            "所有占位必须被真实视频字节覆盖"
+        );
     }
 
     #[test]

@@ -391,7 +391,17 @@ pub struct ControlLedger {
 impl ControlLedger {
     /// 打开（或新建）台账；调用方保证此时已持有 `DestLock`。
     pub fn open(dest: &Path, total: u64, identity: ResourceIdentity, origin: &str) -> Self {
-        let domain = resource_domain(origin);
+        Self::open_in_domain(dest, total, identity, &resource_domain(origin))
+    }
+
+    /// 调用方已完成重定向资源域计算，不能再把摘要当 URL 哈希第二次。
+    pub(crate) fn open_in_domain(
+        dest: &Path,
+        total: u64,
+        identity: ResourceIdentity,
+        domain: &str,
+    ) -> Self {
+        let domain = domain.to_string();
         let state = match load_control_state(dest) {
             Ok(mut existing) if existing.total == total => {
                 existing.origin = Some(domain);
