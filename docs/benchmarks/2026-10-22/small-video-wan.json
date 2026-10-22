@@ -1,0 +1,368 @@
+{
+  "schema": 1,
+  "date": "2026-10-22",
+  "source_commit": "ade20b808d29f4ebc1c1a59da894552300535a58",
+  "host": {
+    "os": "Darwin",
+    "arch": "arm64"
+  },
+  "method": {
+    "one_file_at_a_time": true,
+    "rounds": 4,
+    "order": "four-way rotating Latin square; both Rvdown modes balanced",
+    "profiles": [
+      "rvdown-1",
+      "rvdown-8",
+      "aria2-default-threshold",
+      "aria2-1m-threshold"
+    ],
+    "aria2_connection_cap": 8,
+    "aria2_default_threshold": "20 MiB; all other comparison caps explicitly matched at 8",
+    "aria2_tuned_threshold": "1 MiB; same as earlier comparison",
+    "local_conditions": [
+      "4 MiB/s per active GET",
+      "uncapped loopback"
+    ],
+    "timing": "process startup to file delivery, SHA256 outside timer",
+    "WAN": "shared loopback CONNECT byte relay, physical-interface-bound upstream, one DoH IP snapshot, TLS end-to-end, no external proxy",
+    "WAN_connection_evidence": "TCP connection count is observed, not a count of HTTP Range requests inside TLS",
+    "local_evidence": "server observes every HEAD/GET Range header and peak concurrent GETs",
+    "known_WAN_hash": "from previous independent successful tool outputs; no asymmetric warmup preflight"
+  },
+  "artifacts": {
+    "rvdown": {
+      "bytes": 6480736,
+      "sha256": "82e453609ac2a03e93c60e5d4dbac811ef002eceeaf8efee568d617b1517503e"
+    },
+    "aria2": {
+      "bytes": 3318848,
+      "sha256": "503c7b58b64e76af21ac9f0f96cca8749617c25f997739b8346cdf7c47fd99e3"
+    },
+    "ffmpeg": {
+      "bytes": 426512,
+      "sha256": "7f6028378534aa10a2dfa07d807ddcc0d18c869bf5c2f64c89efcc18ee88c4ee"
+    }
+  },
+  "samples": [
+    {
+      "id": "mdn-flower",
+      "url": "https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4",
+      "bytes": 1128375,
+      "sha256": "0cd83d944a6ca7822b4a8306cecc60a36e859b041f6702c6a1ad9ead78924451"
+    }
+  ],
+  "runs": [
+    {
+      "sample": "mdn-flower",
+      "round": 1,
+      "profile": "rvdown-1",
+      "exit_code": 0,
+      "timed_out": false,
+      "elapsed_s": 38.180405,
+      "peak_rss_bytes": 7421952,
+      "cpu_user_s": 0.01,
+      "cpu_system_s": 0.01,
+      "http_status": null,
+      "bytes": 1128375,
+      "sha256": "0cd83d944a6ca7822b4a8306cecc60a36e859b041f6702c6a1ad9ead78924451",
+      "ok": true,
+      "upstream_tcp_connections": 1
+    },
+    {
+      "sample": "mdn-flower",
+      "round": 1,
+      "profile": "rvdown-8",
+      "exit_code": -15,
+      "timed_out": true,
+      "elapsed_s": 45.00627,
+      "peak_rss_bytes": null,
+      "cpu_user_s": null,
+      "cpu_system_s": null,
+      "http_status": null,
+      "bytes": 0,
+      "sha256": null,
+      "ok": false,
+      "upstream_tcp_connections": 1
+    },
+    {
+      "sample": "mdn-flower",
+      "round": 1,
+      "profile": "aria2-default-threshold",
+      "exit_code": 0,
+      "timed_out": false,
+      "elapsed_s": 21.887293,
+      "peak_rss_bytes": 16580608,
+      "cpu_user_s": 0.02,
+      "cpu_system_s": 0.03,
+      "http_status": null,
+      "bytes": 1128375,
+      "sha256": "0cd83d944a6ca7822b4a8306cecc60a36e859b041f6702c6a1ad9ead78924451",
+      "ok": true,
+      "upstream_tcp_connections": 1
+    },
+    {
+      "sample": "mdn-flower",
+      "round": 1,
+      "profile": "aria2-1m-threshold",
+      "exit_code": 0,
+      "timed_out": false,
+      "elapsed_s": 36.632003,
+      "peak_rss_bytes": 16744448,
+      "cpu_user_s": 0.03,
+      "cpu_system_s": 0.03,
+      "http_status": null,
+      "bytes": 1128375,
+      "sha256": "0cd83d944a6ca7822b4a8306cecc60a36e859b041f6702c6a1ad9ead78924451",
+      "ok": true,
+      "upstream_tcp_connections": 2
+    },
+    {
+      "sample": "mdn-flower",
+      "round": 2,
+      "profile": "rvdown-8",
+      "exit_code": -15,
+      "timed_out": true,
+      "elapsed_s": 45.00484,
+      "peak_rss_bytes": null,
+      "cpu_user_s": null,
+      "cpu_system_s": null,
+      "http_status": null,
+      "bytes": 0,
+      "sha256": null,
+      "ok": false,
+      "upstream_tcp_connections": 1
+    },
+    {
+      "sample": "mdn-flower",
+      "round": 2,
+      "profile": "aria2-default-threshold",
+      "exit_code": -15,
+      "timed_out": true,
+      "elapsed_s": 45.00831,
+      "peak_rss_bytes": null,
+      "cpu_user_s": null,
+      "cpu_system_s": null,
+      "http_status": null,
+      "bytes": 848094,
+      "sha256": "109dc3b37d3540b2d534e74c311b21258fea204464d24d47becf107f68f21937",
+      "ok": false,
+      "upstream_tcp_connections": 1
+    },
+    {
+      "sample": "mdn-flower",
+      "round": 2,
+      "profile": "aria2-1m-threshold",
+      "exit_code": 0,
+      "timed_out": false,
+      "elapsed_s": 36.710181,
+      "peak_rss_bytes": 16678912,
+      "cpu_user_s": 0.02,
+      "cpu_system_s": 0.04,
+      "http_status": null,
+      "bytes": 1128375,
+      "sha256": "0cd83d944a6ca7822b4a8306cecc60a36e859b041f6702c6a1ad9ead78924451",
+      "ok": true,
+      "upstream_tcp_connections": 2
+    },
+    {
+      "sample": "mdn-flower",
+      "round": 2,
+      "profile": "rvdown-1",
+      "exit_code": 0,
+      "timed_out": false,
+      "elapsed_s": 15.308449,
+      "peak_rss_bytes": 7553024,
+      "cpu_user_s": 0.01,
+      "cpu_system_s": 0.01,
+      "http_status": null,
+      "bytes": 1128375,
+      "sha256": "0cd83d944a6ca7822b4a8306cecc60a36e859b041f6702c6a1ad9ead78924451",
+      "ok": true,
+      "upstream_tcp_connections": 1
+    },
+    {
+      "sample": "mdn-flower",
+      "round": 3,
+      "profile": "aria2-default-threshold",
+      "exit_code": -15,
+      "timed_out": true,
+      "elapsed_s": 45.007458,
+      "peak_rss_bytes": null,
+      "cpu_user_s": null,
+      "cpu_system_s": null,
+      "http_status": null,
+      "bytes": 906832,
+      "sha256": "ead3985c11e7d8f6e159fd68b79ca00c78f592fcd9621c0d11b800772bf616fa",
+      "ok": false,
+      "upstream_tcp_connections": 1
+    },
+    {
+      "sample": "mdn-flower",
+      "round": 3,
+      "profile": "aria2-1m-threshold",
+      "exit_code": 0,
+      "timed_out": false,
+      "elapsed_s": 25.830602,
+      "peak_rss_bytes": 16089088,
+      "cpu_user_s": 0.02,
+      "cpu_system_s": 0.02,
+      "http_status": null,
+      "bytes": 1128375,
+      "sha256": "0cd83d944a6ca7822b4a8306cecc60a36e859b041f6702c6a1ad9ead78924451",
+      "ok": true,
+      "upstream_tcp_connections": 2
+    },
+    {
+      "sample": "mdn-flower",
+      "round": 3,
+      "profile": "rvdown-1",
+      "exit_code": 0,
+      "timed_out": false,
+      "elapsed_s": 40.699276,
+      "peak_rss_bytes": 7340032,
+      "cpu_user_s": 0.01,
+      "cpu_system_s": 0.02,
+      "http_status": null,
+      "bytes": 1128375,
+      "sha256": "0cd83d944a6ca7822b4a8306cecc60a36e859b041f6702c6a1ad9ead78924451",
+      "ok": true,
+      "upstream_tcp_connections": 1
+    },
+    {
+      "sample": "mdn-flower",
+      "round": 3,
+      "profile": "rvdown-8",
+      "exit_code": -15,
+      "timed_out": true,
+      "elapsed_s": 45.008272,
+      "peak_rss_bytes": null,
+      "cpu_user_s": null,
+      "cpu_system_s": null,
+      "http_status": null,
+      "bytes": 0,
+      "sha256": null,
+      "ok": false,
+      "upstream_tcp_connections": 1
+    },
+    {
+      "sample": "mdn-flower",
+      "round": 4,
+      "profile": "aria2-1m-threshold",
+      "exit_code": 0,
+      "timed_out": false,
+      "elapsed_s": 18.358801,
+      "peak_rss_bytes": 16596992,
+      "cpu_user_s": 0.03,
+      "cpu_system_s": 0.03,
+      "http_status": null,
+      "bytes": 1128375,
+      "sha256": "0cd83d944a6ca7822b4a8306cecc60a36e859b041f6702c6a1ad9ead78924451",
+      "ok": true,
+      "upstream_tcp_connections": 2
+    },
+    {
+      "sample": "mdn-flower",
+      "round": 4,
+      "profile": "rvdown-1",
+      "exit_code": -15,
+      "timed_out": true,
+      "elapsed_s": 45.004575,
+      "peak_rss_bytes": null,
+      "cpu_user_s": null,
+      "cpu_system_s": null,
+      "http_status": null,
+      "bytes": 0,
+      "sha256": null,
+      "ok": false,
+      "upstream_tcp_connections": 1
+    },
+    {
+      "sample": "mdn-flower",
+      "round": 4,
+      "profile": "rvdown-8",
+      "exit_code": -15,
+      "timed_out": true,
+      "elapsed_s": 45.00913,
+      "peak_rss_bytes": null,
+      "cpu_user_s": null,
+      "cpu_system_s": null,
+      "http_status": null,
+      "bytes": 0,
+      "sha256": null,
+      "ok": false,
+      "upstream_tcp_connections": 1
+    },
+    {
+      "sample": "mdn-flower",
+      "round": 4,
+      "profile": "aria2-default-threshold",
+      "exit_code": 0,
+      "timed_out": false,
+      "elapsed_s": 28.632827,
+      "peak_rss_bytes": 16465920,
+      "cpu_user_s": 0.02,
+      "cpu_system_s": 0.03,
+      "http_status": null,
+      "bytes": 1128375,
+      "sha256": "0cd83d944a6ca7822b4a8306cecc60a36e859b041f6702c6a1ad9ead78924451",
+      "ok": true,
+      "upstream_tcp_connections": 1
+    }
+  ],
+  "summaries": {
+    "mdn-flower": {
+      "rvdown-1": {
+        "planned": 4,
+        "attempted": 4,
+        "passed": 3,
+        "failed": 1,
+        "uncompleted": 0,
+        "median_elapsed_s": 38.180405,
+        "min_elapsed_s": 15.308449,
+        "max_elapsed_s": 40.699276
+      },
+      "rvdown-8": {
+        "planned": 4,
+        "attempted": 4,
+        "passed": 0,
+        "failed": 4,
+        "uncompleted": 0,
+        "median_elapsed_s": null,
+        "min_elapsed_s": null,
+        "max_elapsed_s": null
+      },
+      "aria2-default-threshold": {
+        "planned": 4,
+        "attempted": 4,
+        "passed": 2,
+        "failed": 2,
+        "uncompleted": 0,
+        "median_elapsed_s": 25.26006,
+        "min_elapsed_s": 21.887293,
+        "max_elapsed_s": 28.632827
+      },
+      "aria2-1m-threshold": {
+        "planned": 4,
+        "attempted": 4,
+        "passed": 4,
+        "failed": 0,
+        "uncompleted": 0,
+        "median_elapsed_s": 31.231302499999998,
+        "min_elapsed_s": 18.358801,
+        "max_elapsed_s": 36.710181
+      }
+    }
+  },
+  "harness_sha256": {
+    "compare.py": "278e3d15235fe4f6d2552801f081c5d4c9314934a58fbd018e18031b3d5c2dba",
+    "small_video.py": "83bcb50fad7e7abe2de7e6ad45f14c1a8510132b65b7f5146adb7443170d9615"
+  },
+  "completion": {
+    "complete": true,
+    "planned_trials": 16,
+    "completed_trials": 16
+  },
+  "binary_core_commit": "123a05fd9a3a7193ee9e65e7872979d30a5097b3",
+  "source_tree_clean": false,
+  "provenance_note": "Benchmark script additions were uncommitted; harness SHA256 is included. The exact binary was built from the separately committed core revision above."
+}

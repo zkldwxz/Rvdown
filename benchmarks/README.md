@@ -44,8 +44,9 @@ fragments and literal private/fake IPs are rejected. Example public samples:
 ]
 ```
 
-- The three main tools rotate order across three rounds. Rvdown/aria2 use 8 connections,
-  1 MiB minimum splits and one attempt. The HTTPX baseline streams 1 MiB chunks from one
+- The three main tools rotate order across three rounds. Rvdown/aria2 use an 8-connection cap,
+  1 MiB split targets and one attempt. These are explicit comparison settings, not aria2 defaults.
+  Rvdown uses only one segment below 2 MiB; aria2 defaults to a 20 MiB minimum split size. The HTTPX baseline streams 1 MiB chunks from one
   GET, follows redirects, ignores proxy variables, and atomically renames `.part` on success.
   It reproduces **httpx-fetch-style transfer behavior**, not a Windows packaged executable.
   Its interface binding and fixed DNS map are benchmark controls, not speed optimizations.
@@ -108,3 +109,29 @@ Review the explicit report fields and all source differences. Do not copy raw lo
 task files, DNS maps, media, environment dumps or application data into this repository.
 Record the library revision, exact binary SHA256 and harness hashes. State host architecture,
 sample sizes, failures, network controls and measurement limitations alongside any speed table.
+
+## Balanced small-video single-file experiment
+
+```sh
+python3 benchmarks/small_video.py --rvdown target/release/rvdown \
+  --interface YOUR_PHYSICAL_INTERFACE --rounds 4 --mode all \
+  --work /tmp/rvdown-small-new --report /tmp/rvdown-small.json
+```
+
+Each trial downloads exactly one file. Four profiles rotate position over four rounds:
+Rvdown 1 and 8 connection caps; aria2 with its default 20 MiB split threshold and with a
+1 MiB threshold (both explicitly capped at 8 connections). The default-threshold profile
+preserves that threshold only, not all aria2 default options. `-j` controls concurrent files,
+whereas `-s`/`-x` concern splitting/connection caps within a file. aria2 also supports input lists.
+
+The script generates three real six-second MP4 videos with audio, below 2 MiB and around
+4/8 MiB, verifies their tracks, and serves each capped and uncapped. The local server records
+actual HEAD/GET Range headers and concurrent body requests. A cap is not proof of actual
+parallelism. The WAN sample is the same public 1.08 MiB MDN video; TCP relay connections are
+observed without inspecting encrypted HTTP headers. WAN hashes are fixed from previously
+matching successful downloads, and no tool gets a separate warmup download.
+
+Use `--mode local` or `--mode wan` to run these separately. All trials remain sequential;
+never run another network benchmark concurrently. Millisecond loopback timing includes
+process startup and polling overhead and is not a precise microbenchmark. Failures and
+incomplete scheduled runs must remain explicit when combining reports.

@@ -31,11 +31,11 @@ in crawler / review / archiving jobs where CDNs fight back.
 ## Install
 
 ```bash
-# Prebuilt binaries (Windows x64, macOS arm64/x64, Linux x64)
-# https://github.com/zkldwxz/Rvdown/releases
+# No binary release is published yet. Build from source below.
+# Future verified releases: https://github.com/zkldwxz/Rvdown/releases
 
-# Rust SDK: pin a tag, not a branch
-cargo add rvdown --git https://github.com/zkldwxz/Rvdown --tag v0.1.0
+# Rust SDK: pin a revision until a verified release tag exists
+cargo add rvdown --git https://github.com/zkldwxz/Rvdown --rev ade20b808d29f4ebc1c1a59da894552300535a58
 ```
 
 ffmpeg is optional and external: `ffmpeg` next to the binary under `resources/`, or on `PATH`, or

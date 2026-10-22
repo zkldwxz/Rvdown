@@ -1,0 +1,139 @@
+{
+  "schema": 1,
+  "date": "2026-10-22",
+  "rvdown_commit": "16ee138431375e752bebacdc8532799af24d253b",
+  "host": {
+    "os": "Darwin",
+    "os_release": "27.0.0",
+    "arch": "arm64"
+  },
+  "method": {
+    "repetitions": 3,
+    "order": "rotating Latin square",
+    "timing": "process startup through atomic file delivery; post-run SHA256 excluded",
+    "rvdown_checks_in_transfer_comparison": "ffmpeg and MD5 disabled; all tools SHA256 verified afterward",
+    "network": "all tools use one benchmark-owned loopback CONNECT byte relay; outbound sockets bind the physical interface; end-to-end TLS; no external proxy or system changes",
+    "dns": "one public DoH snapshot; same fixed IPv4 target for all tools; no system DNS fallback",
+    "local_fixture": "16 MiB deterministic bytes; 4 MiB/s per connection; not an internet speed result"
+  },
+  "artifacts": {
+    "rvdown": {
+      "executable_bytes": 6480624,
+      "sha256": "dd6a7302eb26ea592766b631239779d58ab4e0693a18e2ef8e8f10c9c2c96dce"
+    },
+    "aria2": {
+      "executable_bytes": 3318848,
+      "sha256": "503c7b58b64e76af21ac9f0f96cca8749617c25f997739b8346cdf7c47fd99e3"
+    },
+    "python": {
+      "executable_bytes": 18084128,
+      "sha256": "fe5e57e7f0dc374654e314d4e8f20cf2a345bda8a4e03032046f407027628a32"
+    }
+  },
+  "runs": [
+    {
+      "sample": "samplelib-21m",
+      "round": 1,
+      "tool": "rvdown-8",
+      "exit_code": -15,
+      "timed_out": true,
+      "elapsed_s": 150.012192,
+      "peak_rss_bytes": null,
+      "cpu_user_s": null,
+      "cpu_system_s": null,
+      "http_status": null,
+      "bytes": 0,
+      "sha256": null,
+      "ok": false
+    },
+    {
+      "sample": "samplelib-21m",
+      "round": 1,
+      "tool": "httpx-fetch",
+      "exit_code": -15,
+      "timed_out": true,
+      "elapsed_s": 150.007079,
+      "peak_rss_bytes": null,
+      "cpu_user_s": null,
+      "cpu_system_s": null,
+      "http_status": null,
+      "bytes": 0,
+      "sha256": null,
+      "ok": false
+    },
+    {
+      "sample": "samplelib-21m",
+      "round": 1,
+      "tool": "aria2-8",
+      "exit_code": -15,
+      "timed_out": true,
+      "elapsed_s": 150.005149,
+      "peak_rss_bytes": null,
+      "cpu_user_s": null,
+      "cpu_system_s": null,
+      "http_status": null,
+      "bytes": 20594352,
+      "sha256": "b6427b4367de4cf1bbf80014d62591774159201bd63d37440858148db78669ec",
+      "ok": false
+    },
+    {
+      "sample": "samplelib-21m",
+      "round": 2,
+      "tool": "httpx-fetch",
+      "exit_code": -15,
+      "timed_out": true,
+      "elapsed_s": 150.00625,
+      "peak_rss_bytes": null,
+      "cpu_user_s": null,
+      "cpu_system_s": null,
+      "http_status": null,
+      "bytes": 0,
+      "sha256": null,
+      "ok": false
+    },
+    {
+      "sample": "samplelib-21m",
+      "round": 2,
+      "tool": "aria2-8",
+      "exit_code": -15,
+      "timed_out": true,
+      "elapsed_s": 150.006636,
+      "peak_rss_bytes": null,
+      "cpu_user_s": null,
+      "cpu_system_s": null,
+      "http_status": null,
+      "bytes": 20725424,
+      "sha256": "1baf5c0d9f11b4390f9518e5d292676662286955af5309b3d457b8e698eee601",
+      "ok": false
+    }
+  ],
+  "resume": [],
+  "summaries": {},
+  "versions": {
+    "rvdown": "rvdown 0.1.0",
+    "aria2": "aria2 版本 1.37.0",
+    "httpx": "0.28.1",
+    "python": "Python 3.12.15"
+  },
+  "harness_sha256": {
+    "compare.py": "278e3d15235fe4f6d2552801f081c5d4c9314934a58fbd018e18031b3d5c2dba",
+    "httpx_fetch.py": "b11062580940a323bd435578c335747839470e66b7f37a924d9f26270308b6b4"
+  },
+  "public_samples": [
+    {
+      "id": "samplelib-21m",
+      "url": "https://samplelib.com/preview/mp4/sample-30s.mp4",
+      "sha256": null,
+      "bytes": null,
+      "preflight_exit_code": -15
+    }
+  ],
+  "completion": {
+    "complete": false,
+    "planned_trials": 12,
+    "completed_trials": 5,
+    "cancelled_in_flight": 1,
+    "unstarted_trials": 6,
+    "reason": "Deferred remaining large-file trials to prioritize the requested balanced small-video single-connection experiment. All recorded failures retained; unrun trials are not passes."
+  }
+}

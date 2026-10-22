@@ -1,0 +1,686 @@
+{
+  "schema": 1,
+  "date": "2026-10-22",
+  "rvdown_commit": "16ee138431375e752bebacdc8532799af24d253b",
+  "host": {
+    "os": "Darwin",
+    "os_release": "27.0.0",
+    "arch": "arm64"
+  },
+  "method": {
+    "repetitions": 3,
+    "order": "rotating Latin square",
+    "timing": "process startup through atomic file delivery; post-run SHA256 excluded",
+    "rvdown_checks_in_transfer_comparison": "ffmpeg and MD5 disabled; all tools SHA256 verified afterward",
+    "network": "system interface; proxies disabled",
+    "dns": "Rvdown/httpx: DoH; aria2: same public provider via UDP; CDN address may differ",
+    "local_fixture": "16 MiB deterministic bytes; 4 MiB/s per connection; not an internet speed result"
+  },
+  "artifacts": {
+    "rvdown": {
+      "executable_bytes": 6480624,
+      "sha256": "dd6a7302eb26ea592766b631239779d58ab4e0693a18e2ef8e8f10c9c2c96dce"
+    },
+    "aria2": {
+      "executable_bytes": 3318848,
+      "sha256": "503c7b58b64e76af21ac9f0f96cca8749617c25f997739b8346cdf7c47fd99e3"
+    },
+    "python": {
+      "executable_bytes": 18084128,
+      "sha256": "fe5e57e7f0dc374654e314d4e8f20cf2a345bda8a4e03032046f407027628a32"
+    }
+  },
+  "runs": [
+    {
+      "sample": "local-capped",
+      "round": 1,
+      "tool": "rvdown-8",
+      "exit_code": 1,
+      "timed_out": false,
+      "elapsed_s": 0.010227,
+      "peak_rss_bytes": 7323648,
+      "cpu_user_s": 0.0,
+      "cpu_system_s": 0.0,
+      "http_status": null,
+      "bytes": 0,
+      "sha256": null,
+      "ok": false,
+      "server": {
+        "application_bytes_served": 65536,
+        "requests": 1,
+        "range_requests": 1,
+        "peak_concurrent_requests": 1
+      }
+    },
+    {
+      "sample": "local-capped",
+      "round": 1,
+      "tool": "httpx-fetch",
+      "exit_code": 0,
+      "timed_out": false,
+      "elapsed_s": 4.928348,
+      "peak_rss_bytes": 38928384,
+      "cpu_user_s": 0.06,
+      "cpu_system_s": 0.02,
+      "http_status": null,
+      "bytes": 16777216,
+      "sha256": "341aacac661ccb210720bedaa9ead5d668fe5ea41a73532fc147c71e34040df1",
+      "ok": true,
+      "server": {
+        "application_bytes_served": 16777216,
+        "requests": 1,
+        "range_requests": 0,
+        "peak_concurrent_requests": 1
+      }
+    },
+    {
+      "sample": "local-capped",
+      "round": 1,
+      "tool": "aria2-8",
+      "exit_code": 0,
+      "timed_out": false,
+      "elapsed_s": 0.659992,
+      "peak_rss_bytes": 24150016,
+      "cpu_user_s": 0.01,
+      "cpu_system_s": 0.03,
+      "http_status": null,
+      "bytes": 16777216,
+      "sha256": "341aacac661ccb210720bedaa9ead5d668fe5ea41a73532fc147c71e34040df1",
+      "ok": true,
+      "server": {
+        "application_bytes_served": 16842752,
+        "requests": 8,
+        "range_requests": 7,
+        "peak_concurrent_requests": 8
+      }
+    },
+    {
+      "sample": "local-capped",
+      "round": 2,
+      "tool": "httpx-fetch",
+      "exit_code": 0,
+      "timed_out": false,
+      "elapsed_s": 4.86739,
+      "peak_rss_bytes": 40779776,
+      "cpu_user_s": 0.1,
+      "cpu_system_s": 0.02,
+      "http_status": null,
+      "bytes": 16777216,
+      "sha256": "341aacac661ccb210720bedaa9ead5d668fe5ea41a73532fc147c71e34040df1",
+      "ok": true,
+      "server": {
+        "application_bytes_served": 16777216,
+        "requests": 1,
+        "range_requests": 0,
+        "peak_concurrent_requests": 1
+      }
+    },
+    {
+      "sample": "local-capped",
+      "round": 2,
+      "tool": "aria2-8",
+      "exit_code": 0,
+      "timed_out": false,
+      "elapsed_s": 0.922683,
+      "peak_rss_bytes": 23314432,
+      "cpu_user_s": 0.01,
+      "cpu_system_s": 0.03,
+      "http_status": null,
+      "bytes": 16777216,
+      "sha256": "341aacac661ccb210720bedaa9ead5d668fe5ea41a73532fc147c71e34040df1",
+      "ok": true,
+      "server": {
+        "application_bytes_served": 16842752,
+        "requests": 9,
+        "range_requests": 8,
+        "peak_concurrent_requests": 8
+      }
+    },
+    {
+      "sample": "local-capped",
+      "round": 2,
+      "tool": "rvdown-8",
+      "exit_code": 0,
+      "timed_out": false,
+      "elapsed_s": 0.662928,
+      "peak_rss_bytes": 10240000,
+      "cpu_user_s": 0.0,
+      "cpu_system_s": 0.02,
+      "http_status": null,
+      "bytes": 16777216,
+      "sha256": "341aacac661ccb210720bedaa9ead5d668fe5ea41a73532fc147c71e34040df1",
+      "ok": true,
+      "server": {
+        "application_bytes_served": 16777216,
+        "requests": 8,
+        "range_requests": 8,
+        "peak_concurrent_requests": 8
+      }
+    },
+    {
+      "sample": "local-capped",
+      "round": 3,
+      "tool": "aria2-8",
+      "exit_code": 0,
+      "timed_out": false,
+      "elapsed_s": 0.932992,
+      "peak_rss_bytes": 23248896,
+      "cpu_user_s": 0.02,
+      "cpu_system_s": 0.02,
+      "http_status": null,
+      "bytes": 16777216,
+      "sha256": "341aacac661ccb210720bedaa9ead5d668fe5ea41a73532fc147c71e34040df1",
+      "ok": true,
+      "server": {
+        "application_bytes_served": 16842752,
+        "requests": 9,
+        "range_requests": 8,
+        "peak_concurrent_requests": 7
+      }
+    },
+    {
+      "sample": "local-capped",
+      "round": 3,
+      "tool": "rvdown-8",
+      "exit_code": 0,
+      "timed_out": false,
+      "elapsed_s": 0.654061,
+      "peak_rss_bytes": 9650176,
+      "cpu_user_s": 0.01,
+      "cpu_system_s": 0.02,
+      "http_status": null,
+      "bytes": 16777216,
+      "sha256": "341aacac661ccb210720bedaa9ead5d668fe5ea41a73532fc147c71e34040df1",
+      "ok": true,
+      "server": {
+        "application_bytes_served": 16777216,
+        "requests": 8,
+        "range_requests": 8,
+        "peak_concurrent_requests": 8
+      }
+    },
+    {
+      "sample": "local-capped",
+      "round": 3,
+      "tool": "httpx-fetch",
+      "exit_code": 0,
+      "timed_out": false,
+      "elapsed_s": 4.892026,
+      "peak_rss_bytes": 42123264,
+      "cpu_user_s": 0.06,
+      "cpu_system_s": 0.02,
+      "http_status": null,
+      "bytes": 16777216,
+      "sha256": "341aacac661ccb210720bedaa9ead5d668fe5ea41a73532fc147c71e34040df1",
+      "ok": true,
+      "server": {
+        "application_bytes_served": 16777216,
+        "requests": 1,
+        "range_requests": 0,
+        "peak_concurrent_requests": 1
+      }
+    },
+    {
+      "sample": "local-capped",
+      "round": 1,
+      "tool": "rvdown-1",
+      "exit_code": 0,
+      "timed_out": false,
+      "elapsed_s": 4.775129,
+      "peak_rss_bytes": 7634944,
+      "cpu_user_s": 0.01,
+      "cpu_system_s": 0.02,
+      "http_status": null,
+      "bytes": 16777216,
+      "sha256": "341aacac661ccb210720bedaa9ead5d668fe5ea41a73532fc147c71e34040df1",
+      "ok": true,
+      "server": {
+        "application_bytes_served": 16777216,
+        "requests": 1,
+        "range_requests": 0,
+        "peak_concurrent_requests": 1
+      }
+    },
+    {
+      "sample": "local-capped",
+      "round": 2,
+      "tool": "rvdown-1",
+      "exit_code": 0,
+      "timed_out": false,
+      "elapsed_s": 4.809742,
+      "peak_rss_bytes": 7258112,
+      "cpu_user_s": 0.01,
+      "cpu_system_s": 0.02,
+      "http_status": null,
+      "bytes": 16777216,
+      "sha256": "341aacac661ccb210720bedaa9ead5d668fe5ea41a73532fc147c71e34040df1",
+      "ok": true,
+      "server": {
+        "application_bytes_served": 16777216,
+        "requests": 1,
+        "range_requests": 0,
+        "peak_concurrent_requests": 1
+      }
+    },
+    {
+      "sample": "local-capped",
+      "round": 3,
+      "tool": "rvdown-1",
+      "exit_code": 0,
+      "timed_out": false,
+      "elapsed_s": 4.784237,
+      "peak_rss_bytes": 7487488,
+      "cpu_user_s": 0.01,
+      "cpu_system_s": 0.03,
+      "http_status": null,
+      "bytes": 16777216,
+      "sha256": "341aacac661ccb210720bedaa9ead5d668fe5ea41a73532fc147c71e34040df1",
+      "ok": true,
+      "server": {
+        "application_bytes_served": 16777216,
+        "requests": 1,
+        "range_requests": 0,
+        "peak_concurrent_requests": 1
+      }
+    },
+    {
+      "sample": "local-uncapped",
+      "round": 1,
+      "tool": "rvdown-8",
+      "exit_code": 1,
+      "timed_out": false,
+      "elapsed_s": 0.022084,
+      "peak_rss_bytes": 7569408,
+      "cpu_user_s": 0.0,
+      "cpu_system_s": 0.0,
+      "http_status": null,
+      "bytes": 0,
+      "sha256": null,
+      "ok": false,
+      "server": {
+        "application_bytes_served": 196608,
+        "requests": 4,
+        "range_requests": 4,
+        "peak_concurrent_requests": 2
+      }
+    },
+    {
+      "sample": "local-uncapped",
+      "round": 1,
+      "tool": "httpx-fetch",
+      "exit_code": 0,
+      "timed_out": false,
+      "elapsed_s": 0.131865,
+      "peak_rss_bytes": 36519936,
+      "cpu_user_s": 0.05,
+      "cpu_system_s": 0.01,
+      "http_status": null,
+      "bytes": 16777216,
+      "sha256": "341aacac661ccb210720bedaa9ead5d668fe5ea41a73532fc147c71e34040df1",
+      "ok": true,
+      "server": {
+        "application_bytes_served": 16777216,
+        "requests": 1,
+        "range_requests": 0,
+        "peak_concurrent_requests": 1
+      }
+    },
+    {
+      "sample": "local-uncapped",
+      "round": 1,
+      "tool": "aria2-8",
+      "exit_code": 0,
+      "timed_out": false,
+      "elapsed_s": 0.075854,
+      "peak_rss_bytes": 23969792,
+      "cpu_user_s": 0.01,
+      "cpu_system_s": 0.02,
+      "http_status": null,
+      "bytes": 16777216,
+      "sha256": "341aacac661ccb210720bedaa9ead5d668fe5ea41a73532fc147c71e34040df1",
+      "ok": true,
+      "server": {
+        "application_bytes_served": 18939904,
+        "requests": 8,
+        "range_requests": 7,
+        "peak_concurrent_requests": 8
+      }
+    },
+    {
+      "sample": "local-uncapped",
+      "round": 2,
+      "tool": "httpx-fetch",
+      "exit_code": 0,
+      "timed_out": false,
+      "elapsed_s": 0.130758,
+      "peak_rss_bytes": 37027840,
+      "cpu_user_s": 0.04,
+      "cpu_system_s": 0.01,
+      "http_status": null,
+      "bytes": 16777216,
+      "sha256": "341aacac661ccb210720bedaa9ead5d668fe5ea41a73532fc147c71e34040df1",
+      "ok": true,
+      "server": {
+        "application_bytes_served": 16777216,
+        "requests": 1,
+        "range_requests": 0,
+        "peak_concurrent_requests": 1
+      }
+    },
+    {
+      "sample": "local-uncapped",
+      "round": 2,
+      "tool": "aria2-8",
+      "exit_code": 0,
+      "timed_out": false,
+      "elapsed_s": 0.073836,
+      "peak_rss_bytes": 22052864,
+      "cpu_user_s": 0.01,
+      "cpu_system_s": 0.01,
+      "http_status": null,
+      "bytes": 16777216,
+      "sha256": "341aacac661ccb210720bedaa9ead5d668fe5ea41a73532fc147c71e34040df1",
+      "ok": true,
+      "server": {
+        "application_bytes_served": 18022400,
+        "requests": 9,
+        "range_requests": 8,
+        "peak_concurrent_requests": 7
+      }
+    },
+    {
+      "sample": "local-uncapped",
+      "round": 2,
+      "tool": "rvdown-8",
+      "exit_code": 0,
+      "timed_out": false,
+      "elapsed_s": 0.077606,
+      "peak_rss_bytes": 14123008,
+      "cpu_user_s": 0.0,
+      "cpu_system_s": 0.01,
+      "http_status": null,
+      "bytes": 16777216,
+      "sha256": "341aacac661ccb210720bedaa9ead5d668fe5ea41a73532fc147c71e34040df1",
+      "ok": true,
+      "server": {
+        "application_bytes_served": 16777216,
+        "requests": 8,
+        "range_requests": 8,
+        "peak_concurrent_requests": 8
+      }
+    },
+    {
+      "sample": "local-uncapped",
+      "round": 3,
+      "tool": "aria2-8",
+      "exit_code": 0,
+      "timed_out": false,
+      "elapsed_s": 0.077938,
+      "peak_rss_bytes": 21757952,
+      "cpu_user_s": 0.01,
+      "cpu_system_s": 0.01,
+      "http_status": null,
+      "bytes": 16777216,
+      "sha256": "341aacac661ccb210720bedaa9ead5d668fe5ea41a73532fc147c71e34040df1",
+      "ok": true,
+      "server": {
+        "application_bytes_served": 19333120,
+        "requests": 10,
+        "range_requests": 9,
+        "peak_concurrent_requests": 7
+      }
+    },
+    {
+      "sample": "local-uncapped",
+      "round": 3,
+      "tool": "rvdown-8",
+      "exit_code": 0,
+      "timed_out": false,
+      "elapsed_s": 0.078413,
+      "peak_rss_bytes": 11993088,
+      "cpu_user_s": 0.0,
+      "cpu_system_s": 0.01,
+      "http_status": null,
+      "bytes": 16777216,
+      "sha256": "341aacac661ccb210720bedaa9ead5d668fe5ea41a73532fc147c71e34040df1",
+      "ok": true,
+      "server": {
+        "application_bytes_served": 16777216,
+        "requests": 8,
+        "range_requests": 8,
+        "peak_concurrent_requests": 8
+      }
+    },
+    {
+      "sample": "local-uncapped",
+      "round": 3,
+      "tool": "httpx-fetch",
+      "exit_code": 0,
+      "timed_out": false,
+      "elapsed_s": 0.077738,
+      "peak_rss_bytes": 38928384,
+      "cpu_user_s": 0.05,
+      "cpu_system_s": 0.01,
+      "http_status": null,
+      "bytes": 16777216,
+      "sha256": "341aacac661ccb210720bedaa9ead5d668fe5ea41a73532fc147c71e34040df1",
+      "ok": true,
+      "server": {
+        "application_bytes_served": 16777216,
+        "requests": 1,
+        "range_requests": 0,
+        "peak_concurrent_requests": 1
+      }
+    },
+    {
+      "sample": "local-uncapped",
+      "round": 1,
+      "tool": "rvdown-1",
+      "exit_code": 0,
+      "timed_out": false,
+      "elapsed_s": 0.019259,
+      "peak_rss_bytes": 8634368,
+      "cpu_user_s": 0.0,
+      "cpu_system_s": 0.0,
+      "http_status": null,
+      "bytes": 16777216,
+      "sha256": "341aacac661ccb210720bedaa9ead5d668fe5ea41a73532fc147c71e34040df1",
+      "ok": true,
+      "server": {
+        "application_bytes_served": 16777216,
+        "requests": 1,
+        "range_requests": 0,
+        "peak_concurrent_requests": 1
+      }
+    },
+    {
+      "sample": "local-uncapped",
+      "round": 2,
+      "tool": "rvdown-1",
+      "exit_code": 0,
+      "timed_out": false,
+      "elapsed_s": 0.020363,
+      "peak_rss_bytes": 8716288,
+      "cpu_user_s": 0.0,
+      "cpu_system_s": 0.0,
+      "http_status": null,
+      "bytes": 16777216,
+      "sha256": "341aacac661ccb210720bedaa9ead5d668fe5ea41a73532fc147c71e34040df1",
+      "ok": true,
+      "server": {
+        "application_bytes_served": 16777216,
+        "requests": 1,
+        "range_requests": 0,
+        "peak_concurrent_requests": 1
+      }
+    },
+    {
+      "sample": "local-uncapped",
+      "round": 3,
+      "tool": "rvdown-1",
+      "exit_code": 0,
+      "timed_out": false,
+      "elapsed_s": 0.020478,
+      "peak_rss_bytes": 9093120,
+      "cpu_user_s": 0.0,
+      "cpu_system_s": 0.0,
+      "http_status": null,
+      "bytes": 16777216,
+      "sha256": "341aacac661ccb210720bedaa9ead5d668fe5ea41a73532fc147c71e34040df1",
+      "ok": true,
+      "server": {
+        "application_bytes_served": 16777216,
+        "requests": 1,
+        "range_requests": 0,
+        "peak_concurrent_requests": 1
+      }
+    }
+  ],
+  "resume": [
+    {
+      "tool": "rvdown-8",
+      "interrupt_exit_code": 1,
+      "restart": {
+        "exit_code": 1,
+        "timed_out": false,
+        "elapsed_s": 0.020163,
+        "peak_rss_bytes": 7323648,
+        "cpu_user_s": 0.0,
+        "cpu_system_s": 0.0,
+        "http_status": null
+      },
+      "sha256_verified": false,
+      "second_request_bytes_less_than_full": true,
+      "application_bytes_served": 65536,
+      "requests": 2,
+      "range_requests": 2,
+      "peak_concurrent_requests": 2,
+      "rvdown_resumed_bytes": 0
+    },
+    {
+      "tool": "httpx-fetch",
+      "interrupt_exit_code": -2,
+      "restart": {
+        "exit_code": 0,
+        "timed_out": false,
+        "elapsed_s": 4.810301,
+        "peak_rss_bytes": 37961728,
+        "cpu_user_s": 0.11,
+        "cpu_system_s": 0.03,
+        "http_status": null
+      },
+      "sha256_verified": true,
+      "second_request_bytes_less_than_full": false,
+      "application_bytes_served": 16777216,
+      "requests": 1,
+      "range_requests": 0,
+      "peak_concurrent_requests": 1
+    },
+    {
+      "tool": "aria2-8",
+      "interrupt_exit_code": 7,
+      "restart": {
+        "exit_code": 0,
+        "timed_out": false,
+        "elapsed_s": 3.10922,
+        "peak_rss_bytes": 16302080,
+        "cpu_user_s": 0.02,
+        "cpu_system_s": 0.01,
+        "http_status": null
+      },
+      "sha256_verified": true,
+      "second_request_bytes_less_than_full": true,
+      "application_bytes_served": 1622016,
+      "requests": 3,
+      "range_requests": 2,
+      "peak_concurrent_requests": 3
+    }
+  ],
+  "summaries": {
+    "local-capped": {
+      "rvdown-8": {
+        "attempted": 3,
+        "passed": 2,
+        "failed": 1,
+        "median_mib_s_successes_only": 24.299,
+        "min_mib_s_successes_only": 24.135,
+        "max_mib_s_successes_only": 24.463,
+        "median_peak_rss_bytes": 9945088.0
+      },
+      "httpx-fetch": {
+        "attempted": 3,
+        "passed": 3,
+        "failed": 0,
+        "median_mib_s_successes_only": 3.271,
+        "min_mib_s_successes_only": 3.247,
+        "max_mib_s_successes_only": 3.287,
+        "median_peak_rss_bytes": 40779776
+      },
+      "aria2-8": {
+        "attempted": 3,
+        "passed": 3,
+        "failed": 0,
+        "median_mib_s_successes_only": 17.341,
+        "min_mib_s_successes_only": 17.149,
+        "max_mib_s_successes_only": 24.243,
+        "median_peak_rss_bytes": 23314432
+      },
+      "rvdown-1": {
+        "attempted": 3,
+        "passed": 3,
+        "failed": 0,
+        "median_mib_s_successes_only": 3.344,
+        "min_mib_s_successes_only": 3.327,
+        "max_mib_s_successes_only": 3.351,
+        "median_peak_rss_bytes": 7487488
+      }
+    },
+    "local-uncapped": {
+      "rvdown-8": {
+        "attempted": 3,
+        "passed": 2,
+        "failed": 1,
+        "median_mib_s_successes_only": 205.109,
+        "min_mib_s_successes_only": 204.048,
+        "max_mib_s_successes_only": 206.17,
+        "median_peak_rss_bytes": 13058048.0
+      },
+      "httpx-fetch": {
+        "attempted": 3,
+        "passed": 3,
+        "failed": 0,
+        "median_mib_s_successes_only": 122.363,
+        "min_mib_s_successes_only": 121.336,
+        "max_mib_s_successes_only": 205.82,
+        "median_peak_rss_bytes": 37027840
+      },
+      "aria2-8": {
+        "attempted": 3,
+        "passed": 3,
+        "failed": 0,
+        "median_mib_s_successes_only": 210.932,
+        "min_mib_s_successes_only": 205.291,
+        "max_mib_s_successes_only": 216.696,
+        "median_peak_rss_bytes": 22052864
+      },
+      "rvdown-1": {
+        "attempted": 3,
+        "passed": 3,
+        "failed": 0,
+        "median_mib_s_successes_only": 785.739,
+        "min_mib_s_successes_only": 781.326,
+        "max_mib_s_successes_only": 830.78,
+        "median_peak_rss_bytes": 8716288
+      }
+    }
+  },
+  "versions": {
+    "rvdown": "rvdown 0.1.0",
+    "aria2": "aria2 版本 1.37.0",
+    "httpx": "0.28.1",
+    "python": "Python 3.12.15"
+  },
+  "media_in_public_report": false,
+  "valid_for_primary_performance_claims": false,
+  "fixture_limitation": "Default HTTPServer backlog 5 caused burst connection failures; primary rerun used backlog 128. Retained as a separate diagnostic."
+}

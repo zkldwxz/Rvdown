@@ -1,0 +1,237 @@
+{
+  "schema": 1,
+  "date": "2026-10-22",
+  "rvdown_commit": "16ee138431375e752bebacdc8532799af24d253b",
+  "host": {
+    "os": "Darwin",
+    "os_release": "27.0.0",
+    "arch": "arm64"
+  },
+  "method": {
+    "repetitions": 3,
+    "order": "rotating Latin square",
+    "timing": "process startup through atomic file delivery; post-run SHA256 excluded",
+    "rvdown_checks_in_transfer_comparison": "ffmpeg and MD5 disabled; all tools SHA256 verified afterward",
+    "network": "explicit physical interface, proxies disabled, public DNS",
+    "dns": "Rvdown/httpx: DoH; aria2: same public provider via UDP; CDN address may differ",
+    "local_fixture": "16 MiB deterministic bytes; 4 MiB/s per connection; not an internet speed result"
+  },
+  "artifacts": {
+    "rvdown": {
+      "executable_bytes": 6480624,
+      "sha256": "dd6a7302eb26ea592766b631239779d58ab4e0693a18e2ef8e8f10c9c2c96dce"
+    },
+    "aria2": {
+      "executable_bytes": 3318848,
+      "sha256": "503c7b58b64e76af21ac9f0f96cca8749617c25f997739b8346cdf7c47fd99e3"
+    },
+    "python": {
+      "executable_bytes": 18084128,
+      "sha256": "fe5e57e7f0dc374654e314d4e8f20cf2a345bda8a4e03032046f407027628a32"
+    }
+  },
+  "runs": [
+    {
+      "sample": "mdn-flower",
+      "round": 1,
+      "tool": "rvdown-8",
+      "exit_code": 0,
+      "timed_out": false,
+      "elapsed_s": 3.821281,
+      "peak_rss_bytes": 7831552,
+      "cpu_user_s": 0.01,
+      "cpu_system_s": 0.01,
+      "http_status": null,
+      "bytes": 1128375,
+      "sha256": "0cd83d944a6ca7822b4a8306cecc60a36e859b041f6702c6a1ad9ead78924451",
+      "ok": true
+    },
+    {
+      "sample": "mdn-flower",
+      "round": 1,
+      "tool": "httpx-fetch",
+      "exit_code": 1,
+      "timed_out": false,
+      "elapsed_s": 10.606959,
+      "peak_rss_bytes": 33193984,
+      "cpu_user_s": 0.06,
+      "cpu_system_s": 0.02,
+      "http_status": null,
+      "bytes": 0,
+      "sha256": null,
+      "ok": false
+    },
+    {
+      "sample": "mdn-flower",
+      "round": 1,
+      "tool": "aria2-8",
+      "exit_code": 2,
+      "timed_out": false,
+      "elapsed_s": 15.072555,
+      "peak_rss_bytes": 16711680,
+      "cpu_user_s": 0.01,
+      "cpu_system_s": 0.01,
+      "http_status": null,
+      "bytes": 0,
+      "sha256": null,
+      "ok": false
+    },
+    {
+      "sample": "mdn-flower",
+      "round": 2,
+      "tool": "httpx-fetch",
+      "exit_code": 1,
+      "timed_out": false,
+      "elapsed_s": 10.697517,
+      "peak_rss_bytes": 33062912,
+      "cpu_user_s": 0.08,
+      "cpu_system_s": 0.02,
+      "http_status": null,
+      "bytes": 0,
+      "sha256": null,
+      "ok": false
+    },
+    {
+      "sample": "mdn-flower",
+      "round": 2,
+      "tool": "aria2-8",
+      "exit_code": 2,
+      "timed_out": false,
+      "elapsed_s": 15.076391,
+      "peak_rss_bytes": 16613376,
+      "cpu_user_s": 0.01,
+      "cpu_system_s": 0.01,
+      "http_status": null,
+      "bytes": 0,
+      "sha256": null,
+      "ok": false
+    },
+    {
+      "sample": "mdn-flower",
+      "round": 2,
+      "tool": "rvdown-8",
+      "exit_code": 0,
+      "timed_out": false,
+      "elapsed_s": 5.352752,
+      "peak_rss_bytes": 7733248,
+      "cpu_user_s": 0.01,
+      "cpu_system_s": 0.01,
+      "http_status": null,
+      "bytes": 1128375,
+      "sha256": "0cd83d944a6ca7822b4a8306cecc60a36e859b041f6702c6a1ad9ead78924451",
+      "ok": true
+    },
+    {
+      "sample": "mdn-flower",
+      "round": 3,
+      "tool": "aria2-8",
+      "exit_code": 2,
+      "timed_out": false,
+      "elapsed_s": 15.086653,
+      "peak_rss_bytes": 16646144,
+      "cpu_user_s": 0.01,
+      "cpu_system_s": 0.0,
+      "http_status": null,
+      "bytes": 0,
+      "sha256": null,
+      "ok": false
+    },
+    {
+      "sample": "mdn-flower",
+      "round": 3,
+      "tool": "rvdown-8",
+      "exit_code": 0,
+      "timed_out": false,
+      "elapsed_s": 11.755591,
+      "peak_rss_bytes": 6963200,
+      "cpu_user_s": 0.01,
+      "cpu_system_s": 0.01,
+      "http_status": null,
+      "bytes": 1128375,
+      "sha256": "0cd83d944a6ca7822b4a8306cecc60a36e859b041f6702c6a1ad9ead78924451",
+      "ok": true
+    },
+    {
+      "sample": "mdn-flower",
+      "round": 3,
+      "tool": "httpx-fetch",
+      "exit_code": 1,
+      "timed_out": false,
+      "elapsed_s": 10.570758,
+      "peak_rss_bytes": 32899072,
+      "cpu_user_s": 0.07,
+      "cpu_system_s": 0.02,
+      "http_status": null,
+      "bytes": 0,
+      "sha256": null,
+      "ok": false
+    },
+    {
+      "sample": "mdn-flower",
+      "round": 1,
+      "tool": "rvdown-1",
+      "exit_code": 0,
+      "timed_out": false,
+      "elapsed_s": 6.681346,
+      "peak_rss_bytes": 6995968,
+      "cpu_user_s": 0.01,
+      "cpu_system_s": 0.01,
+      "http_status": null,
+      "bytes": 1128375,
+      "sha256": "0cd83d944a6ca7822b4a8306cecc60a36e859b041f6702c6a1ad9ead78924451",
+      "ok": true
+    },
+    {
+      "sample": "mdn-flower",
+      "round": 2,
+      "tool": "rvdown-1",
+      "exit_code": 0,
+      "timed_out": false,
+      "elapsed_s": 5.466905,
+      "peak_rss_bytes": 7585792,
+      "cpu_user_s": 0.01,
+      "cpu_system_s": 0.01,
+      "http_status": null,
+      "bytes": 1128375,
+      "sha256": "0cd83d944a6ca7822b4a8306cecc60a36e859b041f6702c6a1ad9ead78924451",
+      "ok": true
+    },
+    {
+      "sample": "mdn-flower",
+      "round": 3,
+      "tool": "rvdown-1",
+      "exit_code": 0,
+      "timed_out": false,
+      "elapsed_s": 9.190952,
+      "peak_rss_bytes": 7602176,
+      "cpu_user_s": 0.01,
+      "cpu_system_s": 0.01,
+      "http_status": null,
+      "bytes": 1128375,
+      "sha256": "0cd83d944a6ca7822b4a8306cecc60a36e859b041f6702c6a1ad9ead78924451",
+      "ok": true
+    }
+  ],
+  "resume": [],
+  "summaries": {},
+  "versions": {
+    "rvdown": "rvdown 0.1.0",
+    "aria2": "aria2 版本 1.37.0",
+    "httpx": "0.28.1",
+    "python": "Python 3.12.15"
+  },
+  "public_samples": [
+    {
+      "id": "mdn-flower",
+      "url": "https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4",
+      "sha256": "0cd83d944a6ca7822b4a8306cecc60a36e859b041f6702c6a1ad9ead78924451",
+      "bytes": 1128375,
+      "preflight_exit_code": 0
+    }
+  ],
+  "valid_for_performance_claims": false,
+  "complete": false,
+  "planned_timed_trials": 24,
+  "attempted_timed_trials": 12,
+  "invalidation_reason": "Exploratory aria2 UDP DNS returned a fake address; stopped the harness. Not evidence for direct-network speed."
+}

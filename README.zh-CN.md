@@ -26,11 +26,11 @@
 ## 安装
 
 ```bash
-# 预编译（Windows x64、macOS arm64/x64、Linux x64）
+# 暂无已发布二进制，请先从源码构建；后续成品见 releases
 # https://github.com/zkldwxz/Rvdown/releases
 
-# Rust SDK：钉 tag，不要跟分支
-cargo add rvdown --git https://github.com/zkldwxz/Rvdown --tag v0.1.0
+# Rust SDK：正式 tag 发布前钉提交，不跟分支
+cargo add rvdown --git https://github.com/zkldwxz/Rvdown --rev ade20b808d29f4ebc1c1a59da894552300535a58
 ```
 
 ffmpeg 外置且可选：程序同目录 `resources/` 下、或 `PATH` 里、或显式传入（`--ffmpeg` /

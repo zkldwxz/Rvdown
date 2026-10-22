@@ -1,0 +1,24 @@
+{
+  "rust_tests_including_doctests": 169,
+  "rust_failed": 0,
+  "python_invariant_tests": 11,
+  "python_failed": 0,
+  "clippy_locked_all_targets_warnings_denied": true,
+  "fmt_check": true,
+  "measured_binary_core_commit": "123a05fd9a3a7193ee9e65e7872979d30a5097b3",
+  "platform_warning_fix_commit": "ade20b808d29f4ebc1c1a59da894552300535a58",
+  "host": {
+    "os": "macOS 27.0.1",
+    "arch": "arm64",
+    "cpu": "Apple M6",
+    "logical_cores": 12,
+    "ram_bytes": 17179869184
+  },
+  "sdk_source_archive": {
+    "bytes": 115800,
+    "sha256": "1fe3522eb12add72a23b81cf04228d5f5cb4d24b0e714a09e4ad44f0aecbe8ab",
+    "note": "compressed SDK source; not compiled SDK or full dependency footprint"
+  },
+  "python_runtime_installation_logical_bytes": 71795131,
+  "httpx_site_packages_logical_bytes": 2841892
+}

@@ -1,9 +1,11 @@
 {
-  "scope": "standalone SDK source and proposed public benchmark files; all existing Git history blobs",
-  "prospective_files_scanned": 52,
-  "history_blobs_scanned": 45,
-  "history_commits_scanned": 1,
+  "scope": "all prospective public files and all reachable Git history blobs",
+  "prospective_files_scanned": 72,
+  "history_blobs_scanned": 71,
+  "history_commits_scanned": 4,
+  "audited_head": "ade20b808d29f4ebc1c1a59da894552300535a58",
+  "prospective_manifest_sha256_excluding_this_audit": "4eff45f6fdd36da238f05fea30b8e80d3da5f4ed72beb0fa19265d50ffe162af",
   "findings_count": 0,
-  "manual_review": "public fixtures and generic HTTP headers only; no application sources/configuration/raw logs selected",
-  "limitations": "targeted local application markers plus obvious secret signatures; not a proof against every possible secret format"
+  "manual_review": "generic SDK/CLI, public URLs and generated fixtures only; no application code/configuration, business IDs/APIs, raw logs, DNS maps, media or environment snapshots selected; path dependencies checked inside workspace",
+  "limitations": "targeted local private-configuration markers and common credential signatures; not an exhaustive proof for every secret format"
 }
