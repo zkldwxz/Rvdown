@@ -39,7 +39,7 @@ fn clamp_at_least_one(value: usize, max: usize) -> usize {
 /// 一次运行的配置。`Default` 就是生产默认值，命令行可按字段覆盖。
 #[derive(Clone)]
 pub struct Config {
-    /// 单文件分段并发连接数（钳 1..=32）。
+    /// 单文件分段并发连接上限（钳 1..=32）；默认媒体下载会按文件大小与来源下调。
     pub connections: usize,
     /// 同时在跑的任务数（批量下载用，钳 1..=32）。
     pub job_concurrency: usize,

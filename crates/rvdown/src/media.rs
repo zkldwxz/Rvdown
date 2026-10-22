@@ -75,12 +75,13 @@ impl MediaDownloader {
         })
     }
 
-    fn range(&self, page_url: Option<&str>) -> RangeDownloader {
-        RangeDownloader::with_policy(
-            Arc::new(self.client.for_page(page_url.map(str::to_string))),
-            self.config.clone(),
-            self.policy.clone(),
-        )
+    fn range(&self, page_url: Option<&str>, adaptive_connections: bool) -> RangeDownloader {
+        let client = Arc::new(self.client.for_page(page_url.map(str::to_string)));
+        if adaptive_connections {
+            RangeDownloader::with_policy_adaptive(client, self.config.clone(), self.policy.clone())
+        } else {
+            RangeDownloader::with_policy(client, self.config.clone(), self.policy.clone())
+        }
     }
 
     /// 头来源：显式（任务自身 > 全局）打底，自动推断留给传输层按目标 URL 重算。
@@ -109,7 +110,7 @@ impl MediaDownloader {
                 .unwrap_or_else(|| dest.to_string_lossy().into_owned()),
             context.asset_id.clone().unwrap_or_else(|| "file".into()),
         );
-        let range = self.range(page_url);
+        let range = self.range(page_url, true);
         let headers = sources.static_headers();
         let observer = crate::transfer::watchdog::ObservedProgress::new(progress);
         let transfer = range.download_tracked(
@@ -251,7 +252,7 @@ impl FileDownloader for HlsTransfer<'_> {
     ) -> Result<u64, DownloadError> {
         let report = self
             .owner
-            .range(self.page_url)
+            .range(self.page_url, false)
             .download_tracked(
                 self.track,
                 url,
@@ -283,7 +284,7 @@ impl FileDownloader for HlsTransfer<'_> {
         }
         let report = self
             .owner
-            .range(page_url.or(self.page_url))
+            .range(page_url.or(self.page_url), false)
             .download_tracked(
                 track,
                 url,
