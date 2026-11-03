@@ -75,6 +75,12 @@ impl MediaDownloader {
         })
     }
 
+    /// Override HLS segment concurrency without changing file Range connections or budgets.
+    pub fn with_hls_concurrency(mut self, concurrency: usize) -> Self {
+        self.hls_concurrency = normalize_hls_concurrency(Some(concurrency));
+        self
+    }
+
     fn range(&self, page_url: Option<&str>, adaptive_connections: bool) -> RangeDownloader {
         let client = Arc::new(self.client.for_page(page_url.map(str::to_string)));
         if adaptive_connections {
@@ -299,5 +305,25 @@ impl FileDownloader for HlsTransfer<'_> {
         self.attempts
             .fetch_add(report.attempts as u64, Ordering::Relaxed);
         Ok(report)
+    }
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn hls_concurrency_does_not_change_file_connections() {
+        let config = Config {
+            connections: 8,
+            ..Config::default()
+        };
+        for (requested, expected) in [(1, 1), (2, 2), (32, 32), (100, 32)] {
+            let downloader = MediaDownloader::new(Arc::new(Ffmpeg::new("ffmpeg")), &config)
+                .unwrap()
+                .with_hls_concurrency(requested);
+            assert_eq!(downloader.config.connections, 8);
+            assert_eq!(downloader.hls_concurrency, expected);
+        }
     }
 }
