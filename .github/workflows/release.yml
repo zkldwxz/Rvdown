@@ -46,7 +46,11 @@ jobs:
           cp "$src" "dist/$exe"
           cp README.md README.zh-CN.md LICENSE NOTICE "dist/"
           mkdir -p dist/docs && cp docs/*.md "dist/docs/"
-          (cd dist && zip -r "../${out}.zip" .)
+          if [[ "${{ runner.os }}" == "Windows" ]]; then
+            (cd dist && 7z a -tzip "../${out}.zip" . >/dev/null)
+          else
+            (cd dist && zip -r "../${out}.zip" .)
+          fi
           sha256sum "${out}.zip" > "${out}.zip.sha256" 2>/dev/null || shasum -a 256 "${out}.zip" > "${out}.zip.sha256"
       - uses: actions/upload-artifact@v4
         with:
